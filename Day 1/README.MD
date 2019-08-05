@@ -14,17 +14,17 @@ We'll be using git from the command line and through the Atom text editor.
 
 MacOS:
 1. Open terminal
-2. `xcode-select --install`
+1. `xcode-select --install`
 
 Windows 10:
 1. Control Panel -> Turn Windows features on and off -> enable "Windows subsystem for Linux"
-2. Reboot
-3. Windows Store -> search “Ubuntu” -> Install
-4. Set up Ubuntu
+1. Reboot
+1. Windows Store -> search “Ubuntu” -> Install
+1. Set up Ubuntu
   1. Open the command line
-  2. `sudo apt update`
-  3. `sudo apt install build-essential`
-5. Go to a location Windows can see: `cd /mnt/c`
+  1. `sudo apt update`
+  1. `sudo apt install build-essential`
+1. Go to a location Windows can see: `cd /mnt/c`
 
 Ubuntu: All the tools we need are part of build-essential. Follow instruction under step 4 above to install it.
 
@@ -73,13 +73,51 @@ Say we did `cd ..`, moving to /Users/Matt. We could then move several folders at
 
 If we then wanted to return to /Users/Matt, we could use `cd ..` three times, `cd ../../..`, or `cd -`, which returns to the last directory.
 
-#### Clone this repo
+#### Fork and clone this repo
 
-Go to the [root page](/../../) and use the green "Clone or download" button to copy the address of this repo.
+Go to the [root page](/../../) and use the grey "Fork" button at the top right to get your own version of this repository. On your version, use the green "Clone or download" button to copy the address of your repo.
 
 Now, back in the command line on your computer, type "git clone ", then paste the link (right click on Windows Ubuntu, `⌘`+`v` on MacOS). The command should look like
 
-`git clone https://github.com/novqpiousd/bootcamp-test.git`
+`git clone https://github.com/mbovyn/MCSBBootcampDry.git`
+
+(but with your github username in place of mbovyn). This command will download the repository from github.com to your computer, putting it into the present working directory.
+
+#### Set up your repository
+
+<!---
+We should think carefully about the name of the brach for the students to make. I don't think "dev" is right. "mywork"? "projects"? "mybranch"?
+-->
+
+Now that we have the repo on your local computer, we want to get your repository set up so that you can use it smoothly.
+
+You'll have two branches:
+* "master" branch: Gets shared with everyone. Instructors will make updates to this branch and you are free to pull request changes for typos, clarifications, etc.
+* "dev" branch: Includes code and files specific to you
+
+To set up your repository this way, first go into your new folder
+
+`cd MCSBBootcampDry`
+
+Then you can check that everything is working with `git status`. It should return
+
+    birch:MCSBBootcampDry Matt$ git status
+    On branch master
+    Your branch is up to date with 'origin/master'.
+
+    nothing to commit, working tree clean
+
+This tells you that you are on the master branch and haven't made any changes yet. Now we'll create a new branch called "dev".
+
+`git checkout -b dev`
+
+Then status should return
+
+    birch:MCSBBootcampDry Matt$ git status
+    On branch dev
+    nothing to commit, working tree clean
+
+
 
 ## Afternoon: A sample project and Matlab basics
 
