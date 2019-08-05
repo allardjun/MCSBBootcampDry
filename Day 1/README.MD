@@ -73,17 +73,21 @@ Say we did `cd ..`, moving to /Users/Matt. We could then move several folders at
 
 If we then wanted to return to /Users/Matt, we could use `cd ..` three times, `cd ../../..`, or `cd -`, which returns to the last directory.
 
-#### Clone this repo
+#### Fork and clone this repo
 
-Go to the [root page](/../../) and use the green "Clone or download" button to copy the address of this repo.
+Go to the [root page](/../../) and use the grey "Fork" button at the top right to get your own version of this repository. On your version, use the green "Clone or download" button to copy the address of your repo.
 
 Now, back in the command line on your computer, type "git clone ", then paste the link (right click on Windows Ubuntu, `⌘`+`v` on MacOS). The command should look like
 
-`git clone https://github.com/novqpiousd/bootcamp-test.git`
+`git clone https://github.com/mbovyn/MCSBBootcampDry.git`
 
-This command will download the repository from github.com to your computer, putting it into the present working directory.
+(but with your github username in place of mbovyn). This command will download the repository from github.com to your computer, putting it into the present working directory.
 
 #### Set up your repository
+
+<!---
+We should think carefully about the name of the brach for the students to make. I don't think "dev" is right. "mywork"? "projects"? "mybranch"?
+-->
 
 Now that we have the repo on your local computer, we want to get your repository set up so that you can use it smoothly.
 
@@ -97,7 +101,21 @@ To set up your repository this way, first go into your new folder
 
 Then you can check that everything is working with `git status`. It should return
 
-    
+    birch:MCSBBootcampDry Matt$ git status
+    On branch master
+    Your branch is up to date with 'origin/master'.
+
+    nothing to commit, working tree clean
+
+This tells you that you are on the master branch and haven't made any changes yet. Now we'll create a new branch called "dev".
+
+`git checkout -b dev`
+
+Then status should return
+
+    birch:MCSBBootcampDry Matt$ git status
+    On branch dev
+    nothing to commit, working tree clean
 
 
 
