@@ -1,1 +1,1 @@
-# Day 3 / Wednesday
+# Day 3 / Wednesday: Classical Mathematical Biology
