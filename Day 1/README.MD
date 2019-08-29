@@ -36,7 +36,13 @@ You should now be able to enter `git --version` and have it return something lik
 
 Get download here: https://atom.io/
 
+### Lecture and project
+
+The lecture on git and project instructions are in [git-lecture.md](git-lecure.md)
+
 ## Afternoon: A sample project and Matlab basics
+
+In the afternoon, we'll apply our new knowledge of git to set up a computational project. We'll write the code for this project in Matlab.
 
 ### Matlab Install Instructions
 
