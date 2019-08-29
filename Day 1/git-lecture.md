@@ -377,7 +377,7 @@ Students do (starting from dev branch):
 
 1. `git status` (if working tree is not clean, git won't let you do anything until you commit or get rid of any changes you've made)
 1. `git checkout master`
-1. `git pull`
+1. `git pull https://github.com/allardjun/MCSBBootcampDry.git master`
 1. `git checkout dev`
 1. `git merge master`
 
