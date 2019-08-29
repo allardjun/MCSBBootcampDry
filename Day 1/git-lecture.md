@@ -134,8 +134,10 @@ Note that there can be many branches, all working in parallel. They can be merge
 * Each commit is identified by a unique hash. This means if we know the commit hash that was used to generate some result, we know exactly what the code was. No questions of "did I change that before or after doing that plot?"
 
 <!---
-20 min
+20 min. Second bullet goes somewhere else?
 --->
+
+---
 
 # Using git and GitHub
 
@@ -168,10 +170,13 @@ def: "a set of principles laid down by an authority as incontrovertibly true"
 * Commits should be atomistic --- they should accomplish one objective (e.g. Take in radius as an input variable). This might involve changes to more than one file.
 * Commit messages should be written in the imperative mood (e.g. fix, update, not fixed or updated)
     * More on this and examples can be found [in this write up](https://chris.beams.io/posts/git-commit/)
+    * Think of "This commit will _______"
 
 <!---
 10 min
 --->
+
+---
 
 # Group exercise: Caption this figure!
 
@@ -354,15 +359,17 @@ Time saving tricks for future use:
 
 #### Push up to GitHub
 
-To send your commit up to GitHub, `git push`. It will not work right away. `git push` is the short form. The long form is
+To send your commit up to GitHub, `git push`. Try it now.
+
+`git push` is the short form. The long form is
 
 `git push origin dev`
 
-Git
+where origin is the name of a remote address (e.g. https://github.com/yourGitHubusernamehere/MCSBBootcampDry.git). dev is the name of the branch you are pushing.
 
 You will definitely be asked for credentials at this point (unless you already have them saved).
 
-### Pull down our changes from earlier
+### Pull down our changes
 
 Before, we made updates to this markdown file based on the reasons you stated for having a lab manual. As practice, let's get those changes from Matt's computer to all of yours.
 
@@ -375,11 +382,25 @@ Matt does:
 
 Students do (starting from dev branch):
 
-1. `git status` (if working tree is not clean, git won't let you do anything until you commit or get rid of any changes you've made)
+Add a remote for the allardjun/MCSBBootcampDry repo
+
+`git remote add upstream_allardjun https://github.com/allardjun/MCSBBootcampDry.git`
+
+Pull down changes and merge them into the dev branch
+
+1. `git status` (if working tree is not clean, git won't let you do anything until you commit or discard any changes you've made)
 1. `git checkout master`
-1. `git pull https://github.com/allardjun/MCSBBootcampDry.git master`
+1. `git pull upstream_allardjun master`
 1. `git checkout dev`
 1. `git merge master`
+
+These steps can be repeated in the future to pull down other changes from allardjun/MCSBBootcampDry. If you wanted to pull down changes from e.g. mbovyn/MCSBBootcampDry, you could add the address of that repo as a remote, or just
+
+`git pull https://github.com/mbovyn/MCSBBootcampDry.git master`
+
+using the address directly without saving it as a remote.
+
+---
 
 ## Exercise: Write a figure caption together
 
@@ -389,3 +410,11 @@ Students do (starting from dev branch):
 * A figure without a caption is like Ikea furniture without an instruction manual: might be worthwhile if you already know exactly what you're doing, but more likely will just lead to frustration, defeat, and possibly everlasting hatred.
 
 In this section, we'll explore what happens if you don't follow these rules.
+
+---
+
+# Resources
+
+Someone else's lesson on how to use git: http://swcarpentry.github.io/git-novice/
+
+git documentation: https://git-scm.com/docs
