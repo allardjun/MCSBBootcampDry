@@ -38,7 +38,7 @@ Get download here: https://atom.io/
 
 ### Lecture and project
 
-The lecture on git and project instructions are in [git-lecture.md](git-lecure.md)
+The lecture on git and project instructions are in [git-lecture.md](git-lecture.md)
 
 ## Afternoon: A sample project and Matlab basics
 
