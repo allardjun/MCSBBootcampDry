@@ -13,6 +13,11 @@ For us, keeping track of code with git achieves two objectives:
 
 In bootcamp wet, you kept a record of what you did in a lab notebook. Why?
 
+* Because I told you to
+* Reproducibility
+* So you remember what you did
+* Help you compose write up
+
 All those reasons also apply to code. In fact, we should strive to meet an even higher standard for code than we can for lab work, as results don't depend on anything outside of our control (code may have bugs, but it will at least have the same bug every time).
 
 It is possible (and is now easy) to have perfect reproducibility for results of coding projects. This is not yet the standard for scientific publication, but I think it soon will be (and *should* be the standard we all strive for).
@@ -27,6 +32,7 @@ There are other reasons to use git:
 * Using git and GitHub to publish code is becoming standard for scientific projects as well. It provides
     * Visibility on a recognized platform
     * Tools for the greater community to interact with you and your code, as well as for them to contribute to it
+* It's a good backup
 
 <!---
 Furthermore, we are scientists funded by the government to produce work which furthers humanity's understanding of the world around us. The things we produce are not to
@@ -120,10 +126,16 @@ Note that both sets of changes are kept.
 
 What happens if both branches had changed the same line? Then the merge needs human intervention --- git would prompt you to choose what to keep.
 
+Note that there can be many branches, all working in parallel. They can be merged with each other at any time.
+
 ## Benefits of this system
 
 * Linus' dream is fulfilled --- he doesn't have to talk to another human to incorporate their code into his repo
 * Each commit is identified by a unique hash. This means if we know the commit hash that was used to generate some result, we know exactly what the code was. No questions of "did I change that before or after doing that plot?"
+
+<!---
+20 min
+--->
 
 # Using git and GitHub
 
@@ -157,11 +169,15 @@ def: "a set of principles laid down by an authority as incontrovertibly true"
 * Commit messages should be written in the imperative mood (e.g. fix, update, not fixed or updated)
     * More on this and examples can be found [in this write up](https://chris.beams.io/posts/git-commit/)
 
+<!---
+10 min
+--->
+
 # Group exercise: Caption this figure!
 
 As I'm sure you've noticed, this is a git repository hosted on GitHub. We're going to get started using git with this repo!
 
-## Fork and clone the bootcamp dry repo
+## Getting around on the command line
 
 Our objective will be to write a paper together in markdown.
 
@@ -198,13 +214,23 @@ Say we did `cd ..`, moving to /Users/Matt. We could then move several folders at
 
 If we then wanted to return to /Users/Matt, we could use `cd ..` three times, `cd ../../..`, or `cd -`, which returns to the last directory.
 
+Where do we put our repo? First, note that you SHOULD NOT put a git repo in an auto-syncing directory (Dropbox, Google Drive, iCloud, OneDrive). For windows users, go with
+
+`/mnt/c/code`
+
+Mac users should avoid iCloud, Google Drive and Dropbox folders
+
+`/users/username/code`
+
+would be a good place.
+
 ### Fork and clone this repo
 
 Go to the [root page](/../../) and use the grey "Fork" button at the top right to get your own version of this repository. On your version, use the green "Clone or download" button to copy the address of your repo.
 
 Now, back in the command line on your computer, type "git clone ", then paste the link (right click on Windows Ubuntu, `⌘`+`v` on MacOS). The command should look like
 
-`git clone https://github.com/mbovyn/MCSBBootcampDry.git`
+`git clone https://github.com/yourGitHubusernamehere/MCSBBootcampDry.git`
 
 (but with your github username in place of mbovyn). This command will download the repository from github.com to your computer, putting it into the present working directory.
 
@@ -293,6 +319,8 @@ Make sure to demonstrate with tab-complete
 
 Now that we've created something we want to keep, let's commit it.
 
+Go to the root of your repo (`cd ..` if you're in the mywork folder)
+
 `git status` should reveal that you have changes to your repo.
 
 The commit process has two steps: staging and committing.
@@ -301,9 +329,23 @@ The command to stage is `git add target`. Target can be a file, folder, or `.`, 
 
 Stage with `git add .`
 
+`git status` should give you
+
+    dhcp-v021-085:MCSBBootcampDry matthewbovyn$ git status
+    On branch dev
+    Changes to be committed:
+      (use "git reset HEAD <file>..." to unstage)
+
+    	new file:   mywork/mytextfile.txt
+
+
 Commit with `git commit`
 
+At this stage, you may be asked for credentials. Enter them now.
+
 Recognize this interface? Just like vi! Enter a good commit message (imperative mood!) and save with `:wq`.
+
+Note that commit messages are extremely important. They are not easy to change, so think about what you are writing. Furthermore, other people will see them. Keep that in mind.
 
 Time saving tricks for future use:
 * `git commit -a` does an automatic `git add .` (or something like it, doesn't seem to add new files)
@@ -312,7 +354,13 @@ Time saving tricks for future use:
 
 #### Push up to GitHub
 
-To send your commit up to GitHub, `git push`
+To send your commit up to GitHub, `git push`. It will not work right away. `git push` is the short form. The long form is
+
+`git push origin dev`
+
+Git
+
+You will definitely be asked for credentials at this point (unless you already have them saved).
 
 ### Pull down our changes from earlier
 
