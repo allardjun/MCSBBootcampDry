@@ -14,8 +14,10 @@ A rough outline of the schedule is:
 
 Day | Time | Project | Instructor | TA
 --- | --- | --- | --- | ---
-Monday (Day 1) | AM | Project management and collaborative coding with git | Matt B | Yanwen, Honglei
-&nbsp; | PM | Coding Basics + Install Fest | Lara | Honglei
+Monday (Day 1) | AM | Introduction | Jun Allard | &nbsp;
+&nbsp; | AM | Project management and collaborative coding with git | Matt B | Yanwen, Honglei
+&nbsp; | PM | Coding Basics | Lara | Honglei
+&nbsp; | PM | Install Fest | &nbsp; | &nbsp;
 Tuesday (Day 2) | AM | Mechanistic Models | Matt B | Katie K
 &nbsp; | PM | Fitting models to data | Matt B | Tessa
 Wednesday (Day 3) | AM | Classical Mathematical Biology | Lara | Trini, Jun
