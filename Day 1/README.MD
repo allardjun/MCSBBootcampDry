@@ -36,90 +36,13 @@ You should now be able to enter `git --version` and have it return something lik
 
 Get download here: https://atom.io/
 
-### Clone the bootcamp dry repo and git basics
+### Lecture and project
 
-Now that we have the tools we need installed, let's use them. Our objective will be to write a paper together in markdown.
-
-The first thing to do is get the contents of this repository to your computer.
-
-Open the command line and navigate to a place you'd like to keep the code we'll be working on. Here's a quick primer:
-
-#### Command line basic navigation
-
-`pwd`: prints the current working directory
-`ls`: get a list of all the files and folders in the current directory
-`cd target`: change to the directory specified by target
-
-Some examples follow. Let's take a folder on my computer as an example. Here's the output of `pwd` and `ls`:
-
-    birch:project_code Matt$ pwd
-    /Users/Matt/project_code
-    birch:project_code Matt$ ls
-    ActinTutorial		bootcamp-test
-    Motor-Cargo-Simulator	test folder
-
-Note `pwd` prints the full path, which starts with a "/" indicating the root of the filesystem. Then, from this location, we could do any of
-* `cd ActinTutorial`: moves into folder ActinTutorial
-* `cd ..`: moves up a folder to /Users/Matt
-* `cd ~`: moves to the home directory, for me /Users/Matt
-* `cd test\ folder` or `cd "test folder"`: moves to test folder. Note spaces need to be escaped or quotes be used. If you don't, you get:
-
-      birch:project_code Matt$ cd test folder
-      -bash: cd: test: No such file or directory
-
-    because spaces separate inputs on the command line
-
-Say we did `cd ..`, moving to /Users/Matt. We could then move several folders at once with `cd project_code/Motor-Cargo-Simulator/simulation_code`, which would take us to the simulation_code folder inside the Motor-Cargo-Simulator folder.
-
-If we then wanted to return to /Users/Matt, we could use `cd ..` three times, `cd ../../..`, or `cd -`, which returns to the last directory.
-
-#### Fork and clone this repo
-
-Go to the [root page](/../../) and use the grey "Fork" button at the top right to get your own version of this repository. On your version, use the green "Clone or download" button to copy the address of your repo.
-
-Now, back in the command line on your computer, type "git clone ", then paste the link (right click on Windows Ubuntu, `⌘`+`v` on MacOS). The command should look like
-
-`git clone https://github.com/mbovyn/MCSBBootcampDry.git`
-
-(but with your github username in place of mbovyn). This command will download the repository from github.com to your computer, putting it into the present working directory.
-
-#### Set up your repository
-
-<!---
-We should think carefully about the name of the brach for the students to make. I don't think "dev" is right. "mywork"? "projects"? "mybranch"?
--->
-
-Now that we have the repo on your local computer, we want to get your repository set up so that you can use it smoothly.
-
-You'll have two branches:
-* "master" branch: Gets shared with everyone. Instructors will make updates to this branch and you are free to pull request changes for typos, clarifications, etc.
-* "dev" branch: Includes code and files specific to you
-
-To set up your repository this way, first go into your new folder
-
-`cd MCSBBootcampDry`
-
-Then you can check that everything is working with `git status`. It should return
-
-    birch:MCSBBootcampDry Matt$ git status
-    On branch master
-    Your branch is up to date with 'origin/master'.
-
-    nothing to commit, working tree clean
-
-This tells you that you are on the master branch and haven't made any changes yet. Now we'll create a new branch called "dev".
-
-`git checkout -b dev`
-
-Then status should return
-
-    birch:MCSBBootcampDry Matt$ git status
-    On branch dev
-    nothing to commit, working tree clean
-
-
+The lecture on git and project instructions are in [git-lecture.md](git-lecture.md)
 
 ## Afternoon: A sample project and Matlab basics
+
+In the afternoon, we'll apply our new knowledge of git to set up a computational project. We'll write the code for this project in Matlab.
 
 ### Matlab Install Instructions
 
