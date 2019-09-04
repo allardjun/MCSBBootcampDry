@@ -1,6 +1,6 @@
 # Basics of scripting
 ### Script vs function vs command window
-
+## Path file
 ## Google is your friend
 
 ## Commenting
@@ -13,7 +13,7 @@
 
 ## If-statements
 
-'If' statements are conditional: that is, they create a block of code that only executes if it passes some condition. 
+'If' statements are conditional: that is, they create a block of code that only executes if it passes some condition.
 
 
 #### Else
@@ -54,7 +54,7 @@ load('filename','variables')
 
 ## Debugging tips
 
-- Print everything 
+- Print everything
 - Run section
 - Add breakpoints
 - SIMPLIFY SIMPLIFY SIMPLIFY <- Better to start here when coding too
@@ -68,4 +68,3 @@ load('filename','variables')
 ## Exercise: Create your own Julia Fractal
 
 ### Julia Fractals
-
