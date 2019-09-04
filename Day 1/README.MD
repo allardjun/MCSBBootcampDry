@@ -30,9 +30,13 @@ Other operating systems: You're on your own. We will be using Git from the comma
 
 You should now be able to enter `git --version` and have it return something like "git version 2.17.1". The version won't matter for what we're doing today.
 
+#### GitHub
+
+Make a [GitHub account](https://github.com/join) if you don't already have one.
+
 #### Atom
 
-Get download here: https://atom.io/
+Download and installation instructions here: https://atom.io/
 
 ### Matlab Install Instructions
 
