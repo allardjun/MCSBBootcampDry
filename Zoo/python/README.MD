@@ -1,1 +1,1 @@
-# Online database access & Python with Jupyter
+# Files and strings with Python and Jupyter
