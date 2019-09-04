@@ -6,10 +6,16 @@
 ## Commenting
 
 ## Variables
+### doubles, strings
 
 ### Protected variable names, intelligent variable names, etc
 ### pi, i
 
+### Preallocation
+
+
+## Indexing??
+### starts at 1
 
 ## If-statements
 
@@ -28,7 +34,10 @@
 ### Ctrl-C
 ### Safety checks
 
-## Vectors
+## Vectors, Matrices
+
+### 
+### find, logical indexing
 
 ## Vector math
 
@@ -45,8 +54,9 @@ Some useful options:
 - 'LineStyle'
 - 'LineWidth'
 - 'Color'
-xlabel()
-xlim()
+- xlabel()
+- xlim()
+- can control size, position etc
 
 ## Save, Load
 save('filename','variables')
