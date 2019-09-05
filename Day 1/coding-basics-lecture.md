@@ -36,7 +36,7 @@
 
 ## Vectors, Matrices
 
-### 
+###
 ### find, logical indexing
 
 ## Vector math
@@ -63,7 +63,8 @@ save('filename','variables')
 load('filename','variables')
 
 ## Debugging tips
-
+Give example script with bugs in them
+- look at red ticks to the right
 - Print everything
 - Run section
 - Add breakpoints
