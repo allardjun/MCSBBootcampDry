@@ -41,6 +41,8 @@ Download and installation instructions here: https://atom.io/
 
 UCI provides Matlab to students for free. To download and install it, follow the instructions here: http://laptops.eng.uci.edu/software-installation/matlab
 
+Install Matlab 2019a. You won't need any toolboxes.
+
 # Day 1 / Monday
 
 ## Day 1 Morning: Science, project management and Git
