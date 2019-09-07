@@ -17,11 +17,11 @@ Windows 10:
 1. Reboot
 1. Microsoft Store -> search “Ubuntu” -> Install
 1. Set up Ubuntu
-  1. Open Ubuntu
-  1. Let it install, then set a username and password (you probably want to write this down somewhere)
-  1. `sudo apt update`
-  1. `sudo apt upgrade`
-  1. Note that windows cannot see your root directory. If you want to get to your C drive `cd /mnt/c`. Remember this for later
+    1. Open Ubuntu
+    1. Let it install, then set a username and password (you probably want to write this down somewhere)
+    1. `sudo apt update`
+    1. `sudo apt upgrade`
+    1. Note that windows cannot see your root directory. If you want to get to your C drive `cd /mnt/c`. Remember this for later
 
 Ubuntu: All the tools we need are part of a vanilla install
 
