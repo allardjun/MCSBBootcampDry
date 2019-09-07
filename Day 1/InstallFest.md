@@ -6,6 +6,7 @@ All OS:
 * R	https://cran.r-project.org	Don't use Anaconda to install R 0.01GB
 * RStudio|	https://www.rstudio.com	0.5GB
 * Blender|	https://www.blender.org/		0.4GB
+
 Windows users:
 * Ubuntu (Installed through in Windows 10)		0.6GB
 * Putty	https://www.putty.org	0.01GB
