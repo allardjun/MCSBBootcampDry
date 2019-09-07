@@ -13,10 +13,7 @@ For us, keeping track of code with git achieves two objectives:
 
 In bootcamp wet, you kept a record of what you did in a lab notebook. Why?
 
-* Because I told you to
-* Reproducibility
-* So you remember what you did
-* Help you compose write up
+* ((add reasons here))
 
 All those reasons also apply to code. In fact, we should strive to meet an even higher standard for code than we can for lab work, as results don't depend on anything outside of our control (code may have bugs, but it will at least have the same bug every time).
 
@@ -130,18 +127,31 @@ Note that there can be many branches, all working in parallel. They can be merge
 
 ## Benefits of this system
 
-* Linus' dream is fulfilled --- he doesn't have to talk to another human to incorporate their code into his repo
+* Linus' dream is fulfilled --- he doesn't have to talk to another human to incorporate their code into his repo. The commit message tells him what the person what tyring to accomplish and what specific changes in the code they made to do so.
+* This applies for you too --- you in three years definitely won't remember what you right now was trying to accomplish
 * Each commit is identified by a unique hash. This means if we know the commit hash that was used to generate some result, we know exactly what the code was. No questions of "did I change that before or after doing that plot?"
+    * This means that things can be perfectly reproducable
+* The independent work of multiple people (working at the same time) can be combined in an easy way. No confusion about what version of the file peope are working on
+    * This is especially useful for writing papers, where a great deal of confusion can happen with file versions being emailed back and forth. Latex in particular is just code like any other language and goes very nicely with git.
 
 <!---
 20 min. Second bullet goes somewhere else?
 --->
 
----
-
 # Using git and GitHub
 
 Now that we know what git is and what it does, how do we use it to manage code for a project? First, let's do an overview of what is where.
+
+## Dogma
+
+def: "a set of principles laid down by an authority as incontrovertibly true"
+
+* Data does not go in a git repository
+    * Note Github has hard filesize limits and git itself will be slow and unhappy with files larger than 20MB or so
+* Commits should be atomistic --- they should accomplish one objective (e.g. Take in radius as an input variable). This might involve changes to more than one file.
+* Commit messages should be written in the imperative mood (e.g. fix, update, not fixed or updated)
+    * More on this and examples can be found [in this write up](https://chris.beams.io/posts/git-commit/)
+    * Think of "This commit will _______"
 
 ## Architecture
 
@@ -160,41 +170,27 @@ Here's a map of how multiple coders can use GitHub to work on code together:
 
 For a second coder to join the first, they first fork the repo on GitHub. This forked repo is their own version, which they have total control over. They can work with is as described in the previous section. If the make changes they want to share with coder 1, they go back to GitHub and submit a pull request: a request for coder 1 to pull commits they've pushed up to their repo.
 
-
-## Dogma
-
-def: "a set of principles laid down by an authority as incontrovertibly true"
-
-* Data does not go in a git repository
-    * Note Github has hard filesize limits and git itself will be slow and unhappy with files larger than 20MB or so
-* Commits should be atomistic --- they should accomplish one objective (e.g. Take in radius as an input variable). This might involve changes to more than one file.
-* Commit messages should be written in the imperative mood (e.g. fix, update, not fixed or updated)
-    * More on this and examples can be found [in this write up](https://chris.beams.io/posts/git-commit/)
-    * Think of "This commit will _______"
-
 <!---
 10 min
 --->
 
 ---
 
-# Group exercise: Caption this figure!
+# Practice session: Command line, git and Github
 
 As I'm sure you've noticed, this is a git repository hosted on GitHub. We're going to get started using git with this repo!
 
-## Getting around on the command line
+We're going to use the command line. Here's a quick primer:
 
-Our objective will be to write a paper together in markdown.
-
-The first thing to do is get the contents of this repository to your computer.
-
-Open the command line and navigate to a place you'd like to keep the code we'll be working on. Here's a quick primer:
-
-### Command line basic navigation
+## Command line basic navigation
 
 `pwd`: prints the current working directory
 `ls`: get a list of all the files and folders in the current directory
 `cd target`: change to the directory specified by target
+`mkdir`: makes a folder
+`rm`: deletes
+typing the first few letters of a file or folder name and hitting tab will complete the rest for you
+the up arrow will take you back through the history of your commands, allowing you to reenter them
 
 Some examples follow. Let's take a folder on my computer as an example. Here's the output of `pwd` and `ls`:
 
@@ -219,37 +215,49 @@ Say we did `cd ..`, moving to /Users/Matt. We could then move several folders at
 
 If we then wanted to return to /Users/Matt, we could use `cd ..` three times, `cd ../../..`, or `cd -`, which returns to the last directory.
 
-Where do we put our repo? First, note that you SHOULD NOT put a git repo in an auto-syncing directory (Dropbox, Google Drive, iCloud, OneDrive). For windows users, go with
+## Get this repo to your computer
 
-`/mnt/c/code`
+Now our goal is going to be to get this repo to your computer. First, we need a place to put it.
 
-Mac users should avoid iCloud, Google Drive and Dropbox folders
+### Mini-exercise: make a place to put bootcamp files
 
-`/users/username/code`
+Let's make a place to put all the files we'll be working with in bootcamp. First, note that you SHOULD NOT put a git repo in an auto-syncing directory (Dropbox, Google Drive, iCloud, OneDrive). For windows users, make a folder
 
-would be a good place.
+`/mnt/c/bootcamp_dry`
 
-### Fork and clone this repo
+Mac users, make folder
+
+`/users/username/bootcamp_dry`
+
+also can be found at `~/bootcamp_dry`
+
+Go to your file browser (explorer or finder) and find the folder you just made.
+
+### Fork
 
 Go to the [root page](/../../) and use the grey "Fork" button at the top right to get your own version of this repository. On your version, use the green "Clone or download" button to copy the address of your repo.
 
-Now, back in the command line on your computer, type "git clone ", then paste the link (right click on Windows Ubuntu, `⌘`+`v` on MacOS). The command should look like
+### Clone
+
+Now, back in the command line on your computer, navigate to the folder you made. Confirm that pwd retuns either `/mnt/c/bootcamp_dry` or `users/username/bootcamp_dry`.
+
+Type "git clone ", then paste the link (right click on Windows Ubuntu, `⌘`+`v` on MacOS). The command should look like
 
 `git clone https://github.com/yourGitHubusernamehere/MCSBBootcampDry.git`
 
-(but with your github username in place of mbovyn). This command will download the repository from github.com to your computer, putting it into the present working directory.
+(but with your github username). This command will download the repository from github.com to your computer, putting it into the present working directory.
 
-### Set up your repository
+If you get a permissions error, try `sudo git clone https://github.com/yourGitHubusernamehere/MCSBBootcampDry.git`. This executes the command with elevated permissions and is generally the answer when something doesn't work.
 
-<!---
-We should think carefully about the name of the brach for the students to make. I don't think "dev" is right. "mywork"? "projects"? "mybranch"?
--->
+![xkcd sudo](https://imgs.xkcd.com/comics/sandwich.png "Randall Munroe says it best")
+
+## Set up your repository
 
 Now that we have the repo on your local computer, we want to get your repository set up so that you can use it smoothly.
 
 You'll have two branches:
 * "master" branch: Keep this branch clean of your personal work. However, if you have suggestions for changes you think everyone should have (typo fixes, additional links, other improvements) feel free to commit them here, push them up and pull request allardjun/MCSBBootcampDry
-* "dev" branch: Add your personal work to this branch
+* "exercises" branch: Add your personal work to this branch
 
 To set up your repository this way, first go into your new folder
 
@@ -263,14 +271,14 @@ Then you can check that everything is working with `git status`. It should retur
 
     nothing to commit, working tree clean
 
-This tells you that you are on the master branch and haven't made any changes yet. Now we'll create a new branch called "dev".
+This tells you that you are on the master branch and haven't made any changes yet. Now we'll create a new branch called "exercises".
 
-`git checkout -b dev`
+`git checkout -b exercises`
 
 Then status should return
 
     birch:MCSBBootcampDry Matt$ git status
-    On branch dev
+    On branch exercises
     nothing to commit, working tree clean
 
 #### Create some additions
@@ -363,9 +371,9 @@ To send your commit up to GitHub, `git push`. Try it now.
 
 `git push` is the short form. The long form is
 
-`git push origin dev`
+`git push origin exercises`
 
-where origin is the name of a remote address (e.g. https://github.com/yourGitHubusernamehere/MCSBBootcampDry.git). dev is the name of the branch you are pushing.
+where origin is the name of a remote address (e.g. https://github.com/yourGitHubusernamehere/MCSBBootcampDry.git). exercises is the name of the branch you are pushing.
 
 You will definitely be asked for credentials at this point (unless you already have them saved).
 
@@ -402,7 +410,7 @@ using the address directly without saving it as a remote.
 
 ---
 
-## Exercise: Write a figure caption together
+# Exercise: Write a figure caption together
 
 ### Dogma
 
@@ -410,6 +418,7 @@ using the address directly without saving it as a remote.
 * A figure without a caption is like Ikea furniture without an instruction manual: might be worthwhile if you already know exactly what you're doing, but more likely will just lead to frustration, defeat, and possibly everlasting hatred.
 
 In this section, we'll explore what happens if you don't follow these rules.
+
 
 ---
 
