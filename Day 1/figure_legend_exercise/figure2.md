@@ -1,5 +1,5 @@
-![A](FigA.png#4 "Panel A")
-![B](FigB.png#4 "Panel B")
+![A](Fig2A.png "Panel A")
+![B](Fig2B.png "Panel B")
 
 Figure 2: ??? controls
 ???
