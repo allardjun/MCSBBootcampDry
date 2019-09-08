@@ -1,5 +1,5 @@
 # High-performance computing and bash tools
-A tutorial focused on hands-on examples of data parsing and scipt writing. The materials provided here directly are from graduate students who are frequent users, but not necessarily masters, of the HPC. Luckily, we are also able to provide links to more detailed tutorials from Harry Mangalam, our local HPC expert!
+A tutorial focused on HPC fundamentals with hands-on examples of data parsing and scipt writing. The materials provided here directly are from graduate students who are frequent users, but not necessarily masters, of the HPC. Luckily, we are also able to provide links to more detailed tutorials from Harry Mangalam, our local HPC expert!
 
 
 Table of Contents <a name="toc"></a>
