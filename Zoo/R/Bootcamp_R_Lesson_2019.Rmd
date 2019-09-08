@@ -1,0 +1,314 @@
+---
+title: 'Single-cell metadata visualization & R'
+author: "Kerrigan Blake"
+date: "9/08/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+##First things first: Gather materials!
+
+While we discuss the biological context, go ahead and start downloading the datasets we'll use for activities from the following link: https://drive.google.com/open?id=1p5PFxisCl6qI59ykRW-Gi25lfbTwpjuy
+
+Further, if you haven't yet, install the following packages with the install.packages() command and/or validate that the following R packages can be loaded using library():
+```{r install, message=FALSE, warning=FALSE}
+#a useful tool for summarising and rearranging data
+#install.packages("dplyr")
+#a package to change data formatting (spread/gather)
+#install.packages("tidyr")
+#a useful plotting tool
+#install.packages("ggplot2")
+#a nice heatmap package
+#install.packages("pheatmap")
+
+#load packages using library()
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(pheatmap)
+```
+
+## What is "metadata"?
+There are a lot of different types of data in biology and most of them will come with what's known as "metadata". The exact content of metadata is variable, but it will always give additional info on each biological sample that is distinct from the directly collected data. For example, metadata may have each biological sample as a row and contain columns like: "date collected", "tumor location", or "mouse number". 
+
+In single-cell RNA-Seq, the data type we will be working on today, we take a large number of individual cells and sequence the whole transcriptome (the RNA from the genes being expressed in that cell), and then count the number of reads coming from each gene. This will generate an "expression matrix" where each column is a cell, each row is a gene, and at every position, we have a count of how many times we saw a given gene in a given cell. This information can help us identify what type of cell we're looking at and allows us to do an unbiased comparison of the gene expression profiles within a given cell type across different biological conditions. 
+
+Here is where there metadata comes in: If want to compare two conditions, we need to know which cell came from which condition. The metadata will allow us to store and use this information readily. Further, if we find a population of cells with interesting behaviors, we can add a column to the metadata to store this label and reference it in downstream analysis. 
+
+To explore this interplay, we will end this module with a project where we look at cell cycle phase labels in the metadata of a single-cell dataset and compare them to the expression of known cell cycle genes. By the end of this, you will be able to merge, rearrange, summarize, and plot datasets in a variety of ways
+
+## Read in RDS file with Single-Cell Data
+```{r read in data}
+####NOTE: You will need to change the file path based on where you saved these files.
+
+#extract metadata (information about each cell, e.g. cluster assignment)
+cell_metadata <- read.table("/Users/kerriganblake/Desktop/Misc/R_Markdown_Bootcamp_2018/cell_metadata.txt")
+
+#extract the normalized data matrix
+expression_matrix <- readRDS("/Users/kerriganblake/Desktop/Misc/R_Markdown_Bootcamp_2018/expression_matrix.rds")
+```
+
+##Data Investigation
+The first step in most analyses is to look at your data and get a feel for the structure and size of the dataset.
+```{r data discovery}
+#check dimensions of the expression matrix (rows are genes, columns are cells)
+dim(expression_matrix) #17,779 genes across 1986 cells
+
+#check metadata column content
+head(cell_metadata)
+```
+
+###Question 1: How many cells are WT vs Treated?
+We need to determine which column name corresponds to the column with this cell label (in this case, orig.ident). Further, we need to find a way to count how many cells are in each category. For the first task, we can use the head function. For the second, we will want to use the "$" syntax to refer to the correct column and table() to count how many cells have each label.
+```{r q1}
+#simple count for number of occurances of WT and Treated
+table(cell_metadata$orig.ident)
+```
+
+###Question 2: For each cluster (res.0.4), how many cells came from the WT condition vs the Treated condition?
+Again, we can use table to determine how many cells fall into each category, in this case both the cluster and the condition.
+```{r q2}
+#rows of the table are each condition, columns are the cluster
+table(cell_metadata$orig.ident, cell_metadata$res.0.4)
+```
+
+###Question 3: Plot the distributions of genes (nGene) for both the WT and the Treated cells using ggplot2.
+```{r q3}
+#first item is the dataframe (a type of R object containing a mix of numbers, characters and factors) that has the data you want to plot
+#next, you give a mapping, where x=column name of data you want to plot on the x-axis, etc with fill generating a different color for each factor you plot
+#finally, you tell ggplot the type of plot you want to render (for example, geom_point() would make a dot plot)
+ggplot(cell_metadata, mapping=aes(x=orig.ident, y=nGene, fill=orig.ident)) + geom_violin()
+```
+
+###Question 4a: What are the most commonly expressed genes in the dataset? (i.e. Which gene or set of genes is expressed in the largest number of cells)?
+To check this, we will use rowSums() on our expression matrix along with which() and max() to find the top genes with non-zero expression.
+```{r q4a}
+#this technically sums a true/false matrix where true = 1 and false = 0
+n_cells_expressed <- rowSums(expression_matrix > 0)
+
+#which selects values from the first vector that match values in the second vector
+most_expressed <- n_cells_expressed[which(n_cells_expressed %in% max(n_cells_expressed))]
+
+#to keep only the gene names, we can use names()
+names_of_most_expressed <- names(most_expressed)
+```
+
+###Question 4b: What is the total expression across all cells from each of the above genes? Sort the genes from most to least expressed.
+```{r q4b}
+#generate expression matrix with only the genes from above
+gene_subset <- expression_matrix[names_of_most_expressed,]
+
+total_expression <- rowSums(gene_subset)
+
+sorted_expression <- sort(total_expression, decreasing = T)
+```
+
+###Question 4c: Plot each gene's total expression from above from most to least expressed using plot. 
+```{r 4c}
+plot(sorted_expression)
+```
+
+##Data Combination & Manipulation
+Once you have a feel for your given dataset, you may need to combine, rearrange, or subset it to answer more questions. R is designed to make this task easy, but only if you use the right packages!
+
+###Question 5: What is the correlation of the proliferative marker MKI67 to G2.M Score in our dataset?
+We have metadata that contains a G2.M score for each cell, and a separate matrix that contains information on MKI67 (our expression matrix). Before we can get a correlation, we need to ensure that each cell is properly matched to an expression value as well as a G2.M Score. One way of doing that is the following.
+```{r q5}
+#Step 1: Extract MKI67 & format as a data frame
+#NOTE: If expression_matrix is denoted as a data.frame, this will have improper dimensions for downstream steps
+#R is overly tolerant of variable types in the sense that it will not throw an error but it will give absurd results
+#Therefore, we ensure expression_matrix is a matrix by wrapping it in the data type altering as.matrix()
+MKI67_df <- as.matrix(expression_matrix)["MKI67",]
+MKI67_expression <- data.frame(MKI67 = MKI67_df)
+
+#Step 2: Reorder data frame to match ordering of metadata
+MKI67_expression <- MKI67_expression[rownames(cell_metadata),]
+
+#Step 3: Once we are sure that our dataset are in the same order, we can add a column of MKI67 expresison to our cell metadata taking advantage of the $ operator for column references.
+cell_metadata$MKI67_expression <- MKI67_expression
+
+#Step 4: Finally, we can compute the correlation 
+correlation_mki67 <- cor(cell_metadata$G2M.Score, cell_metadata$MKI67_expression)
+#0.7382222
+```
+
+###Question 6: What is the correlation of the proliferative marker MKI67 to G2.M Score in ONLY the WT cells?
+Since we have already generated the data frame in the previous question, this question only requires removing data that is not from the WT condition. To do this, we will use the subset function.
+```{r q6}
+WT_subset <- subset(cell_metadata, orig.ident == "WT")
+
+dim(cell_metadata) #1986 x 9
+dim(WT_subset) #993 x 9
+
+correlation_mki67_WT <- cor(WT_subset$G2M.Score, WT_subset$MKI67_expression)
+#0.7946919
+```
+
+###Question 7: What is the average expression of MKI67 in each cluster and condition (i.e. for cluster 0, what is the average expression of MKI67 in the WT cells of that cluster and in the Treatment cells of that cluster)?
+In this question, we will introduce the incredibly useful package dplyr. This package allows us to group data and summarize columns with a fairly intuitive syntax.
+```{r q7}
+#first, we list the data frame we need to work from, in this case, cell_metadata
+#%>% syntax will take the data output from the previous step and perform the task listed after the arrow on that data
+#we group our data frame first by the cluster, and next by condition
+#finally, we summarize our data for each group by taking the average of MKI67
+average_mki67_by_cluster_and_condition <- cell_metadata %>% 
+  group_by(res.0.4, orig.ident) %>% 
+  summarise(mean_mki67 = mean(MKI67_expression))
+```
+
+###Question 8: Show the average MKI67 expression using a barplot grouped by cluster and colored by condition
+```{r q8}
+ggplot(average_mki67_by_cluster_and_condition, mapping = aes(x=res.0.4, y=mean_mki67, fill=orig.ident)) + geom_bar(stat="identity", position="dodge")
+```
+
+###Question 9: Repeat questions 7 & 8, but this time, only compute the average expression for cells that *actually* express MKI67.
+```{r q9}
+#Option 1: subset first
+mki67_sub <- subset(cell_metadata,MKI67_expression > 0)
+average_mki67_by_cluster_and_condition_sub <- mki67_sub %>% 
+  group_by(res.0.4, orig.ident) %>% 
+  summarise(mean_mki67 = mean(MKI67_expression))
+
+ggplot(average_mki67_by_cluster_and_condition_sub, mapping = aes(x=res.0.4, y=mean_mki67, fill=orig.ident)) + geom_bar(stat="identity", position="dodge")
+
+#Option 2: Use dplyr filter function
+average_mki67_by_cluster_and_condition_sub_2 <- mki67_sub %>% 
+  group_by(res.0.4, orig.ident) %>% 
+  filter(MKI67_expression > 0) %>% 
+  summarise(mean_mki67 = mean(MKI67_expression))
+
+ggplot(average_mki67_by_cluster_and_condition_sub_2, mapping = aes(x=res.0.4, y=mean_mki67, fill=orig.ident)) + geom_bar(stat="identity", position="dodge")
+```
+
+###Question 10: You are given a set of genes that are particularly interesting in your dataset. You are asked to generate a barplot for each of these genes, seperating by cluster and condition.
+Here, we will introduce the tidyr functions as well as show you some of the odd examples of data rearrangement that can be necessary to combine objects in R.
+```{r q10}
+genes_of_interest <- c("KRT14","KRT18","ANKRD30A","SLPI","GAPDH")
+
+#to plot these genes in the way requested, we will need to make a new data frame similar to our previous one with MKI67. This example shows some of the weird tricks you have to use in R to get things working across data objects.
+genes_of_interest_df <- expression_matrix[genes_of_interest,rownames(cell_metadata)]
+matrix_subset_of_interest <- as.matrix(t(genes_of_interest_df))
+
+#since we have multiple columns to add to the metadata, we will want to 
+genes_of_interest_with_necessary_metadata <- merge(cell_metadata[,c("res.0.4","orig.ident")], as.data.frame(matrix_subset_of_interest), by="row.names")
+
+rownames(genes_of_interest_with_necessary_metadata) <- genes_of_interest_with_necessary_metadata$Row.names
+
+#remove the column Row.Names which exists in the first position of the data frame
+genes_of_interest_with_necessary_metadata <- genes_of_interest_with_necessary_metadata[,-1]
+
+#now, we want to reformat this data to generate a list of gene names instead of having each gene with its own column (since we need a single column for the x-axis to be each gene)
+genes_melt <- genes_of_interest_with_necessary_metadata %>%
+  group_by(res.0.4, orig.ident) %>%
+  gather(key="gene",value="expression", KRT14:GAPDH)
+colnames(genes_melt) <- c("cluster","condition","gene","expression")
+
+ggplot(genes_melt, mapping = aes(x=gene, y=expression, fill=factor(condition))) + geom_bar(stat="identity",position="dodge") + facet_grid(.~cluster) + theme(axis.text.x = element_text(angle = 90, hjust = 1)) 
+```
+
+###Question 11: Generate a heatmap and annotate the clusters/condition for each cell in this heatmap. 
+```{r q11}
+genes_of_interest <- c("KRT14","KRT18","ANKRD30A","SLPI","GAPDH")
+
+pheatmap(expression_matrix[genes_of_interest,],
+         annotation_col= cell_metadata[,c("res.0.4","orig.ident")],
+         show_colnames = FALSE)
+```
+
+##Project: Given the following list of cell cycle genes, perform as many tasks as you can in the remaining time. 
+
+```{r cell cycle genes}
+cell_cycle_genes <- as.character(read.table("/Users/kerriganblake/Desktop/Misc/R_Markdown_Bootcamp_2018/regev_lab_cell_cycle_genes.txt", header=F)$V1)
+```
+
+###Task 1: Reduce the cell_cycle_genes to only those that are present and expressed in at least 500 cells. 
+####Hint: There will be 14 genes that pass this threshold
+
+###Task 2: Assign each gene in cell_cycle_genes to a specific phase of the cell cycle based on our dataset.
+####Hint: You will need both the cell metadata & expression_matrix for this task.
+
+###Task 3: Show that your cell_cycle_gene phase assignments "make sense" using the visualization of your choice. Feel free to be creative - there are many more functionalities than what we've seen here!
+
+##Example Solutions
+
+###Task 1: Reduce the cell_cycle_genes to only those that are present and expressed in at least 500 cells. 
+####Hint: There will be 14 genes that pass this threshold
+```{r task 1 soln}
+matrix_subset_of_interest <- as.matrix(t(expression_matrix[which(rownames(expression_matrix) %in% cell_cycle_genes),rownames(cell_metadata)]))
+
+matrix_subset_of_interest <- matrix_subset_of_interest[,names(colSums(matrix_subset_of_interest > 0)[colSums(matrix_subset_of_interest > 0) >= 500])]
+```
+
+###Task 2: Assign each gene in cell_cycle_genes to a specific phase of the cell cycle based on our dataset. 
+####Hint: You will need both the cell metadata & expression_matrix for this task.
+```{r task 2 soln}
+genes_of_interest_with_metadata <- cbind(cell_metadata[,"Phase"], as.data.frame(matrix_subset_of_interest))
+colnames(genes_of_interest_with_metadata)[1] <- "Phase"
+
+cc_summary <- genes_of_interest_with_metadata %>% 
+  group_by(Phase) %>% 
+  summarise_if(is.numeric, mean) %>%
+  gather(key="gene", value = "average_expression", RPA2:PCNA) %>%
+  group_by(gene) %>%
+  mutate(marker = Phase[average_expression == max(average_expression)]) %>% 
+  distinct(marker)
+```
+
+###Task 3: Show that your cell_cycle_gene phase assignments "make sense" using the visualization of your choice. Feel free to be creative - there are many more functionalities than what we've seen here!
+
+```{r task 3 solutions}
+
+#####################Scaled heatmap option########################
+
+anno_row <- data.frame(cc_summary$marker)
+levels(anno_row) <- c("G2M","S")
+rownames(anno_row) <- as.character(cc_summary$gene)
+
+pheatmap(t(matrix_subset_of_interest[order(cell_metadata$Phase),order(anno_row$cc_summary.marker)]),
+         annotation_col = cell_metadata[,c("Phase","orig.ident")],
+         annotation_row = anno_row, 
+         show_colnames = FALSE,
+         cluster_cols = FALSE,
+         cluster_rows = FALSE,
+         scale="row",
+         color=colorRampPalette(c("purple","black","yellow"))(length(c(-5,seq(-1,1,by=0.05),5))),
+         breaks = c(-5,seq(-1,1,by=0.05),5))
+
+###########Barplot of average log fold-change option##################
+subset_cc_gene_with_metadata <- genes_of_interest_with_metadata[,c(1,which(colnames(genes_of_interest_with_metadata) %in% as.character(cc_summary$gene)))]
+
+barplot_df <- subset_cc_gene_with_metadata %>%
+  gather(key="gene", value="expression", RPA2:PCNA) %>%
+  group_by(Phase, gene) %>%
+  summarise(average_expression = mean(expression)) %>%
+  spread(Phase, average_expression) %>%
+  group_by(gene) %>%
+  mutate(S.G2M.logFC = log(S) - log(G2M),
+         S.G1.logFC = log(S) - log(G1),
+         G2M.G1.logFC = log(G2M) - log(G1)) %>%
+  mutate(assigned_phase = ifelse(as.character(gene) %in% as.character(subset(cc_summary, marker == "S")$gene), "S","G2M"))
+
+#order genes based on predicted marker phase
+barplot_df$gene <- factor(barplot_df$gene, levels=as.character(cc_summary$gene[order(cc_summary$marker)]))
+
+ggplot(barplot_df, aes(x=gene, y=S.G2M.logFC, fill=assigned_phase)) + geom_bar(stat="identity") + theme_classic() + theme(axis.text.x = element_text(angle = 90, hjust = 1)) 
+
+###########Correlations of gene expressions with score##################
+matrix_subset_of_interest <- cbind(cell_metadata[,c("S.Score","G2M.Score")], t(expression_matrix[unique(cc_summary$gene), rownames(cell_metadata)]))
+
+correlations_dataframe <- matrix_subset_of_interest %>%
+  gather(key="gene", value="expression", RPA2:PCNA) %>%
+  group_by(gene) %>%
+  summarise(S.Cor = cor(expression, S.Score), 
+            G2M.Cor = cor(expression, G2M.Score))
+  
+correlations_merged_and_flattened <- merge(cc_summary, correlations_dataframe, by="gene") %>%
+  gather(key="phase.cor", value = "Pearson.correlation", S.Cor:G2M.Cor)
+
+correlations_merged_and_flattened$gene <- factor(correlations_merged_and_flattened$gene, levels=as.character(cc_summary$gene[order(cc_summary$marker)]))
+
+ggplot(correlations_merged_and_flattened, aes(x=gene, y=Pearson.correlation, fill=phase.cor)) + geom_bar(stat="identity",position="dodge") + theme_classic() + facet_wrap(~marker, scale="free_x") + theme(axis.text.x = element_text(angle = 90, hjust = 1)) 
+```
