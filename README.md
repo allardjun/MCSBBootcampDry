@@ -17,7 +17,7 @@ Day | Time | Project | Instructor | TA
 [Monday (Day 1)](https://github.com/allardjun/MCSBBootcampDry/tree/master/Day%201) | AM | Introduction | Jun Allard | &nbsp;
 &nbsp; | AM | Project management and collaborative coding with git | Matt B | Yanwen, Honglei
 &nbsp; | PM | Coding Basics | Lara | Honglei
-&nbsp; | PM | [Install Fest](/Day%201/InstallFest.md) | &nbsp; | &nbsp;
+&nbsp; | PM | [InstallFest](/Day%201/InstallFest.md) | &nbsp; | &nbsp;
 [Tuesday (Day 2)](https://github.com/allardjun/MCSBBootcampDry/tree/master/Day%202) | AM | Mechanistic Models | Matt B | Katie K
 &nbsp; | PM | Fitting models to data | Matt B | Tessa
 [Wednesday (Day 3)](https://github.com/allardjun/MCSBBootcampDry/tree/master/Day%203) | AM | Classical Mathematical Biology | Lara | Trini, Jun

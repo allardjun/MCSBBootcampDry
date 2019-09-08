@@ -49,14 +49,12 @@ Install Matlab 2019a. You won't need any toolboxes.
 
 We'll discuss how to manage a project as a graduate student. We'll learn how to use git to do so for a coding project.
 
-### Lecture and project
-
-The lecture on git and project instructions are in [git-lecture.md](git_lecture/git-lecture.md). You'll modify the files in [figure_caption_exercise](figure_caption_exercise).
+The lecture on git and project instructions are in [git-lecture.md](git_lecture/git-lecture.md). We'll write a caption for  [this figure](figure_caption_exercise/figure2.md).
 
 ## Afternoon: A sample project and Matlab basics
 
 Now that we know some git basics, we'll set up an example project. Lecture on rationale and map can be found in [project-set-up.md](project-set-up.md).
 
-We'll write the code for this project in Matlab, so we'll learn some Matlab along the way. See [coding-basics-lecture.md](coding-basics-lecure.md)
+We'll write the code for this project in Matlab, so we'll learn some Matlab along the way. See [coding-basics-lecture.md](coding-basics-lecture.md)
 
 Finally, the project itself is in [julia_fractal](julia_fractal).
