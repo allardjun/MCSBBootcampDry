@@ -1,4 +1,4 @@
-# Managing a project using git
+# Managing a project and git
 
 In undergrad, your projects were probably at most a quarter long. In grad school, you'll work on projects for years, often with other people. This makes keeping track of what you're doing extremely important.
 
@@ -163,7 +163,7 @@ Note that there can be many branches, all working in parallel. They can be merge
 
 Now that we know what git is and what it does, how do we use it to manage code for a project? First, let's do an overview of what is where.
 
-## Dogma
+### Dogma
 
 def: "a set of principles laid down by an authority as incontrovertibly true"
 
@@ -302,7 +302,7 @@ Then status should return
     On branch exercises
     nothing to commit, working tree clean
 
-#### Create some additions
+### Create some additions
 
 <!---
 Here we learn mkdir, vi basics
@@ -328,7 +328,7 @@ Now, we want to save the file and exit. To do so, we need to go back to command 
 
 At another time you might want to quit without saving. To do so you would use `:q`.
 
-##### Mini exercise: bad file and folder
+#### Mini exercise: bad file and folder
 
 <!---
 Here we learn rm, googling issues, optional arguments to commands
@@ -349,7 +349,7 @@ Compare results of search for "rm folder" to results of "command line delete fol
 Make sure to demonstrate with tab-complete
 --->
 
-#### Commit our addition
+### Commit our addition
 
 Now that we've created something we want to keep, let's commit it.
 
@@ -386,7 +386,7 @@ Time saving tricks for future use:
 * `git commit -m "Commit message here"` lets you skip the text editor if you want a one line commit message
 * Can be combined into `git commit -a -m "Commit message`
 
-#### Push up to GitHub
+### Push up to GitHub
 
 To send your commit up to GitHub, `git push`. Try it now.
 
@@ -398,7 +398,7 @@ where origin is the name of a remote address (e.g. https://github.com/yourGitHub
 
 You will definitely be asked for credentials at this point (unless you already have them saved).
 
-### Pull down our changes
+### Pull down lecture changes
 
 Before, we made updates to this markdown file based on the reasons you stated for having a lab manual. As practice, let's get those changes from Matt's computer to all of yours.
 
@@ -462,7 +462,7 @@ This is code in Markdown, a typesetting language. Look at [Markdown in 30 second
 
 Replace any instances of ??? in the line corresponding to your number with whatever you see fit.
 
-## Commit, push and pull request
+### Commit, push and pull request
 
 Once you've made your change, look for the Git button at the lower right hand corner of the Atom window. Use this interface to commit your changes.
 
