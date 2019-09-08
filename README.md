@@ -7,7 +7,7 @@ This repo is the home for MCSB bootcamp dry! It's organized into folders for the
 * Install Git & other command line tools, Atom, Matlab. Instructions are in [Day 1 folder](/Day%201/README.MD).
 * Make a [GitHub account](https://github.com/join) if you don't already have one
 
-We'll ask you to install more stuff as well, but hold on until Install Fest at the end of day 1 for that.
+We'll ask you to install more stuff as well, but hold on until InstallFest at the end of day 1 for that.
 
 # Schedule
 A rough outline of the schedule is:
