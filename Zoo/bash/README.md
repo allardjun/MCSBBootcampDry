@@ -5,7 +5,7 @@ A tutorial focused on hands-on examples of data parsing and scipt writing. The m
 Table of Contents <a name="toc"></a>
 =================
 * [Getting Started](https://github.com/KerriganBlake/General_HPC_Use_Tutorial/blob/master/Getting_Started.md)
-  * [Basic HPC Structure Overview](https://docs.google.com/a/uci.edu/presentation/d/1tnR9giTg6D4IRl9kz4A9zzgoR-69UCsbn6kEN6JYqEk/edit?usp=sharing)
+  * [Basic HPC Structure Overview](https://docs.google.com/presentation/d/1ah1ikI_nlieri_hvMbYwSt4YIVdUerGEdsh8XYRfPos/edit?usp=sharing)
   * [Linux Commands](https://github.com/KerriganBlake/General_HPC_Use_Tutorial/blob/master/Getting_Started.md#commands)
   * [Example Script](https://github.com/KerriganBlake/General_HPC_Use_Tutorial/blob/master/edited_workshop.sh)
 * [Data Parsing (awk and sed): SNP Activity](https://github.com/KerriganBlake/General_HPC_Use_Tutorial/blob/master/SNP_Activity.md)
