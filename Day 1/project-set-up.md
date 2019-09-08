@@ -41,7 +41,7 @@ Remember the rule from this morning? ***No data in git.*** Therefore we'll be di
 "codebase" folder (in repo) | "data" folder (not in repo) | "analysis" folder (in repo)
 --- | --- | ---
 follow_z.m | drive_generator1.m, drive_generator2.m, drive_generator3.m, drive_generator4.m (each with a different value of c)| julia_plot1.m, julia_plot2.m, julia_plot3.m, julia_plot4.m
-generate_fractal.m | juliaset1.mat, juliaset2.mat, juliaset3.mat, juliaset4.mat | julia_1.png, julia_2.png, julia_3.png, julia_4.png
+generate_fractal.m | juliaset1.mat, juliaset2.mat, juliaset3.mat, juliaset4.mat | julia1.png, julia2.png, julia3.png, julia4.png
 testcase.m (provided) | &nbsp; | julia_figure.md
 
 ### Why like this?
