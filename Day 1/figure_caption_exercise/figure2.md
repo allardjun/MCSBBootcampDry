@@ -1,4 +1,5 @@
 ![A](Fig2A.png "Panel A")
+
 ![B](Fig2B.png "Panel B")
 
 Figure 2: ??? controls
