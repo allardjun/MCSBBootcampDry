@@ -412,12 +412,40 @@ using the address directly without saving it as a remote.
 
 # Exercise: Write a figure caption together
 
-### Dogma
+First, we'll assign numbers to everyone (4-20).
+
+## Dogma
 
 * All plots must have axes labels with units
 * A figure without a caption is like Ikea furniture without an instruction manual: might be worthwhile if you already know exactly what you're doing, but more likely will just lead to frustration, defeat, and possibly everlasting hatred.
 
 In this section, we'll explore what happens if you don't follow these rules.
+
+## Prepare
+
+`git status` should return something like
+
+    Matthews-MacBook-Pro:MCSBBootcampDry matthewbovyn$ git status
+    On branch exercises
+    Your branch is up to date with 'origin/exercises'.
+
+    nothing to commit, working tree clean
+
+Open Atom. File -> add project folder -> select MCSBBootcampDry
+
+Go into the figure_legend_exercise folder and open Figure2.md. Open the markdown preview of this code using `ctrl+shift+m`.
+
+This is code in Markdown, a typesetting language. Look at the markdown in 30 seconds file to learn a bit about it.
+
+## Fill out the figure together
+
+Replace any instances of ??? in the line corresponding to your number with whatever you see fit.
+
+## Commit, push and pull request
+
+Once you've made your change, look for the Git button at the lower right hand corner of the Atom window. Use this interface to commit your changes.
+
+
 
 
 ---
