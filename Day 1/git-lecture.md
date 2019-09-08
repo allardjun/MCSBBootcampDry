@@ -1,6 +1,27 @@
 # Managing a project using git
 
-## What is git?
+In undergrad, your projects were probably at most a quarter long. In grad school, you'll work on projects for years, often with other people. This makes keeping track of what you're doing extremely important.
+
+![meme](https://pics.me.me/john-m-mola-johnmola-finishing-a-phd-is-like-finishing-56514929.png "It do be like that")
+
+So how do you do it? Some tips:
+* Make it a priority to keep files organized. Don't throw away that stuff from class, you might actually want to go back to it. Spend some time at the end of the quarter and pack everything up somewhere (physically or digitally)
+* Record the events you attend and things you participate in (especially things that will make it onto a CV or into a proposal).
+* There is a thing called an individual development plan. It's actually important, so git it some time and attention.
+
+Finally, record what you're doing day to day. In lab, you keep a lab notebook. For code, we have versioning and git.
+
+### An example of why you need git
+
+Say you're working on a project and you have a cool result...
+
+![code tracking example](Git%20theory%20and%20basics.000.png# "This might happen to you")
+
+To avoid this, you need versioning. Git does that and more.
+
+---
+
+# What is git?
 
 Git is a version control management system for code. It was invented by Linus Torvalds to support development of the Linux kernel. See [this video](https://youtu.be/o8NPllzkFhE?t=433) for more (7:13-9:24). In fact, you can find both [Linux](https://github.com/torvalds/linux) and [git itself](https://github.com/git/git) on GitHub. You can even see [git's first commit](https://github.com/git/git/commit/e83c5163316f89bfbde7d9ab23ca2e25604af290).
 
@@ -412,14 +433,14 @@ using the address directly without saving it as a remote.
 
 # Exercise: Write a figure caption together
 
-First, we'll assign numbers to everyone (4-20).
+A bit more dogma:
 
-## Dogma
-
-* All plots must have axes labels with units
+* All plots must have descriptive axes labels with units
 * A figure without a caption is like Ikea furniture without an instruction manual: might be worthwhile if you already know exactly what you're doing, but more likely will just lead to frustration, defeat, and possibly everlasting hatred.
 
 In this section, we'll explore what happens if you don't follow these rules.
+
+First, we'll assign numbers to everyone (4-21). After that follow these instructions on your own.
 
 ## Prepare
 
@@ -435,9 +456,9 @@ Open Atom. File -> add project folder -> select MCSBBootcampDry
 
 Go into the figure_legend_exercise folder and open Figure2.md. Open the markdown preview of this code using `ctrl+shift+m`.
 
-This is code in Markdown, a typesetting language. Look at the markdown in 30 seconds file to learn a bit about it.
+This is code in Markdown, a typesetting language. Look at [Markdown in 30 seconds.md](Markdown%20in%2030%20seconds.md) to learn a bit about it.
 
-## Fill out the figure together
+## Fill out your part
 
 Replace any instances of ??? in the line corresponding to your number with whatever you see fit.
 
@@ -445,8 +466,17 @@ Replace any instances of ??? in the line corresponding to your number with whate
 
 Once you've made your change, look for the Git button at the lower right hand corner of the Atom window. Use this interface to commit your changes.
 
+There is also a button to push. Use that to push your changes up to Github.
 
+Go to your repo on Github and use the green pull request button to pull request your changes to the vstudent branch of allardjun/MCSBBootcampDry
 
+Once all the pull requests are in, I'll approve them and we can read the figure we've created.
+
+# Upshot
+
+Hopefully this exercise has demonstrated both that your should clearly label your graphs (with descriptive labels, not just letters).
+
+It was also meant to demonstrate that all of us could make changes to the same thing, then we could put all those changes together to complete something. It simulated the task of paper writing with collaborators, but hopefully you can tell that it is equally applicable to code.
 
 ---
 
