@@ -18,4 +18,6 @@ library(ggplot2)
 library(pheatmap)
 ```
 
+Finally, you will want to download the data we will use for our tutorial to your local machine using this link: https://drive.google.com/drive/u/1/folders/1p5PFxisCl6qI59ykRW-Gi25lfbTwpjuy
+
 Once this is done, open up the Bootcamp_R_Lesson_2019.Rmd file in RStudio and we can start running some code!
