@@ -2,13 +2,13 @@
 
 ![B](Fig2B.png "Panel B")
 
-Figure 2: 10 controls
-samples
-of unknown stuff
-in the some system.
-In panel A, we show the response of 10
-, in units of mg/L
-/humans,
+Figure 2: ??? controls
+???
+of ???
+in the ??? system.
+In panel A, we show the response of ???
+, in units of 10
+/???,
 as ??? increases.
 Several values of ??? are shown.
 Using ???
