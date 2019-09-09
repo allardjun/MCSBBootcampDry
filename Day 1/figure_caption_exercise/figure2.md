@@ -2,9 +2,8 @@
 
 ![B](Fig2B.png "Panel B")
 
-Figure 2: Many Positive controls
-growth
-of ???
+Figure 2: Many beautiful positive controls of
+of growth
 in the ??? system.
 In panel A, we show the response of teta
 , in units of [0, 1000]
