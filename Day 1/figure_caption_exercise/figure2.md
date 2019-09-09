@@ -10,7 +10,7 @@ In panel A, we show the response of teta
 /week,
 as .2 increases.
 Several values of alpha are shown.
-Using ???
+Using different values of alpha
 allows us to infer ???
 from observations of 16
 in ???.
