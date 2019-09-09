@@ -21,4 +21,4 @@ figure(2); clf; hold on; box on;
 scatter(real(p(juliaSet)), imag(p(juliaSet)), 10, nmax(juliaSet));
 colormap(cool);
 
-saveas(f1,'julia.png')
+saveas(f1,'julia3.png')
