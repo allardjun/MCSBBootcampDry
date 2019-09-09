@@ -15,8 +15,8 @@ Using ???
 allows us to infer ???
 from observations of ???
 in ???.
-In panel B, we compare the resulting estimations of ???
-in units of ???.
-Data are shown for two conditions, ??? and ???.
+In panel B, we compare the resulting estimations of Effective Lobster Dancing coefficient
+in units of Lobsters per Lobster trap.
+Data are shown for two conditions, lobsters boiled in salt water (B7) and raw lobsters (alm).
 Overlaid curves are best fits of the ??? model
 and the ??? model.
