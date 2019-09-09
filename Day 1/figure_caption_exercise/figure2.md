@@ -2,17 +2,17 @@
 
 ![B](Fig2B.png "Panel B")
 
-Figure 2: ??? controls
-???
-of ???
-in the ??? system.
-In panel A, we show the response of ???
-, in units of ???
-/???,
+Figure 2: 10 controls
+samples
+of unknown stuff
+in the some system.
+In panel A, we show the response of 10
+, in units of mg/L
+/humans,
 as ??? increases.
 Several values of ??? are shown.
 Using ???
-allows us to infer ???
+allows us to infer the outcome
 from observations of ???
 in ???.
 In panel B, we compare the resulting estimations of ???
