@@ -1,0 +1,6 @@
+Cassandra Van
+This is VIM editor. This is the default for GIT. 
+Type i to edit inside the text editor.
+Hit ESC to leave INSERT mode. Type :wq to write-quit and make this file.
+:q would leave without saving.
+.
