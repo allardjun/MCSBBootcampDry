@@ -2,7 +2,7 @@
 
 ![B](Fig2B.png "Panel B")
 
-Figure 2: ??? controls
+Figure 2: Many Positive controls
 ???
 of ???
 in the ??? system.
