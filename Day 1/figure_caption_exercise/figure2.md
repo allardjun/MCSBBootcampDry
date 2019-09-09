@@ -2,7 +2,7 @@
 
 ![B](Fig2B.png "Panel B")
 
-Figure 2: ??? controls
+Figure 2:  controls
 ???
 of ???
 in the ??? system.
@@ -13,7 +13,7 @@ as ??? increases.
 Several values of ??? are shown.
 Using ???
 allows us to infer ???
-from observations of ???
+from observations of 16
 in ???.
 In panel B, we compare the resulting estimations of ???
 in units of ???.
