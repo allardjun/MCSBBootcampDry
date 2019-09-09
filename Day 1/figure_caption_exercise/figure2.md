@@ -10,7 +10,7 @@ In panel A, we show the response of teta
 , in units of [0, 1000]
 /week,
 as .2 increases.
-Several values of \alfa are shown.
+Several values of alpha are shown.
 Using ???
 allows us to infer ???
 from observations of ???
