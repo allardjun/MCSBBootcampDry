@@ -55,6 +55,6 @@ The lecture on git and project instructions are in [git-lecture.md](git_lecture/
 
 Now that we know some git basics, we'll set up an example project. Lecture on rationale and map can be found in [project-set-up.md](project-set-up.md).
 
-We'll write the code for this project in Matlab, so we'll learn some Matlab along the way. See [coding-basics-lecture.md](coding-basics-lecture.md)
+We'll write the code for this project in Matlab, so we'll learn some Matlab along the way. See [CodingBasics.mlx](CodingBasics.mlx)
 
 Finally, the project itself is in [julia_fractal](julia_fractal).
