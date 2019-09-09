@@ -1,15 +1,17 @@
 # Managing a project and git
 
-In undergrad, your projects were probably at most a quarter long. In grad school, you'll work on projects for years, often with other people. This makes keeping track of what you're doing extremely important.
+In undergrad, your projects were probably at most a semester long. In grad school, you'll work on projects for years, often with other people. This makes keeping track of what you're doing extremely important.
 
 ![meme](https://pics.me.me/john-m-mola-johnmola-finishing-a-phd-is-like-finishing-56514929.png "It do be like that")
 
 So how do you do it? Some tips:
 * Make it a priority to keep files organized. Don't throw away that stuff from class, you might actually want to go back to it. Spend some time at the end of the quarter and pack everything up somewhere (physically or digitally)
 * Record the events you attend and things you participate in (especially things that will make it onto a CV or into a proposal).
-* There is a thing called an individual development plan. It's actually important, so git it some time and attention.
+* Pay attention to where you're going, both short view and long. There is a thing called an individual development plan. It's actually important, so give it some time and attention.
 
-Finally, record what you're doing day to day. In lab, you keep a lab notebook. For code, we have versioning and git.
+Finally, record what you're doing day to day and keep things organized. In lab, you keep a lab notebook. For code, we have versioning and git.
+
+This is not just for your benefit! Reproducibility is important for science.
 
 ### An example of why you need git
 
@@ -34,7 +36,11 @@ For us, keeping track of code with git achieves two objectives:
 
 In bootcamp wet, you kept a record of what you did in a lab notebook. Why?
 
-* ((add reasons here))
+* Daily record
+* Keep track of goals
+* day to day records
+* Because I said so
+* Standard practice
 
 All those reasons also apply to code. In fact, we should strive to meet an even higher standard for code than we can for lab work, as results don't depend on anything outside of our control (code may have bugs, but it will at least have the same bug every time).
 
@@ -51,10 +57,6 @@ There are other reasons to use git:
     * Visibility on a recognized platform
     * Tools for the greater community to interact with you and your code, as well as for them to contribute to it
 * It's a good backup
-
-<!---
-Furthermore, we are scientists funded by the government to produce work which furthers humanity's understanding of the world around us. The things we produce are not to
--->
 
 ## Git basic principles
 
@@ -156,7 +158,7 @@ Note that there can be many branches, all working in parallel. They can be merge
     * This is especially useful for writing papers, where a great deal of confusion can happen with file versions being emailed back and forth. Latex in particular is just code like any other language and goes very nicely with git.
 
 <!---
-20 min. Second bullet goes somewhere else?
+Notes: Answer the question "what's the difference between a branch and a forked repo?"
 --->
 
 # Using git and GitHub
@@ -168,7 +170,7 @@ Now that we know what git is and what it does, how do we use it to manage code f
 def: "a set of principles laid down by an authority as incontrovertibly true"
 
 * Data does not go in a git repository
-    * Note Github has hard filesize limits and git itself will be slow and unhappy with files larger than 20MB or so
+    * Note Github has hard filesize limits and git itself will be slow and unhappy with files larger than 10MB or so
 * Commits should be atomistic --- they should accomplish one objective (e.g. Take in radius as an input variable). This might involve changes to more than one file.
 * Commit messages should be written in the imperative mood (e.g. fix, update, not fixed or updated)
     * More on this and examples can be found [in this write up](https://chris.beams.io/posts/git-commit/)
@@ -205,13 +207,13 @@ We're going to use the command line. Here's a quick primer:
 
 ## Command line basic navigation
 
-`pwd`: prints the current working directory
-`ls`: get a list of all the files and folders in the current directory
-`cd target`: change to the directory specified by target
-`mkdir`: makes a folder
-`rm`: deletes
-typing the first few letters of a file or folder name and hitting tab will complete the rest for you
-the up arrow will take you back through the history of your commands, allowing you to reenter them
+* `pwd`: prints the current working directory
+* `ls`: get a list of all the files and folders in the current directory
+* `cd target`: change to the directory specified by target
+* `mkdir`: makes a folder
+* `rm`: deletes
+* typing the first few letters of a file or folder name and hitting tab will complete the rest for you
+* the up arrow will take you back through the history of your commands, allowing you to reenter them
 
 Some examples follow. Let's take a folder on my computer as an example. Here's the output of `pwd` and `ls`:
 
@@ -244,13 +246,13 @@ Now our goal is going to be to get this repo to your computer. First, we need a 
 
 Let's make a place to put all the files we'll be working with in bootcamp. First, note that you SHOULD NOT put a git repo in an auto-syncing directory (Dropbox, Google Drive, iCloud, OneDrive). For windows users, make a folder
 
-`/mnt/c/bootcamp_dry`
+`/mnt/c/code`
 
 Mac users, make folder
 
-`/users/username/bootcamp_dry`
+`/users/username/code`
 
-also can be found at `~/bootcamp_dry`
+also called `~/code`
 
 Go to your file browser (explorer or finder) and find the folder you just made.
 
@@ -260,7 +262,7 @@ Go to the [root page](/../../) and use the grey "Fork" button at the top right t
 
 ### Clone
 
-Now, back in the command line on your computer, navigate to the folder you made. Confirm that pwd retuns either `/mnt/c/bootcamp_dry` or `users/username/bootcamp_dry`.
+Now, back in the command line on your computer, navigate to the folder you made. Confirm that pwd returns either `/mnt/c/code` or `users/username/code`.
 
 Type "git clone ", then paste the link (right click on Windows Ubuntu, `⌘`+`v` on MacOS). The command should look like
 
@@ -384,7 +386,7 @@ Note that commit messages are extremely important. They are not easy to change, 
 Time saving tricks for future use:
 * `git commit -a` does an automatic `git add .` (or something like it, doesn't seem to add new files)
 * `git commit -m "Commit message here"` lets you skip the text editor if you want a one line commit message
-* Can be combined into `git commit -a -m "Commit message`
+* Can be combined into `git commit -a -m "Commit message"`
 
 ### Push up to GitHub
 
@@ -409,7 +411,7 @@ Matt does:
 1. Pull request allardjun/MCSBBootcampDry
 1. Approve pull request
 
-Students do (starting from dev branch):
+Students do (starting from exercises branch):
 
 Add a remote for the allardjun/MCSBBootcampDry repo
 
@@ -420,7 +422,7 @@ Pull down changes and merge them into the dev branch
 1. `git status` (if working tree is not clean, git won't let you do anything until you commit or discard any changes you've made)
 1. `git checkout master`
 1. `git pull upstream_allardjun master`
-1. `git checkout dev`
+1. `git checkout exercises`
 1. `git merge master`
 
 These steps can be repeated in the future to pull down other changes from allardjun/MCSBBootcampDry. If you wanted to pull down changes from e.g. mbovyn/MCSBBootcampDry, you could add the address of that repo as a remote, or just
@@ -428,6 +430,10 @@ These steps can be repeated in the future to pull down other changes from allard
 `git pull https://github.com/mbovyn/MCSBBootcampDry.git master`
 
 using the address directly without saving it as a remote.
+
+<!---
+Draw map of repos here
+--->
 
 ---
 
@@ -440,8 +446,6 @@ A bit more dogma:
 
 In this section, we'll explore what happens if you don't follow these rules.
 
-First, we'll assign numbers to everyone (4-21). After that follow these instructions on your own.
-
 ## Prepare
 
 `git status` should return something like
@@ -452,25 +456,54 @@ First, we'll assign numbers to everyone (4-21). After that follow these instruct
 
     nothing to commit, working tree clean
 
+We want to make a change, then pull request that change to the allardjun repo. However, we don't want to include the new text file that we just made in that request. This is the perfect case for a new branch! Specifically one from the master branch, which does not have the change making your new file on it.
+
+Do that:
+1. Look at MCSBBootcampDry folder in finder/explorer. Note your folder and file.
+1. `git checkout master`
+1. Look at MCSBBootcampDry folder. Note folder and file gone.
+1. `git checkout -b madlib`.
+
+Now let's get to know Atom.
+
 Open Atom. File -> add project folder -> select MCSBBootcampDry
 
 Go into the figure_legend_exercise folder and open Figure2.md. Open the markdown preview of this code using `ctrl+shift+m`.
 
 This is code in Markdown, a typesetting language. Look at [Markdown in 30 seconds.md](Markdown%20in%2030%20seconds.md) to learn a bit about it.
 
+## Assign numbers
+
+Assign numbers to everyone (5-21). After that follow these instructions on your own.
+
 ## Fill out your part
 
-Replace any instances of ??? in the line corresponding to your number with whatever you see fit.
+Replace any instances of ??? in the line corresponding to your number with whatever you see fit. (Be inventive, it's like a mad lib)
 
 ### Commit, push and pull request
 
 Once you've made your change, look for the Git button at the lower right hand corner of the Atom window. Use this interface to commit your changes.
 
-There is also a button to push. Use that to push your changes up to Github.
+There is also a button to push. Use that to push your changes up to Github. If you can't get this to work, use the command line (why you should know the command line!)
 
-Go to your repo on Github and use the green pull request button to pull request your changes to the vstudent branch of allardjun/MCSBBootcampDry
+<!---
+shouldn't work because it's on a new branch with no remote set
+--->
+
+Go to your repo on Github and use the green pull request button to pull request
+
+yourusername/MCSBBootcampDry, **madlib branch** to allardjun/MCSBBootcampDry, **vstudent branch**
 
 Once all the pull requests are in, I'll approve them and we can read the figure we've created.
+
+<!---
+Next time:
+Instructor should commit to their own repo and pull request, but make it so there is a merge conflict. Then resolve the merge conflict, showing how to do conflict resolution.
+
+Had lots of problems with people committing to the wrong branch of allardjun.
+
+Didn't think of making new branch, so had all merge conflicts. Could have been a bit smoother.
+--->
 
 # Upshot
 
@@ -478,7 +511,12 @@ Hopefully this exercise has demonstrated both that your should clearly label you
 
 It was also meant to demonstrate that all of us could make changes to the same thing, then we could put all those changes together to complete something. It simulated the task of paper writing with collaborators, but hopefully you can tell that it is equally applicable to code.
 
----
+<!---
+Notes:
+Took full three hours, pretty much on the dot.
+Took breaks at ---'s
+Lots of issues with credentials, both in Windows Ubuntu and for GitHub. Don't know how to avoid
+--->
 
 # Resources
 
