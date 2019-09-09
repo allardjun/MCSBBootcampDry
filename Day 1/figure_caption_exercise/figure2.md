@@ -6,7 +6,7 @@ Figure 2: Many beautiful positive controls of
 of growth
 in the ??? system.
 In panel A, we show the response of teta
-, in units of [0, 1000]
+, in units of mg ([0, 1000])
 /week,
 as .2 increases.
 Several values of alpha are shown.
