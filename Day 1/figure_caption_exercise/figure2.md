@@ -2,21 +2,21 @@
 
 ![B](Fig2B.png "Panel B")
 
-Figure 2: ??? controls
+Figure 2: 12 controls
 ???
 of ???
 in the ??? system.
-In panel A, we show the response of ???
-, in units of ???
+In panel A, we show the response of teta
+, in units of [0, 1000]
 /???,
-as ??? increases.
-Several values of ??? are shown.
+as .2 increases.
+Several values of \alfa are shown.
 Using ???
 allows us to infer ???
 from observations of ???
 in ???.
 In panel B, we compare the resulting estimations of ???
-in units of ???.
+in units of log.
 Data are shown for two conditions, ??? and ???.
 Overlaid curves are best fits of the ??? model
 and the ??? model.
