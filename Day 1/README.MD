@@ -1,49 +1,60 @@
-# Day 1 / Monday
+# Installation Instructions (please complete before Monday)
 
-## Morning: Science, project management and Git
+To get started you need to install Git, some command line tools, Atom (a text editor) and Matlab. Follow the instructions below.
 
-The goal of this morning is to discuss how to manage a project as a graduate student, focusing on an example of managing a coding project with Git.
-
-To get started you need to install Git itself and some command line tools.
-
-### Coding Tools Installation Instructions
+## Coding Tools
 
 We'll be using git from the command line and through the Atom text editor.
 
-#### Git and command line tools
+### Git and command line tools
 
 MacOS:
 1. Open terminal
 1. `xcode-select --install`
 
 Windows 10:
-1. Control Panel -> Turn Windows features on and off -> enable "Windows subsystem for Linux"
+1. Turn Windows features on and off -> check "Windows subsystem for Linux" -> ok
 1. Reboot
-1. Windows Store -> search “Ubuntu” -> Install
+1. Microsoft Store -> search “Ubuntu” -> Install
 1. Set up Ubuntu
-  1. Open the command line
-  1. `sudo apt update`
-  1. `sudo apt install build-essential`
-1. Go to a location Windows can see: `cd /mnt/c`
+    1. Open Ubuntu
+    1. Let it install, then set a username and password (you probably want to write this down somewhere)
+    1. `sudo apt update`
+    1. `sudo apt upgrade`
+    1. Note that windows cannot see your root directory. If you want to get to your C drive `cd /mnt/c`. Remember this for later
 
-Ubuntu: All the tools we need are part of build-essential. Follow instruction under step 4 above to install it.
+Ubuntu: All the tools we need are part of a vanilla install
 
 Other operating systems: You're on your own. We will be using Git from the command line.
 
 You should now be able to enter `git --version` and have it return something like "git version 2.17.1". The version won't matter for what we're doing today.
 
-#### Atom
+### GitHub
 
-Get download here: https://atom.io/
+Make a [GitHub account](https://github.com/join) if you don't already have one.
 
-### Lecture and project
+### Atom
 
-The lecture on git and project instructions are in [git-lecture.md](git-lecture.md)
+Download and installation instructions here: https://atom.io/
+
+## Matlab
+
+UCI provides Matlab to students for free. To download and install it, follow the instructions here: http://laptops.eng.uci.edu/software-installation/matlab
+
+Install Matlab 2019a. You won't need any toolboxes.
+
+# Day 1 / Monday
+
+## Morning: Science, project management and Git
+
+We'll discuss how to manage a project as a graduate student. We'll learn how to use git to do so for a coding project.
+
+The lecture on git and project instructions are in [git-lecture.md](git_lecture/git-lecture.md). We'll write a caption for  [this figure](figure_caption_exercise/figure2.md).
 
 ## Afternoon: A sample project and Matlab basics
 
-In the afternoon, we'll apply our new knowledge of git to set up a computational project. We'll write the code for this project in Matlab.
+Now that we know some git basics, we'll set up an example project. Lecture on rationale and map can be found in [project-set-up.md](project-set-up.md).
 
-### Matlab Install Instructions
+We'll write the code for this project in Matlab, so we'll learn some Matlab along the way. See [coding-basics-lecture.md](coding-basics-lecture.md)
 
-UCI provides Matlab to students for free. To download and install it, follow the instructions here: http://laptops.eng.uci.edu/software-installation/matlab
+Finally, the project itself is in [julia_fractal](julia_fractal).
