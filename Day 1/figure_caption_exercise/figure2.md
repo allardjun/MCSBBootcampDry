@@ -12,7 +12,7 @@ as .2 increases.
 Several values of alpha are shown.
 Using ???
 allows us to infer ???
-from observations of ???
+from observations of 16
 in ???.
 In panel B, we compare the resulting estimations of ???
 in units of log.
