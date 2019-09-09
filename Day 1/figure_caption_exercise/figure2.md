@@ -7,12 +7,12 @@ Figure 2: ??? controls
 of ???
 in the ??? system.
 In panel A, we show the response of ???
-, in units of 10
+, in units of mg/L
 /???,
 as ??? increases.
 Several values of ??? are shown.
 Using ???
-allows us to infer the outcome
+allows us to infer ???
 from observations of ???
 in ???.
 In panel B, we compare the resulting estimations of ???
