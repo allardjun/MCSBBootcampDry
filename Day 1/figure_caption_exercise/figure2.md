@@ -12,7 +12,7 @@ as .2 increases.
 Several values of alpha are shown.
 Using different values of alpha
 allows us to infer ???
-from observations of 16
+from observations of ???
 in ???.
 In panel B, we compare the resulting estimations of Effective Lobster Dancing coefficient
 in units of log(Lobsters per Lobster trap).
