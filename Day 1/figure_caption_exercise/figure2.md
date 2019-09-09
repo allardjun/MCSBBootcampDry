@@ -3,7 +3,7 @@
 ![B](Fig2B.png "Panel B")
 
 Figure 2: ??? controls
-???
+growth
 of ???
 in the ??? system.
 In panel A, we show the response of ???
