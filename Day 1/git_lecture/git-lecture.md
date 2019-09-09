@@ -1,15 +1,17 @@
 # Managing a project and git
 
-In undergrad, your projects were probably at most a quarter long. In grad school, you'll work on projects for years, often with other people. This makes keeping track of what you're doing extremely important.
+In undergrad, your projects were probably at most a semester long. In grad school, you'll work on projects for years, often with other people. This makes keeping track of what you're doing extremely important.
 
 ![meme](https://pics.me.me/john-m-mola-johnmola-finishing-a-phd-is-like-finishing-56514929.png "It do be like that")
 
 So how do you do it? Some tips:
 * Make it a priority to keep files organized. Don't throw away that stuff from class, you might actually want to go back to it. Spend some time at the end of the quarter and pack everything up somewhere (physically or digitally)
 * Record the events you attend and things you participate in (especially things that will make it onto a CV or into a proposal).
-* There is a thing called an individual development plan. It's actually important, so git it some time and attention.
+* Pay attention to where you're going, both short view and long. There is a thing called an individual development plan. It's actually important, so give it some time and attention.
 
-Finally, record what you're doing day to day. In lab, you keep a lab notebook. For code, we have versioning and git.
+Finally, record what you're doing day to day and keep things organized. In lab, you keep a lab notebook. For code, we have versioning and git.
+
+This is not just for your benefit! Reproducibility is important for science.
 
 ### An example of why you need git
 
@@ -168,7 +170,7 @@ Now that we know what git is and what it does, how do we use it to manage code f
 def: "a set of principles laid down by an authority as incontrovertibly true"
 
 * Data does not go in a git repository
-    * Note Github has hard filesize limits and git itself will be slow and unhappy with files larger than 20MB or so
+    * Note Github has hard filesize limits and git itself will be slow and unhappy with files larger than 10MB or so
 * Commits should be atomistic --- they should accomplish one objective (e.g. Take in radius as an input variable). This might involve changes to more than one file.
 * Commit messages should be written in the imperative mood (e.g. fix, update, not fixed or updated)
     * More on this and examples can be found [in this write up](https://chris.beams.io/posts/git-commit/)
@@ -205,13 +207,13 @@ We're going to use the command line. Here's a quick primer:
 
 ## Command line basic navigation
 
-`pwd`: prints the current working directory
-`ls`: get a list of all the files and folders in the current directory
-`cd target`: change to the directory specified by target
-`mkdir`: makes a folder
-`rm`: deletes
-typing the first few letters of a file or folder name and hitting tab will complete the rest for you
-the up arrow will take you back through the history of your commands, allowing you to reenter them
+* `pwd`: prints the current working directory
+* `ls`: get a list of all the files and folders in the current directory
+* `cd target`: change to the directory specified by target
+* `mkdir`: makes a folder
+* `rm`: deletes
+* typing the first few letters of a file or folder name and hitting tab will complete the rest for you
+* the up arrow will take you back through the history of your commands, allowing you to reenter them
 
 Some examples follow. Let's take a folder on my computer as an example. Here's the output of `pwd` and `ls`:
 
@@ -384,7 +386,7 @@ Note that commit messages are extremely important. They are not easy to change, 
 Time saving tricks for future use:
 * `git commit -a` does an automatic `git add .` (or something like it, doesn't seem to add new files)
 * `git commit -m "Commit message here"` lets you skip the text editor if you want a one line commit message
-* Can be combined into `git commit -a -m "Commit message`
+* Can be combined into `git commit -a -m "Commit message"`
 
 ### Push up to GitHub
 
@@ -409,7 +411,7 @@ Matt does:
 1. Pull request allardjun/MCSBBootcampDry
 1. Approve pull request
 
-Students do (starting from dev branch):
+Students do (starting from exercises branch):
 
 Add a remote for the allardjun/MCSBBootcampDry repo
 
