@@ -15,7 +15,7 @@ Using ???
 allows us to infer ???
 from observations of ???
 in ???.
-In panel B, we compare the resulting estimations of ???
+In panel B, we compare the resulting estimations of parameters
 in units of ???.
 Data are shown for two conditions, ??? and ???.
 Overlaid curves are best fits of the ??? model
