@@ -36,7 +36,11 @@ For us, keeping track of code with git achieves two objectives:
 
 In bootcamp wet, you kept a record of what you did in a lab notebook. Why?
 
-* ((add reasons here))
+* Daily record
+* Keep track of goals
+* day to day records
+* Because I said so
+* Standard practice
 
 All those reasons also apply to code. In fact, we should strive to meet an even higher standard for code than we can for lab work, as results don't depend on anything outside of our control (code may have bugs, but it will at least have the same bug every time).
 
@@ -158,7 +162,7 @@ Note that there can be many branches, all working in parallel. They can be merge
     * This is especially useful for writing papers, where a great deal of confusion can happen with file versions being emailed back and forth. Latex in particular is just code like any other language and goes very nicely with git.
 
 <!---
-20 min. Second bullet goes somewhere else?
+Notes: Answer the question "what's the difference between a branch and a forked repo?"
 --->
 
 # Using git and GitHub
