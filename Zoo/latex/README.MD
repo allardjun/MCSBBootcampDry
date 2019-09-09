@@ -15,3 +15,4 @@ For this module you will need to have an [Overleaf](https://www.overleaf.com) ac
   - **StrogatzBibTex.png**: Image used in document 
   - **StrogatzCitationGoogle.png**: Image used in document 
   - **uploadProject.png**: Image used in document 
+* **reactionSchematic.jpg**: Example image to be uploaded
