@@ -35,8 +35,8 @@ for iParam=1:nParam
     % model equations
     dAdt  =@(A,AP,I,IK) -konA*(PTot-AP)*A + koffA*AP + kcatA*IK ;
     dAPdt =@(A,AP,I,IK) +konA*(PTot-AP)*A - koffA*AP - kcatI*AP ;
-    dIdt  =@(A,AP,I,IK) -konA*(KTot-IK)*I + koffI*IK + kcatI*AP ;
-    dIKdt =@(A,AP,I,IK) +konA*(KTot-IK)*I - koffI*IK - kcatA*IK ;
+    dIdt  =@(A,AP,I,IK) -konI*(KTot-IK)*I + koffI*IK + kcatI*AP ;
+    dIKdt =@(A,AP,I,IK) +konI*(KTot-IK)*I - koffI*IK - kcatA*IK ;
     
     dxdt =@(t,x) [ dAdt(x(1),x(2),x(3),x(4));
         dAPdt(x(1),x(2),x(3),x(4));
@@ -69,7 +69,7 @@ end
 
 %% analysis
 
-figure(1); clf; hold on; box on;
+figure(3); clf; hold on; box on;
 plot(KTotArray,A_SS, '-x');
 xlabel('Kinase concentration KTot');
 ylabel('Steady state in active form A')
