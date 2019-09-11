@@ -1,19 +1,19 @@
-% Simulat a discrete-time dynamical system
+% Simulate a discrete-time dynamical system
 
-% Model parameter
-a = 0.4;
+% x- population of RABBITS in thousands
+% n- time in WEEKS
 
-nMax = 10;% max number of days to simulate
+nMax = 20;% max number of days to simulate
 x = ones(1,nMax); % population
 x(1) = 1.0; % initial condition
 
 for n=2:nMax
     
-    x(n) = a*x(n-1);
+    x(n) = x(n-1) + 5;
     
 end % finished loop through days
 
 figure;
 plot(x,'-ok');
-ylabel('Population');
-xlabel('Days');
+ylabel('Rabbits (in thousands)');
+xlabel('Weeks');
