@@ -13242,48 +13242,21 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="0.1-Overview">0.1 Overview<a class="anchor-link" href="#0.1-Overview">&#182;</a></h1><h2 id="You-have-a-protein-sequence.">You have a protein sequence.<a class="anchor-link" href="#You-have-a-protein-sequence.">&#182;</a></h2><h3 id="How-do-you-find-patterns-in-amino-acid-sequence?">How do you find patterns in amino acid sequence?<a class="anchor-link" href="#How-do-you-find-patterns-in-amino-acid-sequence?">&#182;</a></h3><h3 id="How-do-you-find-the-largest-region-of-overlap-between-your-protein-and-another-protein?">How do you find the largest region of overlap between your protein and another protein?<a class="anchor-link" href="#How-do-you-find-the-largest-region-of-overlap-between-your-protein-and-another-protein?">&#182;</a></h3>
+<h1 id="0.1-Overview">0.1 Overview<a class="anchor-link" href="#0.1-Overview">&#182;</a></h1><h2 id="You-have-a-protein-name.">You have a protein name.<a class="anchor-link" href="#You-have-a-protein-name.">&#182;</a></h2><h3 id="How-do-you-download-the-data-from-PDB?">How do you download the data from PDB?<a class="anchor-link" href="#How-do-you-download-the-data-from-PDB?">&#182;</a></h3><h3 id="How-do-you-find-patterns-in-amino-acid-sequence?">How do you find patterns in amino acid sequence?<a class="anchor-link" href="#How-do-you-find-patterns-in-amino-acid-sequence?">&#182;</a></h3><h3 id="How-do-you-find-the-largest-region-of-overlap-between-your-protein-and-another-protein?">How do you find the largest region of overlap between your protein and another protein?<a class="anchor-link" href="#How-do-you-find-the-largest-region-of-overlap-between-your-protein-and-another-protein?">&#182;</a></h3>
 </div>
 </div>
-</div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>After this course, you will be able to :</p>
-<ol>
-<li>Obtain data from online databases programmatically<ul>
-<li>Specifically, PDB files from Protein Data Bank.</li>
-</ul>
-</li>
-<li>Parse the data which is in the form of a text file<ul>
-<li>Obtain the amino-acid sequences from the PDB file.</li>
-</ul>
-</li>
-<li>Look for patterns in the amino acid sequence<ul>
-<li>Plot the amino acid frequency of the protein at odd/even positions.</li>
-</ul>
-</li>
-<li>Align two protein sequences.<ul>
-<li>Find the largest region of overlap between 2 proteins.</li>
-</ul>
-</li>
-</ol>
-
-</div>
-</div>
-</div></div></section><section>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="0.2-Specific-programming-related-objectives">0.2 Specific programming related objectives<a class="anchor-link" href="#0.2-Specific-programming-related-objectives">&#182;</a></h1><ol>
 <li>What kind of language is <code>python</code>?</li>
-<li>Different ways of running <code>python</code></li>
-<li>What is a <code>python</code> package? How to download?</li>
-<li>Data-types of Python (<code>int</code>, <code>float</code>, <code>str</code>, <code>bool</code>, <code>list</code>, <code>dict</code>)</li>
-<li>Basic math</li>
-<li>Flow control elements (<code>for</code> loop, <code>if</code> statements)</li>
-<li>Basic plots (line plot, histogram, colors, axis labels, legend)</li>
-<li>How to do <code>MATLAB</code> or <code>R</code> stuff in Python</li>
+<li>Downloading a <code>python</code> package</li>
+<li>Data types (<code>int</code>, <code>float</code>, <code>str</code>, <code>bool</code>, <code>list</code>, <code>dict</code>)</li>
+<li>Math</li>
+<li>Flow control elements (<code>for</code> loop, <code>if</code>, <code>break</code>, <code>continue</code>)</li>
+<li>Plots (line plot, histogram, colors, axis labels, legend)</li>
+<li>Doing <code>MATLAB</code> or <code>R</code> stuff in Python</li>
 <li>When to not use <code>python</code></li>
 </ol>
 
@@ -13314,13 +13287,9 @@ a.anchor-link {
 <h1 id="2.-How-to-start-with-Python?">2. How to start with Python?<a class="anchor-link" href="#2.-How-to-start-with-Python?">&#182;</a></h1><h2 id="Download-a-distribution-(e.g.-Anaconda)">Download a distribution (e.g. Anaconda)<a class="anchor-link" href="#Download-a-distribution-(e.g.-Anaconda)">&#182;</a></h2><ul>
 <li>Anaconda = <code>python</code> + common packages (Anaconda:<code>python</code>::macOS:Linux)</li>
 </ul>
-<h2 id="[Optional]-Create-a-virtual-environment">[Optional] Create a virtual environment<a class="anchor-link" href="#[Optional]-Create-a-virtual-environment">&#182;</a></h2><ul>
-<li>Avoid confusion with <code>python</code> that Linux/macOS need to run</li>
-<li>Work on different <code>python</code> versions<ul>
-<li>This module uses <code>python 3.6+</code></li>
-</ul>
-</li>
-<li>Keep different projects separate</li>
+<h2 id="Start-a-Jupyter-Notebook">Start a Jupyter Notebook<a class="anchor-link" href="#Start-a-Jupyter-Notebook">&#182;</a></h2><ul>
+<li>With Anaconda Navigator </li>
+<li>Or, open up Anaconda prompt and type <code>jupyter notebook</code></li>
 </ul>
 <h2 id="Start-coding!">Start coding!<a class="anchor-link" href="#Start-coding!">&#182;</a></h2>
 </div>
@@ -13329,77 +13298,7 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="3.1-Modes-of-Python">3.1 Modes of Python<a class="anchor-link" href="#3.1-Modes-of-Python">&#182;</a></h1><h2 id="Code-files">Code files<a class="anchor-link" href="#Code-files">&#182;</a></h2><p><img src="gifs/using_code.gif" alt="Python symbol" style="width: 400px;"/></p>
-<ul>
-<li>Long and involved projects</li>
-<li>Submitting jobs on cluster</li>
-</ul>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="3.2">3.2<a class="anchor-link" href="#3.2">&#182;</a></h1><h2 id="REPL">REPL<a class="anchor-link" href="#REPL">&#182;</a></h2><p><img src="gifs/using_repl.gif" alt="Python symbol" style="width: 800px;"/></p>
-<ul>
-<li>Read-Eval-Print Loop</li>
-<li>Very fast prototyping, especially on cluster etc</li>
-</ul>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="3.3">3.3<a class="anchor-link" href="#3.3">&#182;</a></h1><h2 id="(Jupyter)-Notebooks">(Jupyter) Notebooks<a class="anchor-link" href="#(Jupyter)-Notebooks">&#182;</a></h2><p><!-- <img src="imgs/using_code.gif" alt="Python symbol" style="width: 400px;"/> -->
-<img src="imgs\notebook_example.png" alt="Notebook example"></p>
-<ul>
-<li>REPL + Markdown</li>
-<li>Share with others who want to see your code, write reports</li>
-<li>Reproducible research</li>
-</ul>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="3.4">3.4<a class="anchor-link" href="#3.4">&#182;</a></h1><h2 id="Choosing-a-mode">Choosing a mode<a class="anchor-link" href="#Choosing-a-mode">&#182;</a></h2><table>
-<thead><tr>
-<th>Mode</th>
-<th style="text-align:left">When to use</th>
-<th>When not to use</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Code files</td>
-<td style="text-align:left">- Long and involved codes<br> - Submitting jobs on cluster</td>
-<td>Fast prototyping</td>
-</tr>
-<tr>
-<td>REPL</td>
-<td style="text-align:left">Very fast prototyping</td>
-<td>Any serious work</td>
-</tr>
-<tr>
-<td>(Jupyter) notebooks</td>
-<td style="text-align:left">- Fast prototyping<br> - Embed links, images</td>
-<td>Long and involved codes<br></td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="4.-Jupyter-notebooks">4. Jupyter notebooks<a class="anchor-link" href="#4.-Jupyter-notebooks">&#182;</a></h1><h2 id="4.1-Uses-Markdown-for-code-+-explanation-in-one-document">4.1 Uses Markdown for code + explanation in one document<a class="anchor-link" href="#4.1-Uses-Markdown-for-code-+-explanation-in-one-document">&#182;</a></h2><p><img src="imgs\markdown_syntax.png" alt="Markdown syntax"></p>
+<h1 id="4.-Jupyter-notebooks">4. Jupyter notebooks<a class="anchor-link" href="#4.-Jupyter-notebooks">&#182;</a></h1><h1 id="DEMO">DEMO<a class="anchor-link" href="#DEMO">&#182;</a></h1><h2 id="4.1-Code-+-explanation-in-one-place-using-Markdown">4.1 Code + explanation in one place using Markdown<a class="anchor-link" href="#4.1-Code-+-explanation-in-one-place-using-Markdown">&#182;</a></h2><p><img src="imgs\markdown_syntax.png" alt="Markdown syntax"></p>
 
 </div>
 </div>
@@ -13419,67 +13318,6 @@ a.anchor-link {
 <ul>
 <li>Some formats may need LaTeX installed</li>
 </ul>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="4.4-Working-with-Jupyter">4.4 Working with Jupyter<a class="anchor-link" href="#4.4-Working-with-Jupyter">&#182;</a></h2><h3 id="4.4.1-Start-a-Jupyter-notebook">4.4.1 Start a Jupyter notebook<a class="anchor-link" href="#4.4.1-Start-a-Jupyter-notebook">&#182;</a></h3><p>From command line, do</p>
-<div class="highlight"><pre><span></span>jupyter notebook
-</pre></div>
-<h3 id="4.4.2-Jupyter-notebook-and-virtual-environments">4.4.2 Jupyter notebook and virtual environments<a class="anchor-link" href="#4.4.2-Jupyter-notebook-and-virtual-environments">&#182;</a></h3><h4 id="Virtual-environments">Virtual environments<a class="anchor-link" href="#Virtual-environments">&#182;</a></h4><ul>
-<li>To keep separate projects separate</li>
-<li>Each virtual environment has:<ul>
-<li>Own version of <code>python</code> installed</li>
-<li>Own set of packages</li>
-</ul>
-</li>
-<li>Virtual environment:Python :: User:Windows</li>
-</ul>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Creating-a-virtual-environment">Creating a virtual environment<a class="anchor-link" href="#Creating-a-virtual-environment">&#182;</a></h4><p>Type the following in a terminal</p>
-<div class="highlight"><pre><span></span>conda create -n myenv <span class="nv">python</span><span class="o">=</span><span class="m">3</span>.6  <span class="c1"># Creates enviroment</span>
-conda activate myenv  <span class="c1"># Activates environment for use</span>
-</pre></div>
-<h4 id="Make-Jupyter-notebook-use-your-virtual-environment">Make Jupyter notebook use your virtual environment<a class="anchor-link" href="#Make-Jupyter-notebook-use-your-virtual-environment">&#182;</a></h4><ol>
-<li>Activate your virtual environment, suppose it's called <code>myenv</code>.</li>
-<li>Install the <code>ipykernel</code> package with <code>--user</code> flag.</li>
-<li>Install a kernel using <code>ipykernel</code>.</li>
-</ol>
-<div class="highlight"><pre><span></span>conda activate myenv
-pip install --user ipykernel
-python -m ipykernel install --user --name<span class="o">=</span>myenv_kernel
-</pre></div>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="4.5-Jupyter-and-version-control">4.5 Jupyter and version control<a class="anchor-link" href="#4.5-Jupyter-and-version-control">&#182;</a></h2><h3 id="Option-1:-Notebook-format,-.ipynb">Option 1: Notebook format, <code>.ipynb</code><a class="anchor-link" href="#Option-1:-Notebook-format,-.ipynb">&#182;</a></h3><ul>
-<li><code>json</code> format</li>
-<li>More verbose</li>
-</ul>
-<h3 id="Option-2:-Convert-to-Rmarkdown-format,-.Rmd">Option 2: Convert to Rmarkdown format, <code>.Rmd</code><a class="anchor-link" href="#Option-2:-Convert-to-Rmarkdown-format,-.Rmd">&#182;</a></h3><ul>
-<li>Less verbose</li>
-<li>Must convert back and forth</li>
-</ul>
-<p>First install <code>jupytext package</code></p>
-<div class="highlight"><pre><span></span>pip install jupytext
-</pre></div>
-<p>Conversions to and from <code>.Rmd</code></p>
-<div class="highlight"><pre><span></span>jupytext --to ipynb notebook.Rmd   <span class="c1"># convert Rmd to ipynb</span>
-jupytext --to rmarkdown notebook.ipynb   <span class="c1"># convert ipynb to Rmd</span>
-</pre></div>
 
 </div>
 </div>
@@ -13631,8 +13469,11 @@ jupytext --to rmarkdown notebook.ipynb   <span class="c1"># convert ipynb to Rmd
 <div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">example_int</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">num1</span> <span class="o">=</span> <span class="mf">1e-1</span>  <span class="c1"># use e-1 to multiple by 10^{-1} </span>
+<span class="n">num2</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># spaces are not necessary, but nice</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">num1</span> <span class="o">+</span> <span class="n">num2</span><span class="p">)</span>  <span class="c1"># Addition</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">num1</span> <span class="o">-</span> <span class="n">num2</span><span class="p">,</span> <span class="n">num1</span> <span class="o">*</span> <span class="n">num2</span><span class="p">)</span>  <span class="c1"># Subtraction and multiplication</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">num1</span> <span class="o">*</span> <span class="mf">2.3</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13649,8 +13490,9 @@ jupytext --to rmarkdown notebook.ipynb   <span class="c1"># convert ipynb to Rmd
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>3
-1
+<pre>2.1
+-1.9 0.2
+0.22999999999999998
 </pre>
 </div>
 </div>
@@ -13664,7 +13506,7 @@ jupytext --to rmarkdown notebook.ipynb   <span class="c1"># convert ipynb to Rmd
 <div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">3</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">)</span>  <span class="c1"># Dividing by int is same as dividing by float</span>
 </pre></div>
 
     </div>
@@ -13681,7 +13523,7 @@ jupytext --to rmarkdown notebook.ipynb   <span class="c1"># convert ipynb to Rmd
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>6
+<pre>1.5 1.5
 </pre>
 </div>
 </div>
@@ -13695,7 +13537,7 @@ jupytext --to rmarkdown notebook.ipynb   <span class="c1"># convert ipynb to Rmd
 <div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dividing by int is same as dividing by float&quot;</span><span class="p">,</span> <span class="mi">3</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">7</span><span class="o">//</span><span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="o">%</span><span class="k">4</span>)  # Get quotient with // and remainder with percent sign
 </pre></div>
 
     </div>
@@ -13712,7 +13554,7 @@ jupytext --to rmarkdown notebook.ipynb   <span class="c1"># convert ipynb to Rmd
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Dividing by int is same as dividing by float 1.5 1.5
+<pre>1 3
 </pre>
 </div>
 </div>
@@ -13726,8 +13568,7 @@ jupytext --to rmarkdown notebook.ipynb   <span class="c1"># convert ipynb to Rmd
 <div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Get quotient with // and remainder with percent sign&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="mi">7</span><span class="o">//</span><span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="o">%</span><span class="k">4</span>)
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="mi">5</span><span class="p">)</span>  <span class="c1"># Raise to power with **</span>
 </pre></div>
 
     </div>
@@ -13744,41 +13585,7 @@ jupytext --to rmarkdown notebook.ipynb   <span class="c1"># convert ipynb to Rmd
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Get quotient with // and remainder with percent sign
-1 3
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Raise to power with **&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="mi">5</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Raise to power with **
-32
+<pre>32
 </pre>
 </div>
 </div>
@@ -13790,7 +13597,58 @@ jupytext --to rmarkdown notebook.ipynb   <span class="c1"># convert ipynb to Rmd
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="5.1.3-Mathematical-functions">5.1.3 Mathematical functions<a class="anchor-link" href="#5.1.3-Mathematical-functions">&#182;</a></h2><p>First import the <code>math</code> library, and call functions with <code>math.exp(2)</code> or <code>math.sin(3)</code>.</p>
+<h2 id="5.1.3-Mathematical-functions">5.1.3 Mathematical functions<a class="anchor-link" href="#5.1.3-Mathematical-functions">&#182;</a></h2><p>First import the <code>math</code> library, and call functions with <code>math.exp(2)</code> or <code>math.sin(3)</code>. Or the <code>numpy</code> package if you have it installed</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span>  <span class="c1"># why is not zero?</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>  <span class="c1"># np is shorthand for numpy, so you don&#39;t have to type it out</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span>  <span class="c1"># `np` is a shorthand, pick your own!</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>1.2246467991473532e-16
+1.2246467991473532e-16
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Why is it not zero?</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Exercise">Exercise<a class="anchor-link" href="#Exercise">&#182;</a></h3><p>Evaluate $(\pi + 2x)/(\sin(x/2) + \log_{10}(x))$ for $x = 2$</p>
 
 </div>
 </div>
@@ -13800,89 +13658,9 @@ jupytext --to rmarkdown notebook.ipynb   <span class="c1"># convert ipynb to Rmd
 <div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sin(pi) is : &quot;</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Sin(pi) is :  1.2246467991473532e-16
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Or get the NumPy package and call functions with</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>  <span class="c1"># np is shorthand for numpy, so you don&#39;t have to type it out</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sin(pi) is : &quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span>  <span class="c1"># you can have any shorthand name you want, like `import numpy as nmp`</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Sin(pi) is :  1.2246467991473532e-16
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Try to evaluate $(\pi + 2x)/(\sin(x/2) + \log_{10}(x))$ for $x = 2$</p>
-
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
-<div class="inner_cell">
-    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">math</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">5</span> <span class="c1"># Replace the hardcoded value</span>
+<span class="k">assert</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="mf">5.251636631000412</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-3</span><span class="p">)</span>  <span class="c1"># note that `abs` is a native function, not using `math.abs`</span>
 </pre></div>
 
     </div>
@@ -13898,16 +13676,23 @@ jupytext --to rmarkdown notebook.ipynb   <span class="c1"># convert ipynb to Rmd
     <div class="prompt"></div>
 
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>5.251636631000412
-</pre>
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-intense-fg ansi-bold">---------------------------------------------------------------------------</span>
+<span class="ansi-red-intense-fg ansi-bold">AssertionError</span>                            Traceback (most recent call last)
+<span class="ansi-green-intense-fg ansi-bold">&lt;ipython-input-10-a9ae4fd7fdbe&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">      1</span> x <span class="ansi-yellow-intense-fg ansi-bold">=</span> <span class="ansi-cyan-intense-fg ansi-bold">2</span>
+<span class="ansi-green-fg">      2</span> y <span class="ansi-yellow-intense-fg ansi-bold">=</span> <span class="ansi-cyan-intense-fg ansi-bold">5</span> <span class="ansi-red-intense-fg ansi-bold"># Replace the hardcoded value</span>
+<span class="ansi-green-intense-fg ansi-bold">----&gt; 3</span><span class="ansi-yellow-intense-fg ansi-bold"> </span><span class="ansi-green-intense-fg ansi-bold">assert</span><span class="ansi-yellow-intense-fg ansi-bold">(</span>abs<span class="ansi-yellow-intense-fg ansi-bold">(</span>y <span class="ansi-yellow-intense-fg ansi-bold">-</span> <span class="ansi-cyan-intense-fg ansi-bold">5.251636631000412</span><span class="ansi-yellow-intense-fg ansi-bold">)</span> <span class="ansi-yellow-intense-fg ansi-bold">&lt;</span> <span class="ansi-cyan-intense-fg ansi-bold">1e-3</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>  <span class="ansi-red-intense-fg ansi-bold"># note that `abs` is a native function, not using `math.abs`</span>
+
+<span class="ansi-red-intense-fg ansi-bold">AssertionError</span>: </pre>
 </div>
 </div>
 
 </div>
 </div>
 
-</div></div></section><section>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13920,13 +13705,14 @@ jupytext --to rmarkdown notebook.ipynb   <span class="c1"># convert ipynb to Rmd
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">example_str</span> <span class="o">=</span> <span class="s2">&quot;abcde&quot;</span>
 <span class="n">example_str2</span> <span class="o">=</span> <span class="s1">&#39;abcde&#39;</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Example_str : &quot;</span><span class="p">,</span> <span class="n">example_str</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Example_str2 : &quot;</span><span class="p">,</span> <span class="n">example_str2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">example_str</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">type</span><span class="p">(</span><span class="n">example_str</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
 </pre></div>
 
     </div>
@@ -13945,6 +13731,7 @@ jupytext --to rmarkdown notebook.ipynb   <span class="c1"># convert ipynb to Rmd
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Example_str :  abcde
 Example_str2 :  abcde
+b &lt;class &#39;str&#39;&gt;
 </pre>
 </div>
 </div>
@@ -13953,102 +13740,31 @@ Example_str2 :  abcde
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Exercise">Exercise<a class="anchor-link" href="#Exercise">&#182;</a></h3><p>Access the middle 3 letters of <code>example_str</code> and store it in <code>temp_str</code></p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">example_str</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">temp_str</span> <span class="o">=</span> <span class="s2">&quot;bcd&quot;</span> <span class="c1"># Replace hardcoded value</span>
+<span class="k">assert</span><span class="p">(</span><span class="n">temp_str</span> <span class="o">==</span> <span class="s2">&quot;bcd&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>&lt;class &#39;str&#39;&gt;
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">example_str</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">type</span><span class="p">(</span><span class="n">example_str</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>b &lt;class &#39;str&#39;&gt;
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">example_str</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">])</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>abc
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">example_str</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot; string capitalization and addition&quot;</span><span class="p">)</span>
@@ -14080,6 +13796,439 @@ Example_str2 :  abcde
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Look-at-help-with-(demo-this-+-web):">Look at help with (demo this + web):<a class="anchor-link" href="#Look-at-help-with-(demo-this-+-web):">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Help on class str in module builtins:
+
+class str(object)
+ |  str(object=&#39;&#39;) -&gt; str
+ |  str(bytes_or_buffer[, encoding[, errors]]) -&gt; str
+ |  
+ |  Create a new string object from the given object. If encoding or
+ |  errors is specified, then the object must expose a data buffer
+ |  that will be decoded using the given encoding and error handler.
+ |  Otherwise, returns the result of object.__str__() (if defined)
+ |  or repr(object).
+ |  encoding defaults to sys.getdefaultencoding().
+ |  errors defaults to &#39;strict&#39;.
+ |  
+ |  Methods defined here:
+ |  
+ |  __add__(self, value, /)
+ |      Return self+value.
+ |  
+ |  __contains__(self, key, /)
+ |      Return key in self.
+ |  
+ |  __eq__(self, value, /)
+ |      Return self==value.
+ |  
+ |  __format__(self, format_spec, /)
+ |      Return a formatted version of the string as described by format_spec.
+ |  
+ |  __ge__(self, value, /)
+ |      Return self&gt;=value.
+ |  
+ |  __getattribute__(self, name, /)
+ |      Return getattr(self, name).
+ |  
+ |  __getitem__(self, key, /)
+ |      Return self[key].
+ |  
+ |  __getnewargs__(...)
+ |  
+ |  __gt__(self, value, /)
+ |      Return self&gt;value.
+ |  
+ |  __hash__(self, /)
+ |      Return hash(self).
+ |  
+ |  __iter__(self, /)
+ |      Implement iter(self).
+ |  
+ |  __le__(self, value, /)
+ |      Return self&lt;=value.
+ |  
+ |  __len__(self, /)
+ |      Return len(self).
+ |  
+ |  __lt__(self, value, /)
+ |      Return self&lt;value.
+ |  
+ |  __mod__(self, value, /)
+ |      Return self%value.
+ |  
+ |  __mul__(self, value, /)
+ |      Return self*value.
+ |  
+ |  __ne__(self, value, /)
+ |      Return self!=value.
+ |  
+ |  __repr__(self, /)
+ |      Return repr(self).
+ |  
+ |  __rmod__(self, value, /)
+ |      Return value%self.
+ |  
+ |  __rmul__(self, value, /)
+ |      Return value*self.
+ |  
+ |  __sizeof__(self, /)
+ |      Return the size of the string in memory, in bytes.
+ |  
+ |  __str__(self, /)
+ |      Return str(self).
+ |  
+ |  capitalize(self, /)
+ |      Return a capitalized version of the string.
+ |      
+ |      More specifically, make the first character have upper case and the rest lower
+ |      case.
+ |  
+ |  casefold(self, /)
+ |      Return a version of the string suitable for caseless comparisons.
+ |  
+ |  center(self, width, fillchar=&#39; &#39;, /)
+ |      Return a centered string of length width.
+ |      
+ |      Padding is done using the specified fill character (default is a space).
+ |  
+ |  count(...)
+ |      S.count(sub[, start[, end]]) -&gt; int
+ |      
+ |      Return the number of non-overlapping occurrences of substring sub in
+ |      string S[start:end].  Optional arguments start and end are
+ |      interpreted as in slice notation.
+ |  
+ |  encode(self, /, encoding=&#39;utf-8&#39;, errors=&#39;strict&#39;)
+ |      Encode the string using the codec registered for encoding.
+ |      
+ |      encoding
+ |        The encoding in which to encode the string.
+ |      errors
+ |        The error handling scheme to use for encoding errors.
+ |        The default is &#39;strict&#39; meaning that encoding errors raise a
+ |        UnicodeEncodeError.  Other possible values are &#39;ignore&#39;, &#39;replace&#39; and
+ |        &#39;xmlcharrefreplace&#39; as well as any other name registered with
+ |        codecs.register_error that can handle UnicodeEncodeErrors.
+ |  
+ |  endswith(...)
+ |      S.endswith(suffix[, start[, end]]) -&gt; bool
+ |      
+ |      Return True if S ends with the specified suffix, False otherwise.
+ |      With optional start, test S beginning at that position.
+ |      With optional end, stop comparing S at that position.
+ |      suffix can also be a tuple of strings to try.
+ |  
+ |  expandtabs(self, /, tabsize=8)
+ |      Return a copy where all tab characters are expanded using spaces.
+ |      
+ |      If tabsize is not given, a tab size of 8 characters is assumed.
+ |  
+ |  find(...)
+ |      S.find(sub[, start[, end]]) -&gt; int
+ |      
+ |      Return the lowest index in S where substring sub is found,
+ |      such that sub is contained within S[start:end].  Optional
+ |      arguments start and end are interpreted as in slice notation.
+ |      
+ |      Return -1 on failure.
+ |  
+ |  format(...)
+ |      S.format(*args, **kwargs) -&gt; str
+ |      
+ |      Return a formatted version of S, using substitutions from args and kwargs.
+ |      The substitutions are identified by braces (&#39;{&#39; and &#39;}&#39;).
+ |  
+ |  format_map(...)
+ |      S.format_map(mapping) -&gt; str
+ |      
+ |      Return a formatted version of S, using substitutions from mapping.
+ |      The substitutions are identified by braces (&#39;{&#39; and &#39;}&#39;).
+ |  
+ |  index(...)
+ |      S.index(sub[, start[, end]]) -&gt; int
+ |      
+ |      Return the lowest index in S where substring sub is found, 
+ |      such that sub is contained within S[start:end].  Optional
+ |      arguments start and end are interpreted as in slice notation.
+ |      
+ |      Raises ValueError when the substring is not found.
+ |  
+ |  isalnum(self, /)
+ |      Return True if the string is an alpha-numeric string, False otherwise.
+ |      
+ |      A string is alpha-numeric if all characters in the string are alpha-numeric and
+ |      there is at least one character in the string.
+ |  
+ |  isalpha(self, /)
+ |      Return True if the string is an alphabetic string, False otherwise.
+ |      
+ |      A string is alphabetic if all characters in the string are alphabetic and there
+ |      is at least one character in the string.
+ |  
+ |  isascii(self, /)
+ |      Return True if all characters in the string are ASCII, False otherwise.
+ |      
+ |      ASCII characters have code points in the range U+0000-U+007F.
+ |      Empty string is ASCII too.
+ |  
+ |  isdecimal(self, /)
+ |      Return True if the string is a decimal string, False otherwise.
+ |      
+ |      A string is a decimal string if all characters in the string are decimal and
+ |      there is at least one character in the string.
+ |  
+ |  isdigit(self, /)
+ |      Return True if the string is a digit string, False otherwise.
+ |      
+ |      A string is a digit string if all characters in the string are digits and there
+ |      is at least one character in the string.
+ |  
+ |  isidentifier(self, /)
+ |      Return True if the string is a valid Python identifier, False otherwise.
+ |      
+ |      Use keyword.iskeyword() to test for reserved identifiers such as &#34;def&#34; and
+ |      &#34;class&#34;.
+ |  
+ |  islower(self, /)
+ |      Return True if the string is a lowercase string, False otherwise.
+ |      
+ |      A string is lowercase if all cased characters in the string are lowercase and
+ |      there is at least one cased character in the string.
+ |  
+ |  isnumeric(self, /)
+ |      Return True if the string is a numeric string, False otherwise.
+ |      
+ |      A string is numeric if all characters in the string are numeric and there is at
+ |      least one character in the string.
+ |  
+ |  isprintable(self, /)
+ |      Return True if the string is printable, False otherwise.
+ |      
+ |      A string is printable if all of its characters are considered printable in
+ |      repr() or if it is empty.
+ |  
+ |  isspace(self, /)
+ |      Return True if the string is a whitespace string, False otherwise.
+ |      
+ |      A string is whitespace if all characters in the string are whitespace and there
+ |      is at least one character in the string.
+ |  
+ |  istitle(self, /)
+ |      Return True if the string is a title-cased string, False otherwise.
+ |      
+ |      In a title-cased string, upper- and title-case characters may only
+ |      follow uncased characters and lowercase characters only cased ones.
+ |  
+ |  isupper(self, /)
+ |      Return True if the string is an uppercase string, False otherwise.
+ |      
+ |      A string is uppercase if all cased characters in the string are uppercase and
+ |      there is at least one cased character in the string.
+ |  
+ |  join(self, iterable, /)
+ |      Concatenate any number of strings.
+ |      
+ |      The string whose method is called is inserted in between each given string.
+ |      The result is returned as a new string.
+ |      
+ |      Example: &#39;.&#39;.join([&#39;ab&#39;, &#39;pq&#39;, &#39;rs&#39;]) -&gt; &#39;ab.pq.rs&#39;
+ |  
+ |  ljust(self, width, fillchar=&#39; &#39;, /)
+ |      Return a left-justified string of length width.
+ |      
+ |      Padding is done using the specified fill character (default is a space).
+ |  
+ |  lower(self, /)
+ |      Return a copy of the string converted to lowercase.
+ |  
+ |  lstrip(self, chars=None, /)
+ |      Return a copy of the string with leading whitespace removed.
+ |      
+ |      If chars is given and not None, remove characters in chars instead.
+ |  
+ |  partition(self, sep, /)
+ |      Partition the string into three parts using the given separator.
+ |      
+ |      This will search for the separator in the string.  If the separator is found,
+ |      returns a 3-tuple containing the part before the separator, the separator
+ |      itself, and the part after it.
+ |      
+ |      If the separator is not found, returns a 3-tuple containing the original string
+ |      and two empty strings.
+ |  
+ |  replace(self, old, new, count=-1, /)
+ |      Return a copy with all occurrences of substring old replaced by new.
+ |      
+ |        count
+ |          Maximum number of occurrences to replace.
+ |          -1 (the default value) means replace all occurrences.
+ |      
+ |      If the optional argument count is given, only the first count occurrences are
+ |      replaced.
+ |  
+ |  rfind(...)
+ |      S.rfind(sub[, start[, end]]) -&gt; int
+ |      
+ |      Return the highest index in S where substring sub is found,
+ |      such that sub is contained within S[start:end].  Optional
+ |      arguments start and end are interpreted as in slice notation.
+ |      
+ |      Return -1 on failure.
+ |  
+ |  rindex(...)
+ |      S.rindex(sub[, start[, end]]) -&gt; int
+ |      
+ |      Return the highest index in S where substring sub is found,
+ |      such that sub is contained within S[start:end].  Optional
+ |      arguments start and end are interpreted as in slice notation.
+ |      
+ |      Raises ValueError when the substring is not found.
+ |  
+ |  rjust(self, width, fillchar=&#39; &#39;, /)
+ |      Return a right-justified string of length width.
+ |      
+ |      Padding is done using the specified fill character (default is a space).
+ |  
+ |  rpartition(self, sep, /)
+ |      Partition the string into three parts using the given separator.
+ |      
+ |      This will search for the separator in the string, starting at the end. If
+ |      the separator is found, returns a 3-tuple containing the part before the
+ |      separator, the separator itself, and the part after it.
+ |      
+ |      If the separator is not found, returns a 3-tuple containing two empty strings
+ |      and the original string.
+ |  
+ |  rsplit(self, /, sep=None, maxsplit=-1)
+ |      Return a list of the words in the string, using sep as the delimiter string.
+ |      
+ |        sep
+ |          The delimiter according which to split the string.
+ |          None (the default value) means split according to any whitespace,
+ |          and discard empty strings from the result.
+ |        maxsplit
+ |          Maximum number of splits to do.
+ |          -1 (the default value) means no limit.
+ |      
+ |      Splits are done starting at the end of the string and working to the front.
+ |  
+ |  rstrip(self, chars=None, /)
+ |      Return a copy of the string with trailing whitespace removed.
+ |      
+ |      If chars is given and not None, remove characters in chars instead.
+ |  
+ |  split(self, /, sep=None, maxsplit=-1)
+ |      Return a list of the words in the string, using sep as the delimiter string.
+ |      
+ |      sep
+ |        The delimiter according which to split the string.
+ |        None (the default value) means split according to any whitespace,
+ |        and discard empty strings from the result.
+ |      maxsplit
+ |        Maximum number of splits to do.
+ |        -1 (the default value) means no limit.
+ |  
+ |  splitlines(self, /, keepends=False)
+ |      Return a list of the lines in the string, breaking at line boundaries.
+ |      
+ |      Line breaks are not included in the resulting list unless keepends is given and
+ |      true.
+ |  
+ |  startswith(...)
+ |      S.startswith(prefix[, start[, end]]) -&gt; bool
+ |      
+ |      Return True if S starts with the specified prefix, False otherwise.
+ |      With optional start, test S beginning at that position.
+ |      With optional end, stop comparing S at that position.
+ |      prefix can also be a tuple of strings to try.
+ |  
+ |  strip(self, chars=None, /)
+ |      Return a copy of the string with leading and trailing whitespace remove.
+ |      
+ |      If chars is given and not None, remove characters in chars instead.
+ |  
+ |  swapcase(self, /)
+ |      Convert uppercase characters to lowercase and lowercase characters to uppercase.
+ |  
+ |  title(self, /)
+ |      Return a version of the string where each word is titlecased.
+ |      
+ |      More specifically, words start with uppercased characters and all remaining
+ |      cased characters have lower case.
+ |  
+ |  translate(self, table, /)
+ |      Replace each character in the string using the given translation table.
+ |      
+ |        table
+ |          Translation table, which must be a mapping of Unicode ordinals to
+ |          Unicode ordinals, strings, or None.
+ |      
+ |      The table must implement lookup/indexing via __getitem__, for instance a
+ |      dictionary or list.  If this operation raises LookupError, the character is
+ |      left untouched.  Characters mapped to None are deleted.
+ |  
+ |  upper(self, /)
+ |      Return a copy of the string converted to uppercase.
+ |  
+ |  zfill(self, width, /)
+ |      Pad a numeric string with zeros on the left, to fill a field of the given width.
+ |      
+ |      The string is never truncated.
+ |  
+ |  ----------------------------------------------------------------------
+ |  Static methods defined here:
+ |  
+ |  __new__(*args, **kwargs) from builtins.type
+ |      Create and return a new object.  See help(type) for accurate signature.
+ |  
+ |  maketrans(x, y=None, z=None, /)
+ |      Return a translation table usable for str.translate().
+ |      
+ |      If there is only one argument, it must be a dictionary mapping Unicode
+ |      ordinals (integers) or characters to Unicode ordinals, strings or None.
+ |      Character keys will be then converted to ordinals.
+ |      If there are two arguments, they must be strings of equal length, and
+ |      in the resulting dictionary, each character in x will be mapped to the
+ |      character at the same position in y. If there is a third argument, it
+ |      must be a string, whose characters will be mapped to None in the result.
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="5.3-List-(list)">5.3 List (<code>list</code>)<a class="anchor-link" href="#5.3-List-(list)">&#182;</a></h2><p>For collections of things</p>
 
 </div>
@@ -14087,12 +14236,12 @@ Example_str2 :  abcde
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">example_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">example_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">]</span>  <span class="c1"># Elements of don&#39;t have to be same type</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">example_list</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">example_list</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Length of list is : &quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">example_list</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Length of list is : &quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">example_list</span><span class="p">))</span>  <span class="c1"># Note that `len` returns `int`</span>
 </pre></div>
 
     </div>
@@ -14121,73 +14270,11 @@ Length of list is :  3
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">example_list</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;but&quot;</span><span class="p">,</span> <span class="n">example_list</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>[1] but 1
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">example_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">421323</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">example_list</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>[1, 2.0, &#39;c&#39;, 421323]
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">example_list2</span> <span class="o">=</span> <span class="n">example_list</span> <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;v&quot;</span><span class="p">]</span>
+<span class="n">example_list2</span> <span class="o">=</span> <span class="n">example_list</span> <span class="o">+</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Example list is : </span><span class="si">{example_list}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Example list 2 is : </span><span class="si">{example_list2}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
@@ -14207,8 +14294,54 @@ Length of list is :  3
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Example list is : [1, 2.0, &#39;c&#39;, 421323]
-Example list 2 is : [1, 2.0, &#39;c&#39;, 421323, &#39;v&#39;]
+Example list 2 is : [1, 2.0, &#39;c&#39;, 421323, 1, 1, 1, 1, 1, 1]
 </pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Exercise">Exercise<a class="anchor-link" href="#Exercise">&#182;</a></h3><p>Count the number of <code>1</code>s in the list <code>example_list2</code> programmatically. (Hint: use <code>help(list)</code>)</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># Replace hardcoded value</span>
+<span class="k">assert</span><span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="mi">7</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-intense-fg ansi-bold">---------------------------------------------------------------------------</span>
+<span class="ansi-red-intense-fg ansi-bold">AssertionError</span>                            Traceback (most recent call last)
+<span class="ansi-green-intense-fg ansi-bold">&lt;ipython-input-17-3ce06a0197b0&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">      1</span> y <span class="ansi-yellow-intense-fg ansi-bold">=</span> <span class="ansi-cyan-intense-fg ansi-bold">2</span>  <span class="ansi-red-intense-fg ansi-bold"># Replace hardcoded value</span>
+<span class="ansi-green-intense-fg ansi-bold">----&gt; 2</span><span class="ansi-yellow-intense-fg ansi-bold"> </span><span class="ansi-green-intense-fg ansi-bold">assert</span><span class="ansi-yellow-intense-fg ansi-bold">(</span>y <span class="ansi-yellow-intense-fg ansi-bold">-</span> <span class="ansi-cyan-intense-fg ansi-bold">7</span> <span class="ansi-yellow-intense-fg ansi-bold">==</span> <span class="ansi-cyan-intense-fg ansi-bold">0</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
+
+<span class="ansi-red-intense-fg ansi-bold">AssertionError</span>: </pre>
 </div>
 </div>
 
@@ -14226,7 +14359,7 @@ Example list 2 is : [1, 2.0, &#39;c&#39;, 421323, &#39;v&#39;]
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">==</span> <span class="mf">2.0</span><span class="p">)</span>
@@ -14259,7 +14392,7 @@ Type of an equality check is :  &lt;class &#39;bool&#39;&gt;
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">example_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
@@ -14294,13 +14427,14 @@ Converting a False bool to an integer :  0
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="5.4.1-Boolean-operators-(and,-or)">5.4.1 Boolean operators (<code>and</code>, <code>or</code>)<a class="anchor-link" href="#5.4.1-Boolean-operators-(and,-or)">&#182;</a></h3>
+<h3 id="5.4.1-Boolean-operators-(and,-or)">5.4.1 Boolean operators (<code>and</code>, <code>or</code>)<a class="anchor-link" href="#5.4.1-Boolean-operators-(and,-or)">&#182;</a></h3><p>Readability!! No <code>||</code> or <code>&amp;</code></p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">((</span><span class="n">example_list</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">example_list</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">))</span>
@@ -14334,21 +14468,21 @@ True
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="5.5-Dictionary-(dict)">5.5 Dictionary (<code>dict</code>)<a class="anchor-link" href="#5.5-Dictionary-(dict)">&#182;</a></h2><h3 id="Key-value-pairs">Key-value pairs<a class="anchor-link" href="#Key-value-pairs">&#182;</a></h3><h4 id="Like-a-2-column-table">Like a 2 column table<a class="anchor-link" href="#Like-a-2-column-table">&#182;</a></h4><ul>
+<h2 id="5.5-Dictionary-(dict)">5.5 Dictionary (<code>dict</code>)<a class="anchor-link" href="#5.5-Dictionary-(dict)">&#182;</a></h2><h3 id="Key-value-pairs:--Like-a-2-column-table">Key-value pairs:  Like a 2 column table<a class="anchor-link" href="#Key-value-pairs:--Like-a-2-column-table">&#182;</a></h3><ul>
 <li>First column - <code>key</code>, should be unique</li>
 <li>Second column - <code>value</code>, can be (almost) any datatype</li>
 </ul>
-<h4 id="Create-a-dictionary-and-add-elements">Create a dictionary and add elements<a class="anchor-link" href="#Create-a-dictionary-and-add-elements">&#182;</a></h4>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">example_dict</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span><span class="s2">&quot;one&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span><span class="s2">&quot;two&quot;</span><span class="p">,</span> <span class="s2">&quot;pi&quot;</span><span class="p">:</span><span class="mf">3.1417</span><span class="p">}</span>
-<span class="n">example_dict</span><span class="p">[</span><span class="s2">&quot;e&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">2.73</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">example_dict</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span><span class="s2">&quot;one&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span><span class="s2">&quot;two&quot;</span><span class="p">,</span> <span class="s2">&quot;pi&quot;</span><span class="p">:</span><span class="mf">3.1417</span><span class="p">}</span>  <span class="c1"># Create a dictionary</span>
+<span class="n">example_dict</span><span class="p">[</span><span class="s2">&quot;e&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">2.73</span> <span class="c1"># Add elements</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">example_dict</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot; and &quot;</span><span class="p">,</span> <span class="n">example_dict</span><span class="p">[</span><span class="s2">&quot;pi&quot;</span><span class="p">])</span>
 </pre></div>
 
@@ -14384,7 +14518,7 @@ True
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Keys are : &quot;</span><span class="p">,</span> <span class="n">example_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span> <span class="nb">type</span><span class="p">(</span><span class="n">example_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
@@ -14418,6 +14552,54 @@ Values are :  dict_values([&#39;one&#39;, &#39;two&#39;, 3.1417, 2.73]) &lt;clas
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Exercise">Exercise<a class="anchor-link" href="#Exercise">&#182;</a></h3><p>Using the 2nd element of <code>example_list</code> as the key, retrieve the value stored in <code>example_dict</code>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">example_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;pi&quot;</span><span class="p">,</span> <span class="s2">&quot;e&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;G&quot;</span><span class="p">]</span>
+<span class="n">required_value</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># Replace hardcoded value</span>
+<span class="k">assert</span><span class="p">(</span><span class="n">required_value</span><span class="o">-</span><span class="mf">3.1417</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-intense-fg ansi-bold">---------------------------------------------------------------------------</span>
+<span class="ansi-red-intense-fg ansi-bold">AssertionError</span>                            Traceback (most recent call last)
+<span class="ansi-green-intense-fg ansi-bold">&lt;ipython-input-23-d88299816ffe&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">      1</span> example_list <span class="ansi-yellow-intense-fg ansi-bold">=</span> <span class="ansi-yellow-intense-fg ansi-bold">[</span><span class="ansi-blue-intense-fg ansi-bold">&#34;pi&#34;</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-blue-intense-fg ansi-bold">&#34;e&#34;</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-blue-intense-fg ansi-bold">&#34;c&#34;</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-blue-intense-fg ansi-bold">&#34;G&#34;</span><span class="ansi-yellow-intense-fg ansi-bold">]</span>
+<span class="ansi-green-fg">      2</span> required_value <span class="ansi-yellow-intense-fg ansi-bold">=</span> <span class="ansi-cyan-intense-fg ansi-bold">0</span>  <span class="ansi-red-intense-fg ansi-bold"># Replace hardcoded value</span>
+<span class="ansi-green-intense-fg ansi-bold">----&gt; 3</span><span class="ansi-yellow-intense-fg ansi-bold"> </span><span class="ansi-green-intense-fg ansi-bold">assert</span><span class="ansi-yellow-intense-fg ansi-bold">(</span>required_value<span class="ansi-yellow-intense-fg ansi-bold">-</span><span class="ansi-cyan-intense-fg ansi-bold">3.1417</span> <span class="ansi-yellow-intense-fg ansi-bold">==</span> <span class="ansi-cyan-intense-fg ansi-bold">0</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
+
+<span class="ansi-red-intense-fg ansi-bold">AssertionError</span>: </pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="5.6-Flow-control-statements">5.6 Flow control statements<a class="anchor-link" href="#5.6-Flow-control-statements">&#182;</a></h2><p>Syntax uses white spaces, no excessive brackets etc for readability</p>
 <p><strong>DO NOT MIX TABS AND SPACES</strong></p>
 <h3 id="5.6.1-if-else">5.6.1 <code>if-else</code><a class="anchor-link" href="#5.6.1-if-else">&#182;</a></h3>
@@ -14426,7 +14608,7 @@ Values are :  dict_values([&#39;one&#39;, &#39;two&#39;, 3.1417, 2.73]) &lt;clas
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
@@ -14474,7 +14656,7 @@ Values are :  dict_values([&#39;one&#39;, &#39;two&#39;, 3.1417, 2.73]) &lt;clas
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">loop_index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
@@ -14518,14 +14700,13 @@ Loop index is :  2
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">example_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">]</span>
 <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">example_list</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Item is : &quot;</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">loop_index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">example_list</span><span class="p">)):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Item is : &quot;</span><span class="p">,</span> <span class="n">example_list</span><span class="p">[</span><span class="n">loop_index</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;------------&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -14545,9 +14726,7 @@ Loop index is :  2
 <pre>Item is :  a
 Item is :  b
 Item is :  c
-Item is :  a
-Item is :  b
-Item is :  c
+------------
 </pre>
 </div>
 </div>
@@ -14556,6 +14735,57 @@ Item is :  c
 </div>
 
 </div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Exercise">Exercise<a class="anchor-link" href="#Exercise">&#182;</a></h3><p>Make a two lists: one of the odd numbers and one of the even numbers with each number satisfying $2\le n \le 9$. Use <code>for</code> and <code>list.append</code>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">odd</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">even</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="c1"># insert loop here</span>
+<span class="k">assert</span><span class="p">(</span><span class="n">odd</span> <span class="o">==</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">9</span><span class="p">])</span>
+<span class="k">assert</span><span class="p">(</span><span class="n">even</span> <span class="o">==</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-intense-fg ansi-bold">---------------------------------------------------------------------------</span>
+<span class="ansi-red-intense-fg ansi-bold">AssertionError</span>                            Traceback (most recent call last)
+<span class="ansi-green-intense-fg ansi-bold">&lt;ipython-input-27-73b01372da73&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">      2</span> even <span class="ansi-yellow-intense-fg ansi-bold">=</span> <span class="ansi-yellow-intense-fg ansi-bold">[</span><span class="ansi-yellow-intense-fg ansi-bold">]</span>
+<span class="ansi-green-fg">      3</span> <span class="ansi-red-intense-fg ansi-bold"># insert loop here</span>
+<span class="ansi-green-intense-fg ansi-bold">----&gt; 4</span><span class="ansi-yellow-intense-fg ansi-bold"> </span><span class="ansi-green-intense-fg ansi-bold">assert</span><span class="ansi-yellow-intense-fg ansi-bold">(</span>odd <span class="ansi-yellow-intense-fg ansi-bold">==</span> <span class="ansi-yellow-intense-fg ansi-bold">[</span><span class="ansi-cyan-intense-fg ansi-bold">3</span><span class="ansi-yellow-intense-fg ansi-bold">,</span><span class="ansi-cyan-intense-fg ansi-bold">5</span><span class="ansi-yellow-intense-fg ansi-bold">,</span><span class="ansi-cyan-intense-fg ansi-bold">7</span><span class="ansi-yellow-intense-fg ansi-bold">,</span><span class="ansi-cyan-intense-fg ansi-bold">9</span><span class="ansi-yellow-intense-fg ansi-bold">]</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">      5</span> <span class="ansi-green-intense-fg ansi-bold">assert</span><span class="ansi-yellow-intense-fg ansi-bold">(</span>even <span class="ansi-yellow-intense-fg ansi-bold">==</span> <span class="ansi-yellow-intense-fg ansi-bold">[</span><span class="ansi-cyan-intense-fg ansi-bold">2</span><span class="ansi-yellow-intense-fg ansi-bold">,</span><span class="ansi-cyan-intense-fg ansi-bold">4</span><span class="ansi-yellow-intense-fg ansi-bold">,</span><span class="ansi-cyan-intense-fg ansi-bold">6</span><span class="ansi-yellow-intense-fg ansi-bold">,</span><span class="ansi-cyan-intense-fg ansi-bold">8</span><span class="ansi-yellow-intense-fg ansi-bold">]</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
+
+<span class="ansi-red-intense-fg ansi-bold">AssertionError</span>: </pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -14569,10 +14799,10 @@ Item is :  c
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">ind</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">ind</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">ind</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;ind = </span><span class="si">{ind}</span><span class="s2">, continuing&quot;</span><span class="p">)</span>
         <span class="k">continue</span>
@@ -14580,7 +14810,7 @@ Item is :  c
         <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;ind = </span><span class="si">{ind}</span><span class="s2">, breaking&quot;</span><span class="p">)</span>
         <span class="k">break</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;ind = </span><span class="si">{ind}</span><span class="s2">, doing nothing&quot;</span><span class="p">)</span>
-        
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Loop has ended&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -14602,6 +14832,7 @@ ind = 1, continuing
 ind = 2, doing nothing
 ind = 3, doing nothing
 ind = 4, breaking
+Loop has ended
 </pre>
 </div>
 </div>
@@ -14619,7 +14850,7 @@ ind = 4, breaking
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[31]:</div>
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
@@ -14645,7 +14876,7 @@ ind = 4, breaking
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>5 &lt;class &#39;function&#39;&gt; &lt;function add at 0x00000289B48AC6A8&gt;
+<pre>5 &lt;class &#39;function&#39;&gt; &lt;function add at 0x000002AB3F719B70&gt;
 Changing argument order :  5
 Calling add function with lists :  [2, 3, 6, 7]
 </pre>
@@ -14665,7 +14896,7 @@ Calling add function with lists :  [2, 3, 6, 7]
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[32]:</div>
+<div class="prompt input_prompt">In&nbsp;[30]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">sub</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
@@ -14706,13 +14937,57 @@ Specifying only one argument with keyword :  7
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Exercise">Exercise<a class="anchor-link" href="#Exercise">&#182;</a></h3><p>Write a function <code>prodlist</code> that accepts a list and returns the product of all the elements in that list. You can assume that the list has <code>float</code> or <code>int</code> types.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[31]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">assert</span> <span class="p">(</span><span class="n">prodlist</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="mi">6</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-intense-fg ansi-bold">---------------------------------------------------------------------------</span>
+<span class="ansi-red-intense-fg ansi-bold">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-green-intense-fg ansi-bold">&lt;ipython-input-31-c822f0c0e92a&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-intense-fg ansi-bold">----&gt; 1</span><span class="ansi-yellow-intense-fg ansi-bold"> </span><span class="ansi-green-intense-fg ansi-bold">assert</span> <span class="ansi-yellow-intense-fg ansi-bold">(</span>prodlist<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">[</span><span class="ansi-cyan-intense-fg ansi-bold">1</span><span class="ansi-yellow-intense-fg ansi-bold">,</span><span class="ansi-cyan-intense-fg ansi-bold">2</span><span class="ansi-yellow-intense-fg ansi-bold">,</span><span class="ansi-cyan-intense-fg ansi-bold">3</span><span class="ansi-yellow-intense-fg ansi-bold">]</span> <span class="ansi-yellow-intense-fg ansi-bold">==</span> <span class="ansi-cyan-intense-fg ansi-bold">6</span><span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
+
+<span class="ansi-red-intense-fg ansi-bold">NameError</span>: name &#39;prodlist&#39; is not defined</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="6.2-Return-types-can-be-anything">6.2 Return types can be anything<a class="anchor-link" href="#6.2-Return-types-can-be-anything">&#182;</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[33]:</div>
+<div class="prompt input_prompt">In&nbsp;[32]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
@@ -14769,7 +15044,7 @@ Returned type is :  &lt;class &#39;builtin_function_or_method&#39;&gt;
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[34]:</div>
+<div class="prompt input_prompt">In&nbsp;[33]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">Tc</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
@@ -14794,7 +15069,7 @@ Returned type is :  &lt;class &#39;builtin_function_or_method&#39;&gt;
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[35]:</div>
+<div class="prompt input_prompt">In&nbsp;[34]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -14843,7 +15118,7 @@ Returned type is :  &lt;class &#39;builtin_function_or_method&#39;&gt;
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[36]:</div>
+<div class="prompt input_prompt">In&nbsp;[35]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
@@ -14883,7 +15158,7 @@ Returned type is :  &lt;class &#39;builtin_function_or_method&#39;&gt;
 </div>
 </div>
 
-</div></section><section>
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -14894,7 +15169,7 @@ Returned type is :  &lt;class &#39;builtin_function_or_method&#39;&gt;
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[37]:</div>
+<div class="prompt input_prompt">In&nbsp;[36]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -14937,7 +15212,7 @@ $$dh/dt = -r_1 h -r_2 h$$$$di/dt = r_2 h + r_3 I (I_{max}-I)$$
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[38]:</div>
+<div class="prompt input_prompt">In&nbsp;[37]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="k">import</span> <span class="n">solve_ivp</span>
@@ -14987,7 +15262,7 @@ $$dh/dt = -r_1 h -r_2 h$$$$di/dt = r_2 h + r_3 I (I_{max}-I)$$
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[39]:</div>
+<div class="prompt input_prompt">In&nbsp;[38]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -15005,7 +15280,7 @@ $$dh/dt = -r_1 h -r_2 h$$$$di/dt = r_2 h + r_3 I (I_{max}-I)$$
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[39]:</div>
+    <div class="prompt output_prompt">Out[38]:</div>
 
 
 
@@ -15035,23 +15310,23 @@ $$dh/dt = -r_1 h -r_2 h$$$$di/dt = r_2 h + r_3 I (I_{max}-I)$$
   <tbody>
     <tr>
       <th>1</th>
-      <td>-0.576283</td>
-      <td>-0.497438</td>
+      <td>0.689940</td>
+      <td>0.942907</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>-0.117161</td>
-      <td>0.283345</td>
+      <td>0.282064</td>
+      <td>0.801016</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>-0.636753</td>
-      <td>0.971621</td>
+      <td>0.686383</td>
+      <td>-0.503279</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>-0.390598</td>
-      <td>0.214083</td>
+      <td>-1.454698</td>
+      <td>-0.171765</td>
     </tr>
   </tbody>
 </table>
@@ -15066,7 +15341,7 @@ $$dh/dt = -r_1 h -r_2 h$$$$di/dt = r_2 h + r_3 I (I_{max}-I)$$
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[40]:</div>
+<div class="prompt input_prompt">In&nbsp;[39]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">]</span>
@@ -15082,16 +15357,16 @@ $$dh/dt = -r_1 h -r_2 h$$$$di/dt = r_2 h + r_3 I (I_{max}-I)$$
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[40]:</div>
+    <div class="prompt output_prompt">Out[39]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>1   -0.576283
-2   -0.117161
-3   -0.636753
-4   -0.390598
+<pre>1    0.689940
+2    0.282064
+3    0.686383
+4   -1.454698
 Name: A, dtype: float64</pre>
 </div>
 
@@ -15145,8 +15420,9 @@ Name: A, dtype: float64</pre>
 <h2 id="Fewer-statistical-packages">Fewer statistical packages<a class="anchor-link" href="#Fewer-statistical-packages">&#182;</a></h2><ul>
 <li>Use <code>R</code> for uncommon statistical tests, easier interface</li>
 </ul>
-<h2 id="You-prefer-GUIs-to-coding">You prefer GUIs to coding<a class="anchor-link" href="#You-prefer-GUIs-to-coding">&#182;</a></h2>
-<pre><code>- Use the `MATLAB` toolbox GUIs</code></pre>
+<h2 id="You-prefer-GUIs-to-coding">You prefer GUIs to coding<a class="anchor-link" href="#You-prefer-GUIs-to-coding">&#182;</a></h2><ul>
+<li>Use the <code>MATLAB</code> toolbox GUIs</li>
+</ul>
 
 </div>
 </div>
@@ -15242,8 +15518,9 @@ The first line is : HEADER    OXIDOREDUCTASE                          21-JUN-11 
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="A2.2-(challenge)-Use-single-letter-amino-acid-labels-on-X-axis">A2.2 (challenge) Use single letter amino acid labels on X axis<a class="anchor-link" href="#A2.2-(challenge)-Use-single-letter-amino-acid-labels-on-X-axis">&#182;</a></h2><p>The final plot should look like this:</p>
+<h2 id="A2.2-Use-single-letter-amino-acid-labels-on-X-axis">A2.2 Use single letter amino acid labels on X axis<a class="anchor-link" href="#A2.2-Use-single-letter-amino-acid-labels-on-X-axis">&#182;</a></h2><p>The final plot should look like this:</p>
 <p><img src="imgs\f2.png" alt="alt text" title="Figure 2"></p>
+<p>Use the dictionary below</p>
 <div class="highlight"><pre><span></span><span class="n">aa_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;ala&quot;</span><span class="p">:</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;arg&quot;</span><span class="p">:</span><span class="s2">&quot;R&quot;</span><span class="p">,</span> <span class="s2">&quot;asn&quot;</span><span class="p">:</span><span class="s2">&quot;N&quot;</span><span class="p">,</span> <span class="s2">&quot;asp&quot;</span><span class="p">:</span><span class="s2">&quot;D&quot;</span><span class="p">,</span> <span class="s2">&quot;asx&quot;</span><span class="p">:</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;cys&quot;</span><span class="p">:</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;glu&quot;</span><span class="p">:</span><span class="s2">&quot;E&quot;</span><span class="p">,</span> 
            <span class="s2">&quot;gln&quot;</span><span class="p">:</span><span class="s2">&quot;Q&quot;</span><span class="p">,</span><span class="s2">&quot;glx&quot;</span><span class="p">:</span><span class="s2">&quot;Z&quot;</span><span class="p">,</span><span class="s2">&quot;gly&quot;</span><span class="p">:</span><span class="s2">&quot;G&quot;</span><span class="p">,</span> <span class="s2">&quot;his&quot;</span><span class="p">:</span><span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;ile&quot;</span><span class="p">:</span><span class="s2">&quot;I&quot;</span><span class="p">,</span><span class="s2">&quot;leu&quot;</span><span class="p">:</span><span class="s2">&quot;L&quot;</span><span class="p">,</span> <span class="s2">&quot;lys&quot;</span><span class="p">:</span><span class="s2">&quot;K&quot;</span><span class="p">,</span> <span class="s2">&quot;met&quot;</span><span class="p">:</span><span class="s2">&quot;M&quot;</span><span class="p">,</span>
            <span class="s2">&quot;phe&quot;</span><span class="p">:</span><span class="s2">&quot;F&quot;</span><span class="p">,</span> <span class="s2">&quot;pro&quot;</span><span class="p">:</span><span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="s2">&quot;ser&quot;</span><span class="p">:</span><span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="s2">&quot;thr&quot;</span><span class="p">:</span><span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="s2">&quot;trp&quot;</span><span class="p">:</span><span class="s2">&quot;W&quot;</span><span class="p">,</span> <span class="s2">&quot;tyr&quot;</span><span class="p">:</span><span class="s2">&quot;Y&quot;</span><span class="p">,</span> <span class="s2">&quot;val&quot;</span><span class="p">:</span><span class="s2">&quot;V&quot;</span><span class="p">}</span>
@@ -15255,7 +15532,7 @@ The first line is : HEADER    OXIDOREDUCTASE                          21-JUN-11 
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="A2.2-(challenge)-Overlay-frequencies-at-odd-and-even-positions-+-legend">A2.2 (challenge) Overlay frequencies at odd and even positions + legend<a class="anchor-link" href="#A2.2-(challenge)-Overlay-frequencies-at-odd-and-even-positions-+-legend">&#182;</a></h2><p>Overlay two frequency plots, one of the amino acids in the even positions and another of amino acids in the odd positions. For example, if the amino acids are :</p>
+<h2 id="A2.3-(challenge)-Overlay-frequencies-at-odd-and-even-positions-+-legend">A2.3 (challenge) Overlay frequencies at odd and even positions + legend<a class="anchor-link" href="#A2.3-(challenge)-Overlay-frequencies-at-odd-and-even-positions-+-legend">&#182;</a></h2><p>Overlay two frequency plots, one of the amino acids in the even positions and another of amino acids in the odd positions. For example, if the amino acids are :</p>
 <div class="highlight"><pre><span></span><span class="n">aa</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Gly&quot;</span><span class="p">,</span> <span class="s2">&quot;Ala&quot;</span><span class="p">,</span> <span class="s2">&quot;Val&quot;</span><span class="p">,</span> <span class="s2">&quot;Leu&quot;</span><span class="p">,</span> <span class="s2">&quot;Ile&quot;</span><span class="p">,</span> <span class="s2">&quot;Cys&quot;</span><span class="p">]</span>
 </pre></div>
 <p>Then make histogram of the following two lists:</p>
@@ -15281,38 +15558,203 @@ The first line is : HEADER    OXIDOREDUCTASE                          21-JUN-11 
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="A3-Longest-common-substring">A3 Longest common substring<a class="anchor-link" href="#A3-Longest-common-substring">&#182;</a></h1><ol>
-<li>Download the proteins <code>3SJU</code> and <code>IX7H</code>.</li>
-<li>Use Shiji's function to find the longest common subsequence.</li>
+<h1 id="Longest-Common-Subsequence">Longest Common Subsequence<a class="anchor-link" href="#Longest-Common-Subsequence">&#182;</a></h1><p>Given two different protein or DNA sequences, biologists wish to determine how similar they are. Higher similarity indicates closer evolutionary relationship between the 2 proteins or DNA. One measure of similarity is the length of the longest common subsequence (LCS).</p>
+<p>So what is LCS? If we delete some characters from string x and some characters from string y, and the resulting two strings are equal, we call the resulting string a common subsequence. The LCS is the longest common subsequence of two strings. For example, take two strings <code>"xabcfghiy"</code> and <code>"mabcdefghij"</code>. The longest common subsequence is <code>"abcfghi"</code>.</p>
+<p>Solving LCS problem is not an easy task, which requires advanced algorithmic knowledge called dynamic programming. Classic algorithms for LCS problem such as Needleman-Wunsch algorithm and Smith-Waterman algorithm are all based on this scheme. In this assignment, you are not expected to write the algorithm by yourself, instead, use the provided module <code>LongestCommonSubsequence.py</code> as follows:</p>
+<h5 id="Continued">Continued<a class="anchor-link" href="#Continued">&#182;</a></h5>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">LongestCommonSubsequence</span> <span class="kn">import</span> <span class="n">lcs</span>
+</pre></div>
+<p>Now you are able to use the <code>lcs()</code> function. Read the signature and docstring of the function first:</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">lcs</span><span class="p">(</span><span class="n">str1</span><span class="p">,</span> <span class="n">str2</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Dynamic programming implementation of longest common subsequences</span>
+<span class="sd">    (LCS) problem, print the LCS as while as the length of the LCS</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    str1 : str</span>
+<span class="sd">        The first target string</span>
+<span class="sd">    str2 : str</span>
+<span class="sd">        The second target string</span>
+<span class="sd">    m : int</span>
+<span class="sd">        The length of str1</span>
+<span class="sd">    n : int</span>
+<span class="sd">        The length of str2</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+</pre></div>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="A3.1-Longest-common-substring">A3.1 Longest common substring<a class="anchor-link" href="#A3.1-Longest-common-substring">&#182;</a></h2><ol>
+<li>Download the proteins <code>3SJU</code> and <code>1X7H</code>.</li>
+<li>Use <code>LongestCommonSubsequence.py</code> to find the longest common subsequence. You are expected to see the following output:</li>
 </ol>
-<p>Hint</p>
-<ul>
+
+<pre><code>The LCS is MSVAVTGSGIGLARRGGRVVGLRAGVDGCDVSVAVAAVERGPLVNAGRGGGTALALWLDTNLTGVFRVTVLAGGMEGGRIVNIASTGGKQGVAAPYASKHGVVGFTKGELATGITVNAVCPGVETPMAVREHWVTEEAIPGRYPEVAVYLAAATAQALNVCGGLGNYMSVAVTGSGIGLARRGGRVVGLRAGVDGCDVSVAVAAVERGPLVNAGRGGGTALALWLDTNLTGVFRVTVLAGGMEGGRIVNIASTGGKQGVAAPYASKHGVVGFTKGELATGITVNAVCPGVETPMAVREHWVTEEAIPGRYPEVAVYLAAATAQALNVCGGLGNY
+Length of the LCS is 334</code></pre>
+<h3 id="Hint">Hint<a class="anchor-link" href="#Hint">&#182;</a></h3><ul>
+<li>Make sure <code>LongestCommonSubsequence.py</code> is in the current directory!</li>
 <li>You need to convert the 3 letter sequence to the 1 letter subsequence to use the function.</li>
 </ul>
 
 </div>
 </div>
-</div><div class="fragment">
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="TODO-CONVERT-3-letter-to-1-letter">TODO CONVERT 3 letter to 1 letter<a class="anchor-link" href="#TODO-CONVERT-3-letter-to-1-letter">&#182;</a></h1><h1 id="TODO-explain-longest-common-subsequence">TODO explain longest common subsequence<a class="anchor-link" href="#TODO-explain-longest-common-subsequence">&#182;</a></h1>
+<h1 id="Appendix">Appendix<a class="anchor-link" href="#Appendix">&#182;</a></h1><h2 id="Create-a-virtual-environment">Create a virtual environment<a class="anchor-link" href="#Create-a-virtual-environment">&#182;</a></h2><ul>
+<li>Avoid confusion with <code>python</code> that Linux/macOS need to run</li>
+<li>Work on different <code>python</code> versions<ul>
+<li>This module uses <code>python 3.6+</code></li>
+</ul>
+</li>
+<li>Keep different projects separate</li>
+</ul>
+
 </div>
 </div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="3.1-Modes-of-Python">3.1 Modes of Python<a class="anchor-link" href="#3.1-Modes-of-Python">&#182;</a></h1><h2 id="Code-files">Code files<a class="anchor-link" href="#Code-files">&#182;</a></h2><p><img src="gifs/using_code.gif" alt="Python symbol" style="width: 400px;"/></p>
+<ul>
+<li>Long and involved projects</li>
+<li>Submitting jobs on cluster</li>
+</ul>
+
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="3.2">3.2<a class="anchor-link" href="#3.2">&#182;</a></h1><h2 id="REPL">REPL<a class="anchor-link" href="#REPL">&#182;</a></h2><p><img src="gifs/using_repl.gif" alt="Python symbol" style="width: 800px;"/></p>
+<ul>
+<li>Read-Eval-Print Loop</li>
+<li>Very fast prototyping, especially on cluster etc</li>
+</ul>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="3.3">3.3<a class="anchor-link" href="#3.3">&#182;</a></h1><h2 id="(Jupyter)-Notebooks">(Jupyter) Notebooks<a class="anchor-link" href="#(Jupyter)-Notebooks">&#182;</a></h2><p><!-- <img src="imgs/using_code.gif" alt="Python symbol" style="width: 400px;"/> -->
+<img src="imgs\notebook_example.png" alt="Notebook example"></p>
+<ul>
+<li>REPL + Markdown</li>
+<li>Share with others who want to see your code, write reports</li>
+<li>Reproducible research</li>
+<li>Works with dozens of languages including MATLAB, Mathematica, etc (see <a href="https://github.com/jupyter/jupyter/wiki/Jupyter-kernels">https://github.com/jupyter/jupyter/wiki/Jupyter-kernels</a>)</li>
+</ul>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="3.4">3.4<a class="anchor-link" href="#3.4">&#182;</a></h1><h2 id="Choosing-a-mode">Choosing a mode<a class="anchor-link" href="#Choosing-a-mode">&#182;</a></h2><table>
+<thead><tr>
+<th>Mode</th>
+<th style="text-align:left">When to use</th>
+<th>When not to use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Code files</td>
+<td style="text-align:left">- Long and involved codes<br> - Submitting jobs on cluster</td>
+<td>Fast prototyping</td>
+</tr>
+<tr>
+<td>REPL</td>
+<td style="text-align:left">Very fast prototyping</td>
+<td>Any serious work</td>
+</tr>
+<tr>
+<td>(Jupyter) notebooks</td>
+<td style="text-align:left">- Fast prototyping<br> - Embed links, images</td>
+<td>Long and involved codes<br></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="4.4-Working-with-Jupyter">4.4 Working with Jupyter<a class="anchor-link" href="#4.4-Working-with-Jupyter">&#182;</a></h2><h3 id="4.4.1-Start-a-Jupyter-notebook">4.4.1 Start a Jupyter notebook<a class="anchor-link" href="#4.4.1-Start-a-Jupyter-notebook">&#182;</a></h3><p>From command line, do</p>
+<div class="highlight"><pre><span></span>jupyter notebook
+</pre></div>
+<h3 id="4.4.2-Jupyter-notebook-and-virtual-environments">4.4.2 Jupyter notebook and virtual environments<a class="anchor-link" href="#4.4.2-Jupyter-notebook-and-virtual-environments">&#182;</a></h3><h4 id="Virtual-environments">Virtual environments<a class="anchor-link" href="#Virtual-environments">&#182;</a></h4><ul>
+<li>To keep separate projects separate</li>
+<li>Each virtual environment has:<ul>
+<li>Own version of <code>python</code> installed</li>
+<li>Own set of packages</li>
+</ul>
+</li>
+<li>Virtual environment:Python :: User:Windows</li>
+</ul>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Creating-a-virtual-environment">Creating a virtual environment<a class="anchor-link" href="#Creating-a-virtual-environment">&#182;</a></h4><p>Type the following in a terminal</p>
+<div class="highlight"><pre><span></span>conda create -n myenv <span class="nv">python</span><span class="o">=</span><span class="m">3</span>.6  <span class="c1"># Creates enviroment</span>
+conda activate myenv  <span class="c1"># Activates environment for use</span>
+</pre></div>
+<h4 id="Make-Jupyter-notebook-use-your-virtual-environment">Make Jupyter notebook use your virtual environment<a class="anchor-link" href="#Make-Jupyter-notebook-use-your-virtual-environment">&#182;</a></h4><ol>
+<li>Activate your virtual environment, suppose it's called <code>myenv</code>.</li>
+<li>Install the <code>ipykernel</code> package with <code>--user</code> flag.</li>
+<li>Install a kernel using <code>ipykernel</code>.</li>
+</ol>
+<div class="highlight"><pre><span></span>conda activate myenv
+pip install --user ipykernel
+python -m ipykernel install --user --name<span class="o">=</span>myenv_kernel
 </pre></div>
 
-    </div>
 </div>
 </div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="4.5-Jupyter-and-version-control">4.5 Jupyter and version control<a class="anchor-link" href="#4.5-Jupyter-and-version-control">&#182;</a></h2><h3 id="Option-1:-Notebook-format,-.ipynb">Option 1: Notebook format, <code>.ipynb</code><a class="anchor-link" href="#Option-1:-Notebook-format,-.ipynb">&#182;</a></h3><ul>
+<li><code>json</code> format</li>
+<li>More verbose</li>
+</ul>
+<h3 id="Option-2:-Convert-to-Rmarkdown-format,-.Rmd">Option 2: Convert to Rmarkdown format, <code>.Rmd</code><a class="anchor-link" href="#Option-2:-Convert-to-Rmarkdown-format,-.Rmd">&#182;</a></h3><ul>
+<li>Less verbose</li>
+<li>Must convert back and forth</li>
+</ul>
+<p>First install <code>jupytext package</code></p>
+<div class="highlight"><pre><span></span>pip install jupytext
+</pre></div>
+<p>Conversions to and from <code>.Rmd</code></p>
+<div class="highlight"><pre><span></span>jupytext --to ipynb notebook.Rmd   <span class="c1"># convert Rmd to ipynb</span>
+jupytext --to rmarkdown notebook.ipynb   <span class="c1"># convert ipynb to Rmd</span>
+</pre></div>
 
-</div></div></section></section>
+</div>
+</div>
+</div></section></section>
 </div>
 </div>
 
