@@ -1,0 +1,1814 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     69630,       1806]
+NotebookOptionsPosition[     60684,       1677]
+NotebookOutlinePosition[     61020,       1692]
+CellTagsIndexPosition[     60977,       1689]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Working with Reaction-Diffusion Equations Using Mathematica", "Section",
+ CellChangeTimes->{{3.777042118966982*^9, 3.777042133360838*^9}, {
+  3.777042215323509*^9, 
+  3.777042223009226*^9}},ExpressionUUID->"df6f8e02-6691-46cc-8dcf-\
+0ec376269390"],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+These exercises will expose you to two of the things Mathematica does really \
+well:  Symbolic math, and dynamic visualization.  \
+\>", "Subsection",
+ CellChangeTimes->{{3.777042188844247*^9, 3.777042199829596*^9}, {
+  3.7770422319444036`*^9, 3.777042277877287*^9}, {3.777203036703875*^9, 
+  3.777203038186193*^9}},ExpressionUUID->"bf7dc5b2-1c24-4c45-b83a-\
+ab969c8d08af"],
+
+Cell["\<\
+You will also learn how natural it is to use the Notebook format in \
+Mathematica, which has a lot of ability to format things nicely (like Latex, \
+only easier).  \
+\>", "Text",
+ CellChangeTimes->{{3.777043121671618*^9, 
+  3.777043167496984*^9}},ExpressionUUID->"6af2cd88-5535-40b5-81d7-\
+7922c9a45001"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["1.  What are reaction-diffusion equations?", "Section",
+ CellChangeTimes->{{3.777042285950634*^9, 
+  3.7770422984640017`*^9}},ExpressionUUID->"b6101b6f-499e-4ad6-90c0-\
+a4f6777f7b7d"],
+
+Cell[TextData[{
+ "These are partial differential equations that describe systems in which \
+species (i.e. molecules) both diffuse and undergo biochemical reactions.  For \
+simplicity, we will consider only ",
+ StyleBox["one-dimensional diffusion",
+  FontWeight->"Bold"],
+ " here, in which case the PDE that describes the dynamics of such diffusion \
+is:   ",
+ Cell[BoxData[
+  FormBox[
+   FractionBox[
+    RowBox[{"\[PartialD]", "c"}], 
+    RowBox[{"\[PartialD]", "t"}]], TraditionalForm]],ExpressionUUID->
+  "8575606d-70c3-4f59-8c42-1d378b8f8578"],
+ " = ",
+ StyleBox["D",
+  FontSlant->"Italic"],
+ " ",
+ Cell[BoxData[
+  FormBox[
+   FractionBox[
+    RowBox[{
+     SuperscriptBox["\[PartialD]", "2"], "c"}], 
+    RowBox[{"\[PartialD]", 
+     SuperscriptBox["x", "2"]}]], TraditionalForm]],ExpressionUUID->
+  "146f7421-e2d3-4c24-be0b-c8f84c6c9ad2"],
+ "  (Fick\[CloseCurlyQuote]s second law), where c is the amount or \
+concentration of the species of interest.  In contrast, ",
+ StyleBox["reactions",
+  FontWeight->"Bold"],
+ " are typically modeled with ODEs like:\n\n",
+ Cell[BoxData[
+  FormBox[
+   FractionBox[
+    RowBox[{"\[DifferentialD]", "c"}], 
+    RowBox[{"\[DifferentialD]", "t"}]], TraditionalForm]],ExpressionUUID->
+  "e6b67cb0-b981-4e55-9b2f-f0552f125166"],
+ "= ",
+ StyleBox["v",
+  FontSlant->"Italic"],
+ "  (with v a constant, constant production);\n",
+ Cell[BoxData[
+  FormBox[
+   FractionBox[
+    RowBox[{"\[DifferentialD]", "c"}], 
+    RowBox[{"\[DifferentialD]", "t"}]], TraditionalForm]],ExpressionUUID->
+  "29272748-e5f3-43a4-be83-c177c5644703"],
+ "= -",
+ StyleBox["k c ",
+  FontSlant->"Italic"],
+ " (first order destruction);\n",
+ Cell[BoxData[
+  FormBox[
+   FractionBox[
+    RowBox[{"\[DifferentialD]", "c"}], 
+    RowBox[{"\[DifferentialD]", "t"}]], TraditionalForm]],ExpressionUUID->
+  "24bafccb-00d5-4b38-842c-fe1a665dc4b2"],
+ "= -",
+ StyleBox["k a c",
+  FontSlant->"Italic"],
+ " (reaction of c with a to form something else)\n",
+ Cell[BoxData[
+  FormBox[
+   FractionBox[
+    RowBox[{"\[DifferentialD]", "c"}], 
+    RowBox[{"\[DifferentialD]", "t"}]], TraditionalForm]],ExpressionUUID->
+  "30e59557-2c5a-418e-b64e-478a34672bd2"],
+ "= ",
+ Cell[BoxData[
+  FormBox[
+   FractionBox["v", 
+    RowBox[{"1", "+", " ", 
+     RowBox[{"\[Gamma]", " ", "c"}]}]], TraditionalForm]],ExpressionUUID->
+  "80cfe392-ce5a-42bd-a708-feb4b113029b"],
+ " (negative feedback of c on its own production)\n\nTo generate reaction \
+diffusion equations one simply sums up the terms on the right hand side for \
+whatever processes are going on in ones system (this is called the principle \
+of superposition).  Thus, diffusion with constant production and first order \
+decay (destruction) looks like this:"
+}], "Text",
+ CellChangeTimes->{{3.77704230865448*^9, 3.777042702443837*^9}, {
+   3.777042775492611*^9, 3.777042788725957*^9}, {3.777047121802267*^9, 
+   3.777047123856235*^9}, 
+   3.777203078568818*^9},ExpressionUUID->"20cc5304-769f-4150-8698-\
+e052c23d00cf"],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{" ", 
+   RowBox[{
+    FormBox[
+     FractionBox[
+      RowBox[{"\[PartialD]", "c"}], 
+      RowBox[{"\[PartialD]", "t"}]],
+     TraditionalForm], " ", "=", " ", 
+    RowBox[{
+     RowBox[{"D", 
+      FormBox[
+       FractionBox[
+        RowBox[{
+         SuperscriptBox["\[PartialD]", "2"], "c"}], 
+        RowBox[{"\[PartialD]", 
+         SuperscriptBox["x", "2"]}]],
+       TraditionalForm]}], " ", "+", " ", "v", " ", "-", " ", 
+     RowBox[{"k", " ", "c"}]}]}]}], TraditionalForm]], "Text",
+ CellChangeTimes->{{3.7770427073337307`*^9, 3.777042729310652*^9}, 
+   3.777047117341517*^9},ExpressionUUID->"0212a112-c2b8-4f5a-aa9b-\
+561baeaf9f16"],
+
+Cell[TextData[{
+ "Solving RD equations requires specifying both initial conditions (the value \
+of ",
+ StyleBox["c",
+  FontSlant->"Italic"],
+ " everywhere at t=0) and boundary conditions, the value of either ",
+ StyleBox["c",
+  FontSlant->"Italic"],
+ " or ",
+ Cell[BoxData[
+  FormBox[
+   FractionBox[
+    RowBox[{"\[PartialD]", "c"}], 
+    RowBox[{"\[PartialD]", "x"}]], TraditionalForm]],
+  CellChangeTimes->{{3.7770427073337307`*^9, 3.777042729310652*^9}},
+  ExpressionUUID->"95ad3105-0c89-4cfc-bffa-6913d33613cf"],
+ " at two points, representing the boundaries of the system.  Examples of \
+boundary conditions can be that ",
+ StyleBox["c",
+  FontSlant->"Italic"],
+ " has a constant value, or constant derivative at a given boundary, but can \
+also be more complicated.  Also, one can consider an infinite domain, where \
+",
+ StyleBox["c",
+  FontSlant->"Italic"],
+ " can diffuse to infinity; typically solving PDEs for such cases requires \
+solving with an arbitrary boundary and after getting a solution, letting the \
+location of it go to infinity.  \n\nWe will use Mathematica to generate some \
+analytical solutions to some RD equations.  In some cases, however, explicit \
+solutions may be hard to find, in which case we can also solve equations \
+numerically, substituting in parameter values before solving, and getting a \
+solution in the form of a graph of how the system behaves.  "
+}], "Text",
+ CellChangeTimes->{{3.777042753138588*^9, 3.777042766505536*^9}, {
+  3.777042796707047*^9, 3.777042852321455*^9}, {3.777042884541957*^9, 
+  3.777043099165552*^9}, {3.777203128843689*^9, 
+  3.777203150800356*^9}},ExpressionUUID->"af30dffb-65f9-460d-8cb2-\
+00bdc35ca9b0"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["2. Representing PDEs in Mathematica", "Section",
+ CellChangeTimes->{{3.77704318364485*^9, 
+  3.7770431976358232`*^9}},ExpressionUUID->"4747e0cc-fc8a-4a12-9d2b-\
+4d887888b9f5"],
+
+Cell["\<\
+Everything you type in Mathematica that starts with a letter is interpreted \
+as a \[OpenCurlyDoubleQuote]symbol\[CloseCurlyDoubleQuote], unless it is \
+already defined as something else (like a function).  All the pre-defined \
+functions start with a capital letter, so as long as you name things using a \
+lower case letter as the first letter, there will be no problem.  \
+\>", "Text",
+ CellChangeTimes->{{3.777043229489203*^9, 
+  3.777043331902424*^9}},ExpressionUUID->"af9e9264-4614-4dc3-b67f-\
+1ff0cc4236bd"],
+
+Cell["\<\
+How does Mathematica let you know if you\[CloseCurlyQuote]ve typed something \
+that already has a definition associated with it?\
+\>", "Text",
+ CellChangeTimes->{{3.777043352773903*^9, 3.7770433732352753`*^9}},
+ FontSlant->"Italic",
+ Background->RGBColor[
+  1, 1, 0],ExpressionUUID->"d3825e13-5855-4ed9-bb4e-d620d930f6b9"],
+
+Cell[TextData[{
+ "Representing variables versus parameters:  Mathematica will happily do math \
+with any symbol you choose to type, but if you want it to take the derivative \
+of a variable, you must explicitly show what that variable is a function of.\n\
+\nSo if you write \[OpenCurlyDoubleQuote]c\[CloseCurlyDoubleQuote] and then \
+take the derivative of it with respect to x, you will get zero.\nBut if you \
+write c[x] and then take the derivative of it with respect to x, you will get \
+",
+ Cell[BoxData[
+  RowBox[{
+   SuperscriptBox["c", "\[Prime]",
+    MultilineFunction->None], "[", "x", "]"}]],
+  CellChangeTimes->{{3.777043747551859*^9, 3.777043754925269*^9}},
+  ExpressionUUID->"1dbd72e4-3a77-4d91-8cfc-3f0b6593ad90"],
+ ".\nNote that Mathematica typically uses square brackets where typeset Math \
+with typically use parenthesis.  \n\nThe function that represents taking a \
+derivative in Mathematica is \
+\[OpenCurlyDoubleQuote]D\[CloseCurlyDoubleQuote].  The syntax is \n\nD[var_, \
+arg1_, arg2_, arg3_...]\nor\nD[var_, {arg1_, times_}, {arg2_, times_}, \
+{arg3_, times_}...]"
+}], "Text",
+ CellChangeTimes->{{3.777043435150807*^9, 3.777043624435412*^9}, 
+   3.777043770788094*^9, {3.7770438339675093`*^9, 3.77704391097281*^9}, {
+   3.777043963472542*^9, 3.777044009015401*^9}, {3.777044052515932*^9, 
+   3.777044084953231*^9}},ExpressionUUID->"eb4af53b-de39-4344-9d95-\
+bcd211957656"],
+
+Cell["\<\
+where  \[OpenCurlyDoubleQuote]var\[CloseCurlyDoubleQuote] is the variable, \
+\[OpenCurlyDoubleQuote]args\[CloseCurlyDoubleQuote] are the arguments you are \
+taking derivatives with respect to , and times\[CloseCurlyDoubleQuote] means \
+how many times you are taking the derivative (i.e. second derivative, third \
+derivative) etc.  \
+\>", "Text",
+ CellChangeTimes->{{3.777044019209427*^9, 
+  3.777044103952199*^9}},ExpressionUUID->"13787ea1-0ca2-45d6-a08f-\
+fa25846e7bfe"],
+
+Cell[TextData[{
+ "How would you represent ",
+ Cell[BoxData[
+  FormBox[
+   FractionBox[
+    RowBox[{"\[DifferentialD]", "c"}], 
+    RowBox[{"\[DifferentialD]", "t"}]], TraditionalForm]],
+  CellChangeTimes->{{3.7770427073337307`*^9, 3.777042729310652*^9}},
+  ExpressionUUID->"9ba257f5-01b7-4211-a113-c75652b3e5db"],
+ " in Mathematica?"
+}], "Text",
+ CellChangeTimes->{{3.777044208597517*^9, 3.777044238587323*^9}, 
+   3.7770443081513557`*^9, {3.777203222599831*^9, 3.777203223537015*^9}},
+ Background->RGBColor[
+  1, 1, 0],ExpressionUUID->"b70e94d6-c293-4428-adc6-a05fb7fff1bd"],
+
+Cell[TextData[{
+ "How would you represent ",
+ Cell[BoxData[
+  FormBox[
+   FractionBox[
+    RowBox[{
+     SuperscriptBox["\[PartialD]", "2"], "c"}], 
+    RowBox[{
+     RowBox[{"\[PartialD]", "x"}], " ", 
+     RowBox[{"\[PartialD]", "y"}]}]], TraditionalForm]], "Text",
+  CellChangeTimes->{{3.7770427073337307`*^9, 3.777042729310652*^9}},
+  ExpressionUUID->"196fb153-dd51-4113-87a9-16b0e8efdfb7"],
+ " in Mathematica?"
+}], "Text",
+ CellChangeTimes->{{3.777044123219975*^9, 3.777044180899989*^9}, {
+  3.777203224998516*^9, 3.777203225991308*^9}},
+ Background->RGBColor[
+  1, 1, 0],ExpressionUUID->"18976b8d-d762-4945-bcf2-95a2e7d62340"],
+
+Cell[TextData[{
+ "Another way to produce these forms is using the following syntax: \n\n",
+ Cell[BoxData[Cell[TextData[{
+   Cell[BoxData[
+    RowBox[{
+     RowBox[{
+      TemplateBox[{Cell[
+         TextData["Derivative"]],"paclet:ref/Derivative"},
+       "RefLink",
+       BaseStyle->{"InlineFormula"}], "[", 
+      RowBox[{
+       SubscriptBox[
+        StyleBox["n", "TI"], 
+        StyleBox["1", "TR"]], ",", 
+       SubscriptBox[
+        StyleBox["n", "TI"], 
+        StyleBox["2", "TR"]], ",", 
+       StyleBox["\[Ellipsis]", "TR"]}], "]"}], "[", 
+     StyleBox["f", "TI"], "]"}]], "InlineFormula",
+    FontFamily->"Source Sans Pro",ExpressionUUID->
+    "be984020-4925-4a89-be52-001b8b767f87"],
+   " \[LineSeparator]is the general form, representing a function obtained \
+from ",
+   Cell[BoxData[
+    StyleBox["f", "TI"]], "InlineFormula",
+    FontFamily->"Source Sans Pro",ExpressionUUID->
+    "6691d695-356f-44f3-9ba0-6dc996bbe61b"],
+   " by differentiating ",
+   Cell[BoxData[
+    SubscriptBox[
+     StyleBox["n", "TI"], 
+     StyleBox["1", "TR"]]], "InlineFormula",
+    FontFamily->"Source Sans Pro",ExpressionUUID->
+    "5ea432b3-d4cf-4e98-bf8e-1cb479939265"],
+   " times with respect to the first argument, ",
+   Cell[BoxData[
+    SubscriptBox[
+     StyleBox["n", "TI"], 
+     StyleBox["2", "TR"]]], "InlineFormula",
+    FontFamily->"Source Sans Pro",ExpressionUUID->
+    "26d1d924-c1aa-480a-ac42-521f15270a1c"],
+   " times with respect to the second argument, and so on. "
+  }],ExpressionUUID->"379ee893-4d91-42b4-bdf7-f0e13f410154"]],
+  GridBoxOptions->{
+  GridBoxBackground->{"Columns" -> {{None}}, "Rows" -> {None, {None}}}},
+  ExpressionUUID->"c21178e1-8985-4ffc-8535-a5a2f9551bb8"]
+}], "Text",
+ CellChangeTimes->{{3.777044280924535*^9, 
+  3.777044339268203*^9}},ExpressionUUID->"6a5d729c-e13f-43da-aa66-\
+85ead5e3eefc"],
+
+Cell["For example:", "Text",
+ CellChangeTimes->{{3.777203790938005*^9, 
+  3.7772037930624647`*^9}},ExpressionUUID->"c6a9e095-7c99-4563-bc0b-\
+ed034e898818"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Derivative", "[", 
+   RowBox[{"1", ",", "1"}], "]"}], "[", "c", "]"}]], "Input",
+ CellChangeTimes->{{3.777044349113233*^9, 3.7770443812853613`*^9}},
+ CellLabel->"In[16]:=",ExpressionUUID->"d2943250-1251-41a2-a426-a803f0fbecbc"],
+
+Cell[BoxData[
+ SuperscriptBox["c", 
+  TagBox[
+   RowBox[{"(", 
+    RowBox[{"1", ",", "1"}], ")"}],
+   Derivative],
+  MultilineFunction->None]], "Output",
+ CellChangeTimes->{{3.777044362603354*^9, 3.777044381761623*^9}},
+ CellLabel->"Out[16]=",ExpressionUUID->"0e637bc2-a7ca-48ff-b0fe-4d50465eb651"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Derivative", "[", 
+    RowBox[{"1", ",", "1"}], "]"}], "[", "c", "]"}], "[", 
+  RowBox[{"x", ",", "y"}], "]"}]], "Input",
+ CellChangeTimes->{{3.777044413296988*^9, 3.7770444143893757`*^9}},
+ CellLabel->"In[17]:=",ExpressionUUID->"982ed199-5ab6-4f96-bc80-44c118817af4"],
+
+Cell[BoxData[
+ RowBox[{
+  SuperscriptBox["c", 
+   TagBox[
+    RowBox[{"(", 
+     RowBox[{"1", ",", "1"}], ")"}],
+    Derivative],
+   MultilineFunction->None], "[", 
+  RowBox[{"x", ",", "y"}], "]"}]], "Output",
+ CellChangeTimes->{3.7770444148015127`*^9},
+ CellLabel->"Out[17]=",ExpressionUUID->"f624beb9-4d07-465e-9209-e41b74f092b7"]
+}, Open  ]],
+
+Cell[TextData[{
+ "Finally to write any equation in Mathematica, you will need to know what \
+symbol to use for \[OpenCurlyDoubleQuote]logical equals\
+\[CloseCurlyDoubleQuote].  Mathematica uses a ",
+ StyleBox["double",
+  FontSlant->"Italic"],
+ " equals sign. If you use a single equals sign it is an instruction to set \
+the symbol on the left to have the value on the right.  If you use a double \
+equals it means that you have an equation you are considering.  An equation \
+is like a question:  Does the right hand side evaluate to the same thing as \
+the left hand side?  In the event that you write an equation that is \
+tautologically true in Mathematica, it just returns \
+\[OpenCurlyDoubleQuote]True\[CloseCurlyDoubleQuote]"
+}], "Text",
+ CellChangeTimes->{{3.777044525788867*^9, 
+  3.777044674456962*^9}},ExpressionUUID->"d6cc942f-3d81-4f6c-a2dc-\
+24d820491efd"],
+
+Cell[BoxData[
+ RowBox[{"5", "\[Equal]", "5"}]], "Input",
+ CellChangeTimes->{{3.7770446769802*^9, 3.777044677753042*^9}},
+ CellLabel->"In[18]:=",ExpressionUUID->"f0fe1385-a16b-477d-87b2-8bd821c593c4"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"a", "+", "b"}], "\[Equal]", 
+  RowBox[{"b", "+", "a"}]}]], "Input",
+ CellChangeTimes->{{3.7770450340232687`*^9, 3.7770450376215153`*^9}},
+ CellLabel->"In[40]:=",ExpressionUUID->"6fa46133-f467-494d-af08-009a3218087c"],
+
+Cell[BoxData[
+ RowBox[{
+  SqrtBox[
+   SuperscriptBox["5", "2"]], "\[Equal]", "5"}]], "Input",
+ CellChangeTimes->{{3.7770446862936993`*^9, 3.777044697384741*^9}},
+ CellLabel->"In[19]:=",ExpressionUUID->"82dba370-0c57-4ec1-8462-d136c2a22edf"],
+
+Cell[BoxData[
+ RowBox[{"2", "\[Equal]", " ", 
+  RowBox[{"Log", "[", 
+   RowBox[{"10", ",", "100"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.777044858492525*^9, 3.777044904892906*^9}},
+ CellLabel->"In[33]:=",ExpressionUUID->"3d6c2112-d16e-4c7e-bbe8-44fb32c5b679"],
+
+Cell["\<\
+But sometimes it may needs some instruction before it can be sure that \
+something is a tautology:\
+\>", "Text",
+ CellChangeTimes->{{3.777073751083797*^9, 3.777073783613022*^9}, 
+   3.7772077909771852`*^9},ExpressionUUID->"d1c6ae91-b757-4651-8420-\
+8e9e26e1a108"],
+
+Cell[BoxData[
+ RowBox[{
+  SqrtBox[
+   SuperscriptBox["x", "2"]], "\[Equal]", "x"}]], "Input",
+ CellLabel->"In[25]:=",ExpressionUUID->"64dccc32-e24e-49fc-bd16-6329092d0544"],
+
+Cell[TextData[{
+ "Exercise:  write the PDE ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{" ", 
+    RowBox[{
+     FormBox[
+      FractionBox[
+       RowBox[{"\[PartialD]", "c"}], 
+       RowBox[{"\[PartialD]", "t"}]],
+      TraditionalForm], " ", "=", " ", 
+     RowBox[{
+      FormBox[
+       FractionBox[
+        RowBox[{
+         SuperscriptBox["\[PartialD]", "2"], "c"}], 
+        RowBox[{"\[PartialD]", 
+         SuperscriptBox["x", "2"]}]],
+       TraditionalForm], " ", "+", " ", "v", " ", "-", " ", 
+      RowBox[{"k", " ", "c"}]}]}]}], TraditionalForm]], "Text",
+  CellChangeTimes->{{3.7770427073337307`*^9, 3.777042729310652*^9}},
+  ExpressionUUID->"579bd503-da72-41e3-823c-ec99b57f0ea1"],
+ " in Mathematica.  "
+}], "Text",
+ CellChangeTimes->{{3.777044503107746*^9, 3.777044517937203*^9}},
+ Background->RGBColor[
+  1, 1, 0],ExpressionUUID->"6f184b8b-0f41-4d64-b4ff-133ed7ebbd5f"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["3.  Analytical Solutions to PDEs", "Section",
+ CellChangeTimes->{{3.777045073860341*^9, 
+  3.777045087965129*^9}},ExpressionUUID->"b49ca390-6140-439e-879f-\
+cc34e52b3692"],
+
+Cell["Consider this example.  Give it some time to run:", "Text",
+ CellChangeTimes->{{3.7770738063582573`*^9, 
+  3.777073812942542*^9}},ExpressionUUID->"bd0c02fd-0a1c-4ef5-b960-\
+32ba80a0c87a"],
+
+Cell[BoxData[
+ RowBox[{"DSolve", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       SuperscriptBox["c", 
+        TagBox[
+         RowBox[{"(", 
+          RowBox[{"0", ",", "1"}], ")"}],
+         Derivative],
+        MultilineFunction->None], "[", 
+       RowBox[{"x", ",", "t"}], "]"}], "\[Equal]", 
+      RowBox[{"d", " ", 
+       RowBox[{
+        SuperscriptBox["c", 
+         TagBox[
+          RowBox[{"(", 
+           RowBox[{"2", ",", "0"}], ")"}],
+          Derivative],
+         MultilineFunction->None], "[", 
+        RowBox[{"x", ",", "t"}], "]"}]}]}], ",", " ", 
+     RowBox[{
+      RowBox[{
+       SuperscriptBox["c", 
+        TagBox[
+         RowBox[{"(", 
+          RowBox[{"1", ",", "0"}], ")"}],
+         Derivative],
+        MultilineFunction->None], "[", 
+       RowBox[{"0", ",", "t"}], "]"}], "\[Equal]", "  ", "0"}], ",", 
+     RowBox[{
+      RowBox[{"c", "[", 
+       RowBox[{"1", ",", "t"}], "]"}], " ", "\[Equal]", "0"}], ",", " ", 
+     RowBox[{
+      RowBox[{"c", "[", 
+       RowBox[{"x", ",", "0"}], "]"}], "\[Equal]", " ", "1"}]}], "}"}], ",", 
+   " ", 
+   RowBox[{"c", "[", 
+    RowBox[{"x", ",", "t"}], "]"}], ",", " ", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", " ", "t"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.67921135629084*^9, 3.6792114173913517`*^9}, {
+   3.679211497583948*^9, 3.6792115045748997`*^9}, 3.679211537557777*^9, 
+   3.679211609724093*^9, {3.679211713767644*^9, 3.67921171622267*^9}},
+ CellLabel->"In[41]:=",ExpressionUUID->"4e98bd80-234f-4eb2-a771-e154be67319b"],
+
+Cell["This is an alternate form:", "Text",
+ CellChangeTimes->{{3.7770738213088217`*^9, 
+  3.777073828811268*^9}},ExpressionUUID->"be06f9ec-9132-40ad-ae7b-\
+a52f5c6c2df0"],
+
+Cell[BoxData[
+ RowBox[{"DSolve", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       SuperscriptBox["c", 
+        TagBox[
+         RowBox[{"(", 
+          RowBox[{"0", ",", "1"}], ")"}],
+         Derivative],
+        MultilineFunction->None], "[", 
+       RowBox[{"x", ",", "t"}], "]"}], "\[Equal]", 
+      RowBox[{"d", " ", 
+       RowBox[{
+        SuperscriptBox["c", 
+         TagBox[
+          RowBox[{"(", 
+           RowBox[{"2", ",", "0"}], ")"}],
+          Derivative],
+         MultilineFunction->None], "[", 
+        RowBox[{"x", ",", "t"}], "]"}]}]}], ",", " ", 
+     RowBox[{
+      RowBox[{
+       SuperscriptBox["c", 
+        TagBox[
+         RowBox[{"(", 
+          RowBox[{"1", ",", "0"}], ")"}],
+         Derivative],
+        MultilineFunction->None], "[", 
+       RowBox[{"0", ",", "t"}], "]"}], "\[Equal]", "  ", "0"}], ",", 
+     RowBox[{
+      RowBox[{"c", "[", 
+       RowBox[{"1", ",", "t"}], "]"}], " ", "\[Equal]", "0"}], ",", " ", 
+     RowBox[{
+      RowBox[{"c", "[", 
+       RowBox[{"x", ",", "0"}], "]"}], "\[Equal]", " ", "1"}]}], "}"}], ",", 
+   " ", "c", ",", " ", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", " ", "t"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.67921135629084*^9, 3.6792114173913517`*^9}, {
+   3.679211497583948*^9, 3.6792115045748997`*^9}, 3.679211537557777*^9, 
+   3.679211609724093*^9, {3.679211713767644*^9, 3.67921171622267*^9}, 
+   3.777045146350975*^9},
+ CellLabel->"In[42]:=",ExpressionUUID->"890362fd-0a4c-48fd-b62f-9a382db0cac2"],
+
+Cell["\<\
+What\[CloseCurlyQuote]s with this \[OpenCurlyDoubleQuote]{{symbol-> formula}}\
+\[CloseCurlyDoubleQuote] formatting?  What does it mean?  Why is the \
+Summation operator inactive?\
+\>", "Text",
+ CellChangeTimes->{{3.777045407182377*^9, 3.777045449405768*^9}, {
+  3.777046386807189*^9, 3.7770463952516937`*^9}, {3.7770738458038807`*^9, 
+  3.7770738500381727`*^9}},ExpressionUUID->"f46ee577-39b0-4516-a1d2-\
+982abe97d8ae"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+4.  Analytical Solutions to ODEs that represent steady-states of reaction \
+diffusion PDEs\
+\>", "Section",
+ CellChangeTimes->{{3.777046844145652*^9, 3.7770468687908287`*^9}, 
+   3.777203880854248*^9},ExpressionUUID->"304474e8-c742-4bed-8789-\
+61bb824e5f7e"],
+
+Cell["\<\
+Sometimes we are interested in the long-time solutions to RD equations.  We \
+may set time rates to zero, and then our PDEs become ODEs.  For example:\
+\>", "Text",
+ CellChangeTimes->{{3.7770468832854443`*^9, 3.777046890161216*^9}, {
+  3.7770470044017477`*^9, 
+  3.777047033429392*^9}},ExpressionUUID->"f2f25658-6091-4080-8881-\
+6e991088dc8a"],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox[
+    FractionBox[
+     RowBox[{"\[PartialD]", "c"}], 
+     RowBox[{"\[PartialD]", "t"}]],
+    TraditionalForm], " ", "=", " ", 
+   RowBox[{
+    FormBox[
+     FractionBox[
+      RowBox[{
+       SuperscriptBox["\[PartialD]", "2"], "c"}], 
+      RowBox[{"\[PartialD]", 
+       SuperscriptBox["x", "2"]}]],
+     TraditionalForm], "  ", "-", " ", 
+    RowBox[{"k", " ", "c"}]}]}], TraditionalForm]], "Input",
+ CellChangeTimes->{
+  3.7770473807351227`*^9},ExpressionUUID->"8692744f-0ba7-443e-b4f1-\
+6dd461c625dc"],
+
+Cell["becomes", "Text",
+ CellChangeTimes->{{3.777047047342681*^9, 
+  3.7770470502217817`*^9}},ExpressionUUID->"762e4807-745d-4351-830b-\
+fc49f06efd41"],
+
+Cell[BoxData[
+ RowBox[{"0", " ", "\[Equal]", " ", 
+  RowBox[{
+   RowBox[{"d", " ", 
+    RowBox[{
+     RowBox[{"c", "''"}], "[", "x", "]"}]}], " ", "-", " ", 
+   RowBox[{"k", " ", 
+    RowBox[{"c", "[", "x", "]"}]}]}]}]], "Input",
+ CellChangeTimes->{{3.777047053168297*^9, 3.777047064560418*^9}, {
+   3.777047106602268*^9, 3.77704710683845*^9}, 
+   3.777047383148798*^9},ExpressionUUID->"c21c1ee0-7be2-468b-9445-\
+bf3338e6b018"],
+
+Cell[TextData[{
+ "For functions of one variable, Mathematica can recognize the \
+\[OpenCurlyDoubleQuote]prime\[CloseCurlyDoubleQuote] notation, i.e. c\
+\[CloseCurlyQuote]\[CloseCurlyQuote][x] is just as good as the more \
+cumbersome ",
+ Cell[BoxData[
+  RowBox[{
+   SuperscriptBox["c", 
+    TagBox[
+     RowBox[{"(", "2", ")"}],
+     Derivative],
+    MultilineFunction->None], "[", "x", "]"}]],
+  CellChangeTimes->{3.7770444148015127`*^9},ExpressionUUID->
+  "8726aa52-167c-4aa9-b77a-d28766d8a4d8"],
+ "\n\nCan we use DSolve to solve this?  We still need boundary conditions, \
+but no longer need an initial condition."
+}], "Text",
+ CellChangeTimes->{{3.7770470768947477`*^9, 3.777047081643092*^9}, {
+  3.777047154200156*^9, 3.777047170813733*^9}, {3.777203906674767*^9, 
+  3.777204001304359*^9}},ExpressionUUID->"c1739456-3c91-469f-b1f9-\
+85bcbc848e56"],
+
+Cell["\<\
+Can you use DSolve to solve the steady state of this, with the boundary \
+condition that c=1 at x=0 and c=0 at infinity\
+\>", "Text",
+ CellChangeTimes->{{3.7770470768947477`*^9, 3.777047081643092*^9}, {
+  3.777047154200156*^9, 3.777047170813733*^9}, {3.777047566980031*^9, 
+  3.7770476275753613`*^9}, {3.777073893086627*^9, 3.777073925416081*^9}},
+ Background->RGBColor[
+  1, 1, 0],ExpressionUUID->"c161d227-1cba-466c-bfda-3771a0dcba61"],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox[
+    FractionBox[
+     RowBox[{"\[PartialD]", "c"}], 
+     RowBox[{"\[PartialD]", "t"}]],
+    TraditionalForm], " ", "=", " ", 
+   RowBox[{
+    FormBox[
+     FractionBox[
+      RowBox[{
+       SuperscriptBox["\[PartialD]", "2"], "c"}], 
+      RowBox[{"\[PartialD]", 
+       SuperscriptBox["x", "2"]}]],
+     TraditionalForm], "  ", "+", "v", " ", "-", " ", 
+    RowBox[{"k", " ", "c"}]}]}], TraditionalForm]], "Input",
+ CellChangeTimes->{
+  3.7770473807351227`*^9, {3.777047583769127*^9, 3.777047587225197*^9}},
+ Background->RGBColor[
+  1, 1, 0],ExpressionUUID->"8437fd7a-067f-4d95-9b1f-648a7ceba4db"],
+
+Cell["\<\
+What does Mathematica do if you leave out one of the boundary conditions?  \
+What if you use a symbol as a boundary condition?  How does it handle it?\
+\>", "Text",
+ CellChangeTimes->{{3.7770482978809347`*^9, 3.777048338782009*^9}, 
+   3.777204019936709*^9},
+ Background->RGBColor[
+  1, 1, 0],ExpressionUUID->"256c934b-6ccf-424f-8d90-0a6b96a605e7"],
+
+Cell["\<\
+What about this, which represents an example of saturable decay, as might \
+occur if decay requires binding to a receptor that is in limiting supply:\
+\>", "Text",
+ CellChangeTimes->{{3.7770470768947477`*^9, 3.777047081643092*^9}, {
+  3.777047154200156*^9, 3.777047170813733*^9}, {3.777047566980031*^9, 
+  3.777047653030937*^9}, {3.7772040323724957`*^9, 3.777204054971571*^9}},
+ Background->RGBColor[
+  1, 1, 0],ExpressionUUID->"c09d5fb1-b11d-4f49-9a8c-7a07c4b48fc5"],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox[
+    FractionBox[
+     RowBox[{"\[PartialD]", "c"}], 
+     RowBox[{"\[PartialD]", "t"}]],
+    TraditionalForm], " ", "=", " ", 
+   RowBox[{
+    FormBox[
+     FractionBox[
+      RowBox[{
+       SuperscriptBox["\[PartialD]", "2"], "c"}], 
+      RowBox[{"\[PartialD]", 
+       SuperscriptBox["x", "2"]}]],
+     TraditionalForm], "  ", "+", "v", " ", "-", " ", 
+    RowBox[{"k", " ", 
+     FractionBox["c", 
+      RowBox[{"1", "+", "c"}]]}]}]}], TraditionalForm]], "Input",
+ CellChangeTimes->{
+  3.7770473807351227`*^9, {3.777047583769127*^9, 3.777047587225197*^9}, {
+   3.77704765890429*^9, 3.7770476614323807`*^9}},
+ Background->RGBColor[
+  1, 1, 0],ExpressionUUID->"384a737f-64c6-44a1-84bb-69d9378c23b3"],
+
+Cell["\<\
+Mathematica will not always find solutions even when they exist.  Consider \
+this example:\
+\>", "Text",
+ CellChangeTimes->{{3.777048185644608*^9, 
+  3.777048203341299*^9}},ExpressionUUID->"e008b249-5a53-447d-b8f9-\
+72cff5348e00"],
+
+Cell[BoxData[
+ RowBox[{"DSolve", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"0", " ", "\[Equal]", " ", 
+      RowBox[{
+       RowBox[{"d", " ", 
+        RowBox[{
+         RowBox[{"c", "''"}], "[", "x", "]"}]}], " ", "-", " ", 
+       RowBox[{"k", " ", 
+        SuperscriptBox[
+         RowBox[{"c", "[", "x", "]"}], "2"]}]}]}], ",", " ", 
+     RowBox[{
+      RowBox[{"c", "[", "0", "]"}], "\[Equal]", "c0"}], ",", " ", 
+     RowBox[{
+      RowBox[{"c", "[", "1", "]"}], " ", "\[Equal]", "0"}]}], "}"}], ",", " ", 
+   RowBox[{"c", "[", "x", "]"}], ",", " ", "x"}], "]"}]], "Input",
+ CellLabel->
+  "In[116]:=",ExpressionUUID->"5061ce42-8a5c-4fd8-b04e-402fba29e6c4"],
+
+Cell["\<\
+Can you use some classical math tricks to help Mathematica out?\
+\>", "Text",
+ CellChangeTimes->{{3.777048351743821*^9, 3.7770483657004833`*^9}, {
+  3.7772041312458*^9, 3.777204151209168*^9}},
+ Background->RGBColor[
+  1, 1, 0],ExpressionUUID->"1bc54ac4-ce6e-4350-bc9e-4f9bdc2ad2b0"],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"Use", " ", "the", " ", "same", " ", "approach", " ", "to", " ", 
+    RowBox[{"solve", ":", "\[IndentingNewLine]", 
+     RowBox[{"0", " ", "\[Equal]", " ", 
+      RowBox[{
+       RowBox[{"d", " ", 
+        RowBox[{
+         RowBox[{"c", "''"}], "[", "x", "]"}]}], " ", "-", " ", 
+       RowBox[{"k", " ", 
+        SuperscriptBox[
+         RowBox[{"c", "[", "x", "]"}], "4"]}]}]}]}]}], ",", " ", 
+   RowBox[{
+    RowBox[{"with", " ", "boundary", " ", "conditions", " ", 
+     RowBox[{"c", "[", "0", "]"}]}], "\[Equal]", "c0"}], ",", " ", 
+   RowBox[{
+    RowBox[{"c", "[", "\[Infinity]", "]"}], " ", "\[Equal]", "0"}], ",", " ", 
+   
+   RowBox[{"for", " ", 
+    RowBox[{"c", "[", "x", "]"}]}]}], TraditionalForm]], "Text",
+ CellChangeTimes->{{3.777074781328854*^9, 3.77707482265298*^9}, {
+  3.7770751716666*^9, 3.777075171829803*^9}, {3.777204201853539*^9, 
+  3.777204231783787*^9}},
+ Background->RGBColor[
+  1, 1, 0],ExpressionUUID->"bea40fae-5f3d-4f54-a754-36c023f2cddd"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["5.  Numerical Solutions to PDEs and ODEs", "Section",
+ CellChangeTimes->{{3.777046438420651*^9, 3.777046446246058*^9}, {
+   3.777046829075227*^9, 3.777046833134653*^9}, 
+   3.77704687232559*^9},ExpressionUUID->"c2fa78ba-86ae-4523-a4ad-\
+8aa5872e354c"],
+
+Cell["\<\
+Lot\[CloseCurlyQuote]s of PDEs defy easy analytical solution, but can be \
+plotted numerically.  Consider the first one we solved above\
+\>", "Text",
+ CellChangeTimes->{{3.77704645010292*^9, 3.7770464741255417`*^9}, {
+  3.77704768943778*^9, 
+  3.777047690169305*^9}},ExpressionUUID->"89359862-1697-4237-baf7-\
+3cc227a07ab7"],
+
+Cell[BoxData[
+ RowBox[{"With", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"d", "=", "0.5"}], "}"}], ",", 
+   RowBox[{"NDSolve", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         SuperscriptBox["c", 
+          TagBox[
+           RowBox[{"(", 
+            RowBox[{"0", ",", "1"}], ")"}],
+           Derivative],
+          MultilineFunction->None], "[", 
+         RowBox[{"x", ",", "t"}], "]"}], "\[Equal]", 
+        RowBox[{"d", " ", 
+         RowBox[{
+          SuperscriptBox["c", 
+           TagBox[
+            RowBox[{"(", 
+             RowBox[{"2", ",", "0"}], ")"}],
+            Derivative],
+           MultilineFunction->None], "[", 
+          RowBox[{"x", ",", "t"}], "]"}]}]}], ",", " ", 
+       RowBox[{
+        RowBox[{
+         SuperscriptBox["c", 
+          TagBox[
+           RowBox[{"(", 
+            RowBox[{"1", ",", "0"}], ")"}],
+           Derivative],
+          MultilineFunction->None], "[", 
+         RowBox[{"0", ",", "t"}], "]"}], "\[Equal]", "  ", "0"}], ",", 
+       RowBox[{
+        RowBox[{"c", "[", 
+         RowBox[{"1", ",", "t"}], "]"}], " ", "\[Equal]", "0"}], ",", " ", 
+       RowBox[{
+        RowBox[{"c", "[", 
+         RowBox[{"x", ",", "0"}], "]"}], "\[Equal]", " ", "1"}]}], "}"}], ",",
+      " ", 
+     RowBox[{"c", "[", 
+      RowBox[{"x", ",", "t"}], "]"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", "0", ",", "1"}], "}"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"t", ",", " ", "0", ",", " ", "10"}], "}"}]}], "]"}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.7770464841481037`*^9, 3.777046518856188*^9}},
+ CellLabel->"In[89]:=",ExpressionUUID->"f974f574-9695-490a-b43a-d1f74e47a3dc"],
+
+Cell["Why the error message when you run this?", "Text",
+ CellChangeTimes->{{3.777204260074272*^9, 3.7772042779051943`*^9}},
+ Background->RGBColor[
+  1, 1, 0],ExpressionUUID->"93f840e2-1e2b-458c-a30f-1f393ee12927"],
+
+Cell["\<\
+We can also do numerical solutions to ODEs that we got from steady state \
+reaction diffusion equations, but weren\[CloseCurlyQuote]t able to solve \
+analytically.  \
+\>", "Text",
+ CellChangeTimes->{{3.7770481326741047`*^9, 
+  3.777048162897902*^9}},ExpressionUUID->"71013fa8-943f-4989-9071-\
+780cf3b8f2bb"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DSolve", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"0", " ", "\[Equal]", " ", 
+      RowBox[{
+       RowBox[{"d", " ", 
+        RowBox[{
+         RowBox[{"c", "''"}], "[", "x", "]"}]}], " ", "-", " ", 
+       RowBox[{"k", " ", 
+        FractionBox[
+         RowBox[{"c", "[", "x", "]"}], 
+         RowBox[{"1", "+", 
+          RowBox[{"c", "[", "x", "]"}]}]]}]}]}], ",", " ", 
+     RowBox[{
+      RowBox[{"c", "[", "0", "]"}], "\[Equal]", "c0"}], ",", " ", 
+     RowBox[{
+      RowBox[{"c", "[", "1", "]"}], " ", "\[Equal]", "0"}]}], "}"}], ",", " ", 
+   RowBox[{"c", "[", "x", "]"}], ",", " ", "x"}], "]"}]], "Input",
+ CellChangeTimes->{{3.7770489030699263`*^9, 3.777048907550905*^9}},
+ CellLabel->
+  "In[134]:=",ExpressionUUID->"585c4ecd-76fa-47fc-9d32-7c75e7e15a13"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "DSolve","bvimp",
+   "\"General solution contains implicit solutions. In the boundary value \
+problem, these solutions will be ignored, so some of the solutions will be \
+lost.\"",2,134,29,24912516926814138113,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.7770489088558397`*^9},
+ CellLabel->
+  "During evaluation of \
+In[134]:=",ExpressionUUID->"82907c88-bd83-47eb-bfc4-d7fdc35a74a6"],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.7770489088615923`*^9},
+ CellLabel->
+  "Out[134]=",ExpressionUUID->"2397a77f-2b44-44e9-b7a3-7564e79f7320"]
+}, Open  ]],
+
+Cell["How would we do this numerically?", "Text",
+ CellChangeTimes->{{3.7772043515687647`*^9, 3.777204356299943*^9}},
+ Background->RGBColor[
+  1, 1, 0],ExpressionUUID->"5d26e663-570a-44b6-a77d-80318eefd5ee"],
+
+Cell["\<\
+We notice that numerically solving the second order ODE creates some \
+difficulties for some parameter values.  Especially if xmax gets too big.  
+
+There\[CloseCurlyQuote]s an alternative way to get a steady state solution \
+which is often numerically easier:  Find the numerical solution for the \
+original PDE and then increase time until the result stops changing.  
+
+Let\[CloseCurlyQuote]s compare.  In this case, the PDE that the above was the \
+steady stead of was:\
+\>", "Text",
+ CellChangeTimes->{{3.77707521859692*^9, 3.777075243438282*^9}, {
+  3.77707528080133*^9, 3.7770753453771133`*^9}, {3.777075379295989*^9, 
+  3.77707538612857*^9}, {3.7770754504848223`*^9, 
+  3.7770754572231703`*^9}},ExpressionUUID->"51e964a8-bb68-4b1d-ae3c-\
+3b0064a270fe"],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox[
+    FractionBox[
+     RowBox[{"\[PartialD]", "c"}], 
+     RowBox[{"\[PartialD]", "t"}]],
+    TraditionalForm], " ", "=", " ", 
+   RowBox[{
+    FormBox[
+     FractionBox[
+      RowBox[{
+       SuperscriptBox["\[PartialD]", "2"], "c"}], 
+      RowBox[{"\[PartialD]", 
+       SuperscriptBox["x", "2"]}]],
+     TraditionalForm], "  ", "-", " ", 
+    RowBox[{"k", " ", 
+     FractionBox["c", 
+      RowBox[{"1", "+", "c"}]]}]}]}], TraditionalForm]], "Input",
+ CellChangeTimes->{{3.7770753896682034`*^9, 3.777075393345271*^9}, {
+  3.7770754462209883`*^9, 
+  3.7770754463751097`*^9}},ExpressionUUID->"b7140529-acd2-43c0-baa8-\
+f4f3e4d5086e"],
+
+Cell["\<\
+Manipulate is a very useful function, that is not limited to just two-D \
+plots.  Moreover, almost anything can be put on a controller, and controllers \
+can have various forms\
+\>", "Text",
+ CellChangeTimes->{{3.7772044660334873`*^9, 
+  3.7772045113923597`*^9}},ExpressionUUID->"a88f37c0-c45b-4447-836d-\
+0a49ba075df1"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["More complicated forms", "Section",
+ CellChangeTimes->{{3.7770760582222424`*^9, 
+  3.777076062610759*^9}},ExpressionUUID->"60296e6d-a283-4ae8-bae2-\
+08137ff5b134"],
+
+Cell[CellGroupData[{
+
+Cell["NDSolve can handle equations with piecewise functions.  ", \
+"Subsubsection",
+ CellChangeTimes->{{3.777076065469137*^9, 3.777076100344452*^9}, 
+   3.7770765436459837`*^9},ExpressionUUID->"a00815cd-54b2-44ce-b4ee-\
+ba320c80c61b"],
+
+Cell["\<\
+For example, suppose we had a molecule produced from x=0 to x=1, but be able \
+to diffuse anywhere in a larger domain. Instead of our production term being \
+a constant, \[OpenCurlyDoubleQuote]v\[CloseCurlyDoubleQuote], it can be an \
+\[OpenCurlyDoubleQuote]if\[CloseCurlyDoubleQuote] statement: 
+
+If[x>1, v, 0]\
+\>", "Text",
+ CellChangeTimes->{{3.777076127032537*^9, 3.777076233823859*^9}, {
+  3.7770763114186687`*^9, 
+  3.77707631218612*^9}},ExpressionUUID->"36dd9cb0-3bfa-4fd9-b04f-\
+b1cec3668c6a"],
+
+Cell["\<\
+Exercise :  Solve a RD equation on a domain 0<x<10,  for a molecule that\
+\[CloseCurlyQuote]s produced only between x=0 and x=1, and is destroyed \
+everywhere with a rate constant \[OpenCurlyDoubleQuote]k\
+\[CloseCurlyDoubleQuote] that is also not uniform, but is in fact twice as \
+high for x>4 than it is for 0<x<4.
+
+Have the boundary conditions be (1) that the derivative of c with respect to \
+x is zero at x=0, and (2) that c is zero at x=10.  
+
+Pick some parameters, or pick parameter ranges and put them on sliders
+
+\
+\>", "Text",
+ CellChangeTimes->{{3.77707631485837*^9, 3.7770765019854603`*^9}},
+ Background->RGBColor[
+  1, 1, 0],ExpressionUUID->"374a5b0f-c918-4271-993a-d78be3228a74"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["NDSolve can handle systems of equations.  ", "Subsubsection",
+ CellChangeTimes->{{3.777076065469137*^9, 3.777076100344452*^9}, {
+  3.7770765436459837`*^9, 
+  3.777076560221833*^9}},ExpressionUUID->"fc552c85-f751-46c1-952d-\
+67ca6d86ff4d"],
+
+Cell[TextData[{
+ "As long as only one of the equations is a PDE, Mathematica can handle \
+almost any number of ODEs coupled to it.  Consider the following system:  \
+Species c diffuses, but it binds reversibly to immobile species r to form the \
+immobile complex cr.  There is no degradation of c, just cr and r, which \
+occurs with constant probability per unit time.  Species r is produced at a \
+constant rate.  \n\nTo describe this system, we need three equations--one for \
+c, r, and cr.  Only the one for c is truly a PDE because only it has \
+diffusion in it, but in order to write down the whole system in a consistent \
+way we must still make every variable of function of both x and t, so every \
+equation is still written as a PDE.  \n\nEach equation has  a time rate of \
+change on the left hand side, and reaction (plus diffusion in the case of ",
+ StyleBox["c",
+  FontSlant->"Italic"],
+ ") on the right hand side.  \n\nFor ",
+ StyleBox["r",
+  FontSlant->"Italic"],
+ " the reaction terms would be production (a constant), destruction (a \
+constant multiplied by r[x,t]) binding to c (a constant times r[x,t] times \
+c[x,t]) and unbinding from cr (a constant times cr[x,t]).\n\nFor c the \
+reaction terms would be binding between ",
+ StyleBox["c",
+  FontSlant->"Italic"],
+ " and ",
+ StyleBox["r",
+  FontSlant->"Italic"],
+ ", and unbinding from cr (the same terms as used above).  There\
+\[CloseCurlyQuote]d also be the usual diffusion term.\n\nFor cr the reaction \
+terms would be binding between ",
+ StyleBox["c",
+  FontSlant->"Italic"],
+ " and ",
+ StyleBox["r",
+  FontSlant->"Italic"],
+ ", unbinding from cr, and destruction of cr (a constant times cr[x,t].  Note \
+that when a reaction makes a species go away, you use a negative sign; when \
+it makes it appear you use a positive sign.  \n\nOnce you have written this \
+out as a list of three equations (lists are surrounded by curly brackets and \
+elements are separated by commas), you need to add initial and boundary \
+conditions.  You need initial conditions for every species (c, r, cr) because \
+they all change over time.  You only need boundary conditions for one species \
+(c) because only it diffuses.  \n\nWe will use boundary conditions for c at \
+x=0 of 1, and at xmax =0, where xmax is a parameter that you can give a value \
+to later.  For initial conditions we will use c = 1-x/xmax, i.e. a straight \
+line from {0,1} to {xmax, 0}; r=0 and cr=0.  \n\nWhen you use NDSolve now, \
+you will ask NDSolve to produce a list of results, {c[x,t], r[x,t], cr[x,t]}, \
+so you will have three things you can possibly plot.  If you name your \
+solution list something like \[OpenCurlyDoubleQuote]solu\
+\[CloseCurlyDoubleQuote], then the syntax \n\nc[x,t]/.solu\n\nretrieves the \
+c-interpolation function, which you can plot.  "
+}], "Text",
+ CellChangeTimes->{{3.77707656912493*^9, 3.777076605953596*^9}, {
+  3.777204765215321*^9, 3.7772057010859127`*^9}},
+ Background->RGBColor[
+  1, 1, 0],ExpressionUUID->"d8fbf834-621d-45c2-bc39-cdcc1c51beec"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Some useful tips about Plotting and Manipulating", "Section",
+ CellChangeTimes->{{3.7772064670476713`*^9, 
+  3.7772064741743937`*^9}},ExpressionUUID->"cc79a90d-87a3-45c5-a830-\
+171d253ad290"],
+
+Cell[TextData[{
+ "The syntax of \[OpenCurlyDoubleQuote]Plot\[CloseCurlyDoubleQuote] and \
+\[OpenCurlyDoubleQuote]Plot3D\[CloseCurlyDoubleQuote] is \n",
+ StyleBox["Plot[function, domain, options]. ",
+  FontWeight->"Bold"],
+ " or\n",
+ StyleBox["Plot[{list of functions}, domain, options]. ",
+  FontWeight->"Bold"],
+ "in which case various functions are plotted together on the same plot\n\n\
+There are many options you can put in there, and using the function browser \
+can help you learn what they are.  Examples are\n\nPlotRange-> All (include \
+all datapoints; the default setting will often truncate plot range so places \
+where not much is happening are cut off)\nPlotRange-> {0, Automatic} (makes \
+sure the plot starts from 0, but let\[CloseCurlyQuote]s mathematic choose the \
+upper bound)\nPlotStyle-> Red (make the curve red)\nPlotStyle-> {Red, Green, \
+Blue} (makes the curves for multiple functions red, green, blue in that \
+order)\nPlotLegends-> Automatic (puts legends on your plot so that curves can \
+be identified, where the legends are the expressions you are plotting.\n\
+PlotLegends-> ",
+ Cell[BoxData[
+  RowBox[{"{", 
+   RowBox[{
+    SubscriptBox[
+     StyleBox["lbl", "TI"], 
+     StyleBox["1", "TR"]], ",", 
+    SubscriptBox[
+     StyleBox["lbl", "TI"], 
+     StyleBox["2", "TR"]], ",", 
+    StyleBox["\[Ellipsis]", "TR"]}], "}"}]],
+  GridBoxOptions->{
+  GridBoxBackground->{
+   "Columns" -> {{None}}, "Rows" -> {None, None, None, None, None, {None}}},
+  GridBoxDividers->{"Rows" -> {{True, True, True, True, True, True, True}}}},
+  ExpressionUUID->"09d58413-4b9b-4ab9-ae18-022abe7b3d16"],
+ "(puts legends on your plot that correspond to the text labels you give it ( \
+",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["lbl", "i"], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "902c47e9-144a-4d69-a2d1-cf47ae762b10"],
+ ", etc.).  Note that when specifying text you should put \
+\[OpenCurlyDoubleQuote] \[OpenCurlyDoubleQuote] marks around it; otherwise if \
+you type something that has a value assigned to it, Mathematica will display \
+the value and not the text.  "
+}], "Text",
+ CellChangeTimes->{{3.777205709355523*^9, 3.777206156263605*^9}, 
+   3.77720647759063*^9},ExpressionUUID->"c71a2b61-4773-4f5f-b19c-\
+a0acdbd29c9f"],
+
+Cell["\<\
+If you have multiple functions and are happy plotting them on top of one \
+another then putting them all together in one Plot command is fine, but if \
+they have different ranges, they may not look pretty that way.  So another \
+option is to use \[OpenCurlyDoubleQuote]GraphicsRow\[CloseCurlyDoubleQuote] \
+and \[OpenCurlyDoubleQuote]GraphicsGrid\[CloseCurlyDoubleQuote] to format \
+multiple plots in a row or grid.  Evaluate these examples to see\
+\>", "Text",
+ CellChangeTimes->{{3.777206166173366*^9, 3.7772062464317017`*^9}, {
+  3.777206300938295*^9, 
+  3.7772063052965927`*^9}},ExpressionUUID->"eaa7b1d2-5d7e-4938-a48a-\
+04781f9c8e30"],
+
+Cell[BoxData[
+ RowBox[{"GraphicsRow", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Plot", "[", 
+     RowBox[{
+      RowBox[{"Sin", "[", "x", "]"}], ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"x", ",", " ", "0", ",", " ", "4"}], "}"}]}], "]"}], ",", " ", 
+    
+    RowBox[{"Plot", "[", 
+     RowBox[{
+      SuperscriptBox[
+       RowBox[{"Sin", "[", "x", "]"}], "2"], ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"x", ",", " ", "0", ",", " ", "4"}], "}"}]}], "]"}], ",", 
+    RowBox[{"Plot", "[", 
+     RowBox[{
+      SuperscriptBox[
+       RowBox[{"Sin", "[", "x", "]"}], "3"], ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"x", ",", " ", "0", ",", " ", "4"}], "}"}]}], "]"}]}], "}"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.777206248218989*^9, 3.777206285782682*^9}},
+ CellLabel->"In[5]:=",ExpressionUUID->"d433ade0-dc36-43f2-991b-069953b890a8"],
+
+Cell[BoxData[
+ RowBox[{"GraphicsGrid", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"Plot", "[", 
+       RowBox[{
+        RowBox[{"Sin", "[", "x", "]"}], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"x", ",", " ", "0", ",", " ", "4"}], "}"}]}], "]"}], ",", 
+      " ", 
+      RowBox[{"Plot", "[", 
+       RowBox[{
+        SuperscriptBox[
+         RowBox[{"Sin", "[", "x", "]"}], "2"], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"x", ",", " ", "0", ",", " ", "4"}], "}"}]}], "]"}], ",", 
+      RowBox[{"Plot", "[", 
+       RowBox[{
+        SuperscriptBox[
+         RowBox[{"Sin", "[", "x", "]"}], "3"], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"x", ",", " ", "0", ",", " ", "4"}], "}"}]}], "]"}]}], "}"}],
+     ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"Plot", "[", 
+       RowBox[{
+        RowBox[{"Cos", "[", "x", "]"}], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"x", ",", " ", "0", ",", " ", "4"}], "}"}]}], "]"}], ",", 
+      " ", 
+      RowBox[{"Plot", "[", 
+       RowBox[{
+        SuperscriptBox[
+         RowBox[{"Cos", "[", "x", "]"}], "2"], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"x", ",", " ", "0", ",", " ", "4"}], "}"}]}], "]"}], ",", 
+      RowBox[{"Plot", "[", 
+       RowBox[{
+        SuperscriptBox[
+         RowBox[{"Cos", "[", "x", "]"}], "3"], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"x", ",", " ", "0", ",", " ", "4"}], "}"}]}], "]"}]}], "}"}],
+     ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"Plot", "[", 
+       RowBox[{
+        RowBox[{"Tan", "[", "x", "]"}], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"x", ",", " ", "0", ",", " ", "4"}], "}"}]}], "]"}], ",", 
+      " ", 
+      RowBox[{"Plot", "[", 
+       RowBox[{
+        SuperscriptBox[
+         RowBox[{"Tan", "[", "x", "]"}], "2"], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"x", ",", " ", "0", ",", " ", "4"}], "}"}]}], "]"}], ",", 
+      RowBox[{"Plot", "[", 
+       RowBox[{
+        SuperscriptBox[
+         RowBox[{"Tan", "[", "x", "]"}], "3"], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"x", ",", " ", "0", ",", " ", "4"}], "}"}]}], "]"}]}], 
+     "}"}]}], "}"}], "]"}]], "Input",
+ CellChangeTimes->{{3.777206248218989*^9, 3.777206285782682*^9}, {
+  3.777206318038233*^9, 3.777206352892363*^9}},
+ CellLabel->"In[6]:=",ExpressionUUID->"8e43f4b0-0b3e-4198-9811-e0386536b6fd"],
+
+Cell["You can even use such code inside Manipulate", "Text",
+ CellChangeTimes->{{3.777206361033309*^9, 
+  3.777206376233499*^9}},ExpressionUUID->"765df1e3-1b5b-4d21-a166-\
+2a923c5f4f22"],
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"GraphicsGrid", "[", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"Plot", "[", 
+         RowBox[{
+          RowBox[{"Sin", "[", "x", "]"}], ",", " ", 
+          RowBox[{"{", 
+           RowBox[{"x", ",", " ", "0", ",", " ", "xmax"}], "}"}]}], "]"}], 
+        ",", " ", 
+        RowBox[{"Plot", "[", 
+         RowBox[{
+          SuperscriptBox[
+           RowBox[{"Sin", "[", "x", "]"}], "2"], ",", " ", 
+          RowBox[{"{", 
+           RowBox[{"x", ",", " ", "0", ",", "xmax"}], "}"}]}], "]"}], ",", 
+        RowBox[{"Plot", "[", 
+         RowBox[{
+          SuperscriptBox[
+           RowBox[{"Sin", "[", "x", "]"}], "3"], ",", " ", 
+          RowBox[{"{", 
+           RowBox[{"x", ",", " ", "0", ",", "xmax"}], "}"}]}], "]"}]}], "}"}],
+       ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"Plot", "[", 
+         RowBox[{
+          RowBox[{"Cos", "[", "x", "]"}], ",", " ", 
+          RowBox[{"{", 
+           RowBox[{"x", ",", " ", "0", ",", " ", "xmax"}], "}"}]}], "]"}], 
+        ",", " ", 
+        RowBox[{"Plot", "[", 
+         RowBox[{
+          SuperscriptBox[
+           RowBox[{"Cos", "[", "x", "]"}], "2"], ",", " ", 
+          RowBox[{"{", 
+           RowBox[{"x", ",", " ", "0", ",", "xmax"}], "}"}]}], "]"}], ",", 
+        RowBox[{"Plot", "[", 
+         RowBox[{
+          SuperscriptBox[
+           RowBox[{"Cos", "[", "x", "]"}], "3"], ",", " ", 
+          RowBox[{"{", 
+           RowBox[{"x", ",", " ", "0", ",", "xmax"}], "}"}]}], "]"}]}], "}"}],
+       ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"Plot", "[", 
+         RowBox[{
+          RowBox[{"Tan", "[", "x", "]"}], ",", " ", 
+          RowBox[{"{", 
+           RowBox[{"x", ",", " ", "0", ",", " ", "xmax"}], "}"}]}], "]"}], 
+        ",", " ", 
+        RowBox[{"Plot", "[", 
+         RowBox[{
+          SuperscriptBox[
+           RowBox[{"Tan", "[", "x", "]"}], "2"], ",", " ", 
+          RowBox[{"{", 
+           RowBox[{"x", ",", " ", "0", ",", " ", "xmax"}], "}"}]}], "]"}], 
+        ",", 
+        RowBox[{"Plot", "[", 
+         RowBox[{
+          SuperscriptBox[
+           RowBox[{"Tan", "[", "x", "]"}], "3"], ",", " ", 
+          RowBox[{"{", 
+           RowBox[{"x", ",", " ", "0", ",", " ", "xmax"}], "}"}]}], "]"}]}], 
+       "}"}]}], "}"}], "]"}], ",", " ", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"xmax", ",", "4"}], "}"}], ",", " ", "0", ",", " ", "10"}], 
+    "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.777206377787477*^9, 3.777206427651197*^9}},
+ CellLabel->"In[7]:=",ExpressionUUID->"2a6d4fef-295d-4d1b-bbd1-a2ed14ed920d"],
+
+Cell["\<\
+Note that things that are repeated many times can be handled more compactly \
+by giving them names\
+\>", "Text",
+ CellChangeTimes->{{3.777206485262074*^9, 
+  3.7772065066227627`*^9}},ExpressionUUID->"d178036a-605a-4696-b865-\
+2f990196e943"],
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"With", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"pr", "=", 
+       RowBox[{"{", 
+        RowBox[{"x", ",", "0", ",", "xmax"}], "}"}]}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"GraphicsGrid", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Plot", "[", 
+           RowBox[{
+            RowBox[{"Sin", "[", "x", "]"}], ",", "pr"}], "]"}], ",", " ", 
+          RowBox[{"Plot", "[", 
+           RowBox[{
+            SuperscriptBox[
+             RowBox[{"Sin", "[", "x", "]"}], "2"], ",", "pr"}], "]"}], ",", 
+          RowBox[{"Plot", "[", 
+           RowBox[{
+            SuperscriptBox[
+             RowBox[{"Sin", "[", "x", "]"}], "3"], ",", " ", "pr"}], "]"}]}], 
+         "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Plot", "[", 
+           RowBox[{
+            RowBox[{"Cos", "[", "x", "]"}], ",", "pr"}], "]"}], ",", " ", 
+          RowBox[{"Plot", "[", 
+           RowBox[{
+            SuperscriptBox[
+             RowBox[{"Cos", "[", "x", "]"}], "2"], ",", "pr"}], "]"}], ",", 
+          RowBox[{"Plot", "[", 
+           RowBox[{
+            SuperscriptBox[
+             RowBox[{"Cos", "[", "x", "]"}], "3"], ",", "pr"}], "]"}]}], 
+         "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Plot", "[", 
+           RowBox[{
+            RowBox[{"Tan", "[", "x", "]"}], ",", "pr"}], "]"}], ",", " ", 
+          RowBox[{"Plot", "[", 
+           RowBox[{
+            SuperscriptBox[
+             RowBox[{"Tan", "[", "x", "]"}], "2"], ",", "pr"}], "]"}], ",", 
+          RowBox[{"Plot", "[", 
+           RowBox[{
+            SuperscriptBox[
+             RowBox[{"Tan", "[", "x", "]"}], "3"], ",", "pr"}], "]"}]}], 
+         "}"}]}], "}"}], "]"}]}], "]"}], ",", " ", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"xmax", ",", "4"}], "}"}], ",", " ", "0", ",", " ", "10"}], 
+    "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.777206509343091*^9, 
+  3.777206616424465*^9}},ExpressionUUID->"aa769e65-48e3-46b0-a643-\
+9c2ae85c4b03"],
+
+Cell["\<\
+We can make things even more compact, by noting that the form Plot[__, pr] \
+keeps appearing over and over.  We can in effect define a function on the fly \
+that represents Plot[#, pr], where # stand for something to be filled in, and \
+then use that as an operator over a list of things to fill in.  The \
+\[OpenCurlyDoubleQuote]&\[CloseCurlyDoubleQuote] symbol is used to denote \
+that the thing to the left of it is a function with a slot to be filled in.  \
+The function Map applies this function to every element in a list.  \
+\>", "Text",
+ CellChangeTimes->{{3.777206623611093*^9, 3.777206737392811*^9}, {
+  3.777206773222921*^9, 3.777206794210272*^9}, {3.777206970087347*^9, 
+  3.777206986480693*^9}},ExpressionUUID->"e4a3e059-adb8-4cf8-8677-\
+54f25dc36897"],
+
+Cell[BoxData[
+ RowBox[{"GraphicsRow", "[", 
+  RowBox[{"Map", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Plot", "[", 
+      RowBox[{"#", ",", " ", 
+       RowBox[{"{", 
+        RowBox[{"x", ",", "0", ",", "5"}], "}"}]}], "]"}], "&"}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"Sin", "[", "x", "]"}], ",", " ", 
+      SuperscriptBox[
+       RowBox[{"Sin", "[", "x", "]"}], "2"], ",", " ", 
+      SuperscriptBox[
+       RowBox[{"Sin", "[", "x", "]"}], "3"], ",", " ", 
+      SuperscriptBox[
+       RowBox[{"Sin", "[", "x", "]"}], "4"]}], "}"}]}], "]"}], "]"}]], "Input",\
+
+ CellChangeTimes->{{3.777206705578104*^9, 3.777206712027184*^9}, {
+  3.777206744681694*^9, 3.777206751330887*^9}, {3.777206801092595*^9, 
+  3.777206962229533*^9}, {3.777207001588159*^9, 3.777207005769515*^9}, {
+  3.77720705726842*^9, 3.777207059479998*^9}},
+ CellLabel->"In[20]:=",ExpressionUUID->"b0f580d6-a74f-45d6-b414-f46335238a00"],
+
+Cell[TextData[{
+ "Even the list ",
+ Cell[BoxData[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Sin", "[", "x", "]"}], ",", " ", 
+    SuperscriptBox[
+     RowBox[{"Sin", "[", "x", "]"}], "2"], ",", " ", 
+    SuperscriptBox[
+     RowBox[{"Sin", "[", "x", "]"}], "3"], ",", " ", 
+    SuperscriptBox[
+     RowBox[{"Sin", "[", "x", "]"}], "4"]}], "}"}]],
+  CellChangeTimes->{{3.777206705578104*^9, 3.777206712027184*^9}, {
+   3.777206744681694*^9, 3.777206751330887*^9}, {3.777206801092595*^9, 
+   3.777206962229533*^9}, {3.777207001588159*^9, 3.777207005769515*^9}},
+  ExpressionUUID->"3d1ccd15-52bf-415e-b8cf-919ed0907ba1"],
+ " can be written more compactly as"
+}], "Text",
+ CellChangeTimes->{{3.777207035321651*^9, 
+  3.777207084408017*^9}},ExpressionUUID->"153cf5d6-27f7-4e59-817d-\
+913dcb366620"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Table", "[", 
+  RowBox[{
+   SuperscriptBox[
+    RowBox[{"Sin", "[", "x", "]"}], "n"], ",", " ", 
+   RowBox[{"{", 
+    RowBox[{"n", ",", " ", "1", ",", " ", "4"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.7772070879578733`*^9, 3.777207101155651*^9}},
+ CellLabel->"In[21]:=",ExpressionUUID->"6cd34fb7-8566-4076-b962-9b3c87aabc88"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"Sin", "[", "x", "]"}], ",", 
+   SuperscriptBox[
+    RowBox[{"Sin", "[", "x", "]"}], "2"], ",", 
+   SuperscriptBox[
+    RowBox[{"Sin", "[", "x", "]"}], "3"], ",", 
+   SuperscriptBox[
+    RowBox[{"Sin", "[", "x", "]"}], "4"]}], "}"}]], "Output",
+ CellChangeTimes->{3.7772071015786*^9},
+ CellLabel->"Out[21]=",ExpressionUUID->"33281638-8dba-436a-98fa-5518a3f3206e"]
+}, Open  ]],
+
+Cell["\<\
+See how compactly we can write the instructions to make 12 plots:\
+\>", "Text",
+ CellChangeTimes->{{3.777207352629266*^9, 
+  3.777207378514518*^9}},ExpressionUUID->"491af219-4af4-4c03-b848-\
+ecd9ead03793"],
+
+Cell[BoxData[
+ RowBox[{"GraphicsGrid", "[", 
+  RowBox[{"Map", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Plot", "[", 
+      RowBox[{"#", ",", " ", 
+       RowBox[{"{", 
+        RowBox[{"x", ",", "0", ",", "5"}], "}"}]}], "]"}], "&"}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"Table", "[", 
+       RowBox[{
+        SuperscriptBox[
+         RowBox[{"Sin", "[", "x", "]"}], "n"], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"n", ",", " ", "1", ",", " ", "4"}], "}"}]}], "]"}], ",", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        SuperscriptBox[
+         RowBox[{"Cos", "[", "x", "]"}], "n"], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"n", ",", " ", "1", ",", " ", "4"}], "}"}]}], "]"}], ",", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        SuperscriptBox[
+         RowBox[{"Tan", "[", "x", "]"}], "n"], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"n", ",", " ", "1", ",", " ", "4"}], "}"}]}], "]"}]}], "}"}],
+     ",", 
+    RowBox[{"{", "2", "}"}]}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.777206705578104*^9, 3.777206712027184*^9}, {
+  3.777206744681694*^9, 3.777206751330887*^9}, {3.777206801092595*^9, 
+  3.777206962229533*^9}, {3.777207001588159*^9, 3.777207005769515*^9}, {
+  3.77720705726842*^9, 3.777207059479998*^9}, {3.7772071533890142`*^9, 
+  3.7772072309133673`*^9}, {3.7772072847149773`*^9, 3.777207325889255*^9}},
+ CellLabel->"In[30]:=",ExpressionUUID->"c3886129-7797-4483-a56c-052e85210d1f"],
+
+Cell["\<\
+Did you note the \[OpenCurlyDoubleQuote]{2}\[CloseCurlyDoubleQuote] we \
+slipped in at the end of the Map function.  It tells map to apply the \
+function at \[OpenCurlyDoubleQuote]level 2\[CloseCurlyDoubleQuote], i.e. \
+since we have a list of lists, the actual elements of the list are two levels \
+down.  
+
+Finally, we can make this even more compact:\
+\>", "Text",
+ CellChangeTimes->{{3.7772074043441563`*^9, 
+  3.777207459504365*^9}},ExpressionUUID->"070d3f65-c048-4100-b23f-\
+10fbb2a0569e"],
+
+Cell[BoxData[
+ RowBox[{"GraphicsGrid", "[", 
+  RowBox[{"Map", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Plot", "[", 
+      RowBox[{"#", ",", " ", 
+       RowBox[{"{", 
+        RowBox[{"x", ",", "0", ",", "5"}], "}"}]}], "]"}], "&"}], ",", 
+    RowBox[{"Map", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Table", "[", 
+        RowBox[{"#", ",", " ", 
+         RowBox[{"{", 
+          RowBox[{"n", ",", "1", ",", "4"}], "}"}]}], "]"}], "&"}], ",", " ", 
+      
+      RowBox[{"{", 
+       RowBox[{
+        SuperscriptBox[
+         RowBox[{"Sin", "[", "x", "]"}], "n"], ",", " ", 
+        SuperscriptBox[
+         RowBox[{"Cos", "[", "x", "]"}], "n"], ",", " ", 
+        SuperscriptBox[
+         RowBox[{"Tan", "[", "x", "]"}], "n"]}], "}"}]}], "]"}], ",", 
+    RowBox[{"{", "2", "}"}]}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.777206705578104*^9, 3.777206712027184*^9}, {
+  3.777206744681694*^9, 3.777206751330887*^9}, {3.777206801092595*^9, 
+  3.777206962229533*^9}, {3.777207001588159*^9, 3.777207005769515*^9}, {
+  3.77720705726842*^9, 3.777207059479998*^9}, {3.7772071533890142`*^9, 
+  3.7772072309133673`*^9}, {3.7772072847149773`*^9, 3.777207325889255*^9}, {
+  3.777207471182391*^9, 3.777207542044888*^9}, {3.777207578590742*^9, 
+  3.7772076056914186`*^9}},ExpressionUUID->"20b160c2-8db1-4d59-9daf-\
+f40d1d787222"],
+
+Cell["\<\
+There\[CloseCurlyQuote]s an alternate \[OpenCurlyDoubleQuote]prefix\
+\[CloseCurlyDoubleQuote] way to write Map, which involves fewer keystrokes, \
+that we can use when we don\[CloseCurlyQuote]t have to explicitly tell \
+Mathematica what level to map at.  \
+\>", "Text",
+ CellChangeTimes->{{3.777207617256378*^9, 3.7772076369082212`*^9}, {
+  3.777207698547268*^9, 
+  3.777207716952963*^9}},ExpressionUUID->"19d6ee1e-1c4e-4dc2-9e5f-\
+bf80e3ba3518"],
+
+Cell[BoxData[
+ RowBox[{"GraphicsGrid", "[", 
+  RowBox[{"Map", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Plot", "[", 
+      RowBox[{"#", ",", " ", 
+       RowBox[{"{", 
+        RowBox[{"x", ",", "0", ",", "5"}], "}"}]}], "]"}], "&"}], ",", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Table", "[", 
+       RowBox[{"#", ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"n", ",", "1", ",", "4"}], "}"}]}], "]"}], "&"}], "/@", " ", 
+     
+     RowBox[{"{", 
+      RowBox[{
+       SuperscriptBox[
+        RowBox[{"Sin", "[", "x", "]"}], "n"], ",", " ", 
+       SuperscriptBox[
+        RowBox[{"Cos", "[", "x", "]"}], "n"], ",", " ", 
+       SuperscriptBox[
+        RowBox[{"Tan", "[", "x", "]"}], "n"]}], "}"}]}], ",", 
+    RowBox[{"{", "2", "}"}]}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.777207644513212*^9, 3.7772076764424667`*^9}},
+ CellLabel->"In[34]:=",ExpressionUUID->"75f65af1-54f2-4043-b297-e079dc702e85"]
+}, Open  ]]
+},
+WindowSize->{895, 963},
+WindowMargins->{{36, Automatic}, {Automatic, 0}},
+FrontEndVersion->"12.0 for Mac OS X x86 (64-bit) (April 8, 2019)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 253, 4, 67, "Section",ExpressionUUID->"df6f8e02-6691-46cc-8dcf-0ec376269390"],
+Cell[CellGroupData[{
+Cell[858, 30, 382, 7, 81, "Subsection",ExpressionUUID->"bf7dc5b2-1c24-4c45-b83a-ab969c8d08af"],
+Cell[1243, 39, 314, 7, 58, "Text",ExpressionUUID->"6af2cd88-5535-40b5-81d7-7922c9a45001"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1606, 52, 189, 3, 67, "Section",ExpressionUUID->"b6101b6f-499e-4ad6-90c0-a4f6777f7b7d"],
+Cell[1798, 57, 2960, 84, 339, "Text",ExpressionUUID->"20cc5304-769f-4150-8698-e052c23d00cf"],
+Cell[4761, 143, 679, 21, 57, "Text",ExpressionUUID->"0212a112-c2b8-4f5a-aa9b-561baeaf9f16"],
+Cell[5443, 166, 1677, 37, 224, "Text",ExpressionUUID->"af30dffb-65f9-460d-8cb2-00bdc35ca9b0"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7157, 208, 181, 3, 67, "Section",ExpressionUUID->"4747e0cc-fc8a-4a12-9d2b-4d887888b9f5"],
+Cell[7341, 213, 524, 9, 81, "Text",ExpressionUUID->"af9e9264-4614-4dc3-b67f-1ff0cc4236bd"],
+Cell[7868, 224, 332, 7, 51, "Text",ExpressionUUID->"d3825e13-5855-4ed9-bb4e-d620d930f6b9"],
+Cell[8203, 233, 1397, 25, 288, "Text",ExpressionUUID->"eb4af53b-de39-4344-9d95-bcd211957656"],
+Cell[9603, 260, 482, 9, 58, "Text",ExpressionUUID->"13787ea1-0ca2-45d6-a08f-fa25846e7bfe"],
+Cell[10088, 271, 575, 14, 55, "Text",ExpressionUUID->"b70e94d6-c293-4428-adc6-a05fb7fff1bd"],
+Cell[10666, 287, 632, 17, 62, "Text",ExpressionUUID->"18976b8d-d762-4945-bcf2-95a2e7d62340"],
+Cell[11301, 306, 1836, 49, 164, "Text",ExpressionUUID->"6a5d729c-e13f-43da-aa66-85ead5e3eefc"],
+Cell[13140, 357, 156, 3, 35, "Text",ExpressionUUID->"c6a9e095-7c99-4563-bc0b-ed034e898818"],
+Cell[CellGroupData[{
+Cell[13321, 364, 262, 5, 30, "Input",ExpressionUUID->"d2943250-1251-41a2-a426-a803f0fbecbc"],
+Cell[13586, 371, 298, 8, 34, "Output",ExpressionUUID->"0e637bc2-a7ca-48ff-b0fe-4d50465eb651"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13921, 384, 315, 7, 30, "Input",ExpressionUUID->"982ed199-5ab6-4f96-bc80-44c118817af4"],
+Cell[14239, 393, 332, 10, 34, "Output",ExpressionUUID->"f624beb9-4d07-465e-9209-e41b74f092b7"]
+}, Open  ]],
+Cell[14586, 406, 870, 16, 127, "Text",ExpressionUUID->"d6cc942f-3d81-4f6c-a2dc-24d820491efd"],
+Cell[15459, 424, 199, 3, 30, "Input",ExpressionUUID->"f0fe1385-a16b-477d-87b2-8bd821c593c4"],
+Cell[15661, 429, 251, 5, 30, "Input",ExpressionUUID->"6fa46133-f467-494d-af08-009a3218087c"],
+Cell[15915, 436, 240, 5, 39, "Input",ExpressionUUID->"82dba370-0c57-4ec1-8462-d136c2a22edf"],
+Cell[16158, 443, 263, 5, 30, "Input",ExpressionUUID->"3d6c2112-d16e-4c7e-bbe8-44fb32c5b679"],
+Cell[16424, 450, 273, 6, 35, "Text",ExpressionUUID->"d1c6ae91-b757-4651-8420-8e9e26e1a108"],
+Cell[16700, 458, 172, 4, 39, "Input",ExpressionUUID->"64dccc32-e24e-49fc-bd16-6329092d0544"],
+Cell[16875, 464, 882, 26, 61, "Text",ExpressionUUID->"6f184b8b-0f41-4d64-b4ff-133ed7ebbd5f"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[17794, 495, 177, 3, 67, "Section",ExpressionUUID->"b49ca390-6140-439e-879f-cc34e52b3692"],
+Cell[17974, 500, 193, 3, 35, "Text",ExpressionUUID->"bd0c02fd-0a1c-4ef5-b960-32ba80a0c87a"],
+Cell[18170, 505, 1550, 46, 56, "Input",ExpressionUUID->"4e98bd80-234f-4eb2-a771-e154be67319b"],
+Cell[19723, 553, 170, 3, 35, "Text",ExpressionUUID->"be06f9ec-9132-40ad-ae7b-a52f5c6c2df0"],
+Cell[19896, 558, 1522, 45, 33, "Input",ExpressionUUID->"890362fd-0a4c-48fd-b62f-9a382db0cac2"],
+Cell[21421, 605, 429, 8, 35, "Text",ExpressionUUID->"f46ee577-39b0-4516-a1d2-982abe97d8ae"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[21887, 618, 268, 6, 105, "Section",ExpressionUUID->"304474e8-c742-4bed-8789-61bb824e5f7e"],
+Cell[22158, 626, 353, 7, 58, "Text",ExpressionUUID->"f2f25658-6091-4080-8881-6e991088dc8a"],
+Cell[22514, 635, 553, 19, 53, "Input",ExpressionUUID->"8692744f-0ba7-443e-b4f1-6dd461c625dc"],
+Cell[23070, 656, 151, 3, 35, "Text",ExpressionUUID->"762e4807-745d-4351-830b-fc49f06efd41"],
+Cell[23224, 661, 427, 11, 30, "Input",ExpressionUUID->"c21c1ee0-7be2-468b-9445-bf3338e6b018"],
+Cell[23654, 674, 851, 20, 104, "Text",ExpressionUUID->"c1739456-3c91-469f-b1f9-85bcbc848e56"],
+Cell[24508, 696, 447, 8, 51, "Text",ExpressionUUID->"c161d227-1cba-466c-bfda-3771a0dcba61"],
+Cell[24958, 706, 647, 20, 69, "Input",ExpressionUUID->"8437fd7a-067f-4d95-9b1f-648a7ceba4db"],
+Cell[25608, 728, 358, 7, 74, "Text",ExpressionUUID->"256c934b-6ccf-424f-8d90-0a6b96a605e7"],
+Cell[25969, 737, 477, 8, 74, "Text",ExpressionUUID->"c09d5fb1-b11d-4f49-9a8c-7a07c4b48fc5"],
+Cell[26449, 747, 749, 23, 69, "Input",ExpressionUUID->"384a737f-64c6-44a1-84bb-69d9378c23b3"],
+Cell[27201, 772, 240, 6, 35, "Text",ExpressionUUID->"e008b249-5a53-447d-b8f9-72cff5348e00"],
+Cell[27444, 780, 680, 19, 33, "Input",ExpressionUUID->"5061ce42-8a5c-4fd8-b04e-402fba29e6c4"],
+Cell[28127, 801, 292, 6, 51, "Text",ExpressionUUID->"1bc54ac4-ce6e-4350-bc9e-4f9bdc2ad2b0"],
+Cell[28422, 809, 1018, 25, 75, "Text",ExpressionUUID->"bea40fae-5f3d-4f54-a754-36c023f2cddd"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[29477, 839, 257, 4, 67, "Section",ExpressionUUID->"c2fa78ba-86ae-4523-a4ad-8aa5872e354c"],
+Cell[29737, 845, 334, 7, 35, "Text",ExpressionUUID->"89359862-1697-4237-baf7-3cc227a07ab7"],
+Cell[30074, 854, 1692, 51, 56, "Input",ExpressionUUID->"f974f574-9695-490a-b43a-d1f74e47a3dc"],
+Cell[31769, 907, 214, 3, 51, "Text",ExpressionUUID->"93f840e2-1e2b-458c-a30f-1f393ee12927"],
+Cell[31986, 912, 317, 7, 58, "Text",ExpressionUUID->"71013fa8-943f-4989-9071-780cf3b8f2bb"],
+Cell[CellGroupData[{
+Cell[32328, 923, 811, 22, 48, "Input",ExpressionUUID->"585c4ecd-76fa-47fc-9d32-7c75e7e15a13"],
+Cell[33142, 947, 441, 10, 42, "Message",ExpressionUUID->"82907c88-bd83-47eb-bfc4-d7fdc35a74a6"],
+Cell[33586, 959, 172, 4, 34, "Output",ExpressionUUID->"2397a77f-2b44-44e9-b7a3-7564e79f7320"]
+}, Open  ]],
+Cell[33773, 966, 207, 3, 51, "Text",ExpressionUUID->"5d26e663-570a-44b6-a77d-80318eefd5ee"],
+Cell[33983, 971, 768, 15, 173, "Text",ExpressionUUID->"51e964a8-bb68-4b1d-ae3c-3b0064a270fe"],
+Cell[34754, 988, 681, 22, 53, "Input",ExpressionUUID->"b7140529-acd2-43c0-baa8-f4f3e4d5086e"],
+Cell[35438, 1012, 330, 7, 58, "Text",ExpressionUUID->"a88f37c0-c45b-4447-836d-0a49ba075df1"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[35805, 1024, 169, 3, 67, "Section",ExpressionUUID->"60296e6d-a283-4ae8-bae2-08137ff5b134"],
+Cell[CellGroupData[{
+Cell[35999, 1031, 234, 4, 45, "Subsubsection",ExpressionUUID->"a00815cd-54b2-44ce-b4ee-ba320c80c61b"],
+Cell[36236, 1037, 511, 11, 104, "Text",ExpressionUUID->"36dd9cb0-3bfa-4fd9-b04f-b1cec3668c6a"],
+Cell[36750, 1050, 704, 16, 235, "Text",ExpressionUUID->"374a5b0f-c918-4271-993a-d78be3228a74"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[37491, 1071, 244, 4, 45, "Subsubsection",ExpressionUUID->"fc552c85-f751-46c1-952d-67ca6d86ff4d"],
+Cell[37738, 1077, 3017, 54, 833, "Text",ExpressionUUID->"d8fbf834-621d-45c2-bc39-cdcc1c51beec"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[40804, 1137, 197, 3, 67, "Section",ExpressionUUID->"cc79a90d-87a3-45c5-a830-171d253ad290"],
+Cell[41004, 1142, 2270, 48, 380, "Text",ExpressionUUID->"c71a2b61-4773-4f5f-b19c-a0acdbd29c9f"],
+Cell[43277, 1192, 650, 11, 81, "Text",ExpressionUUID->"eaa7b1d2-5d7e-4938-a48a-04781f9c8e30"],
+Cell[43930, 1205, 855, 24, 33, "Input",ExpressionUUID->"d433ade0-dc36-43f2-991b-069953b890a8"],
+Cell[44788, 1231, 2383, 69, 79, "Input",ExpressionUUID->"8e43f4b0-0b3e-4198-9811-e0386536b6fd"],
+Cell[47174, 1302, 186, 3, 35, "Text",ExpressionUUID->"765df1e3-1b5b-4d21-a166-2a923c5f4f22"],
+Cell[47363, 1307, 2700, 76, 148, "Input",ExpressionUUID->"2a6d4fef-295d-4d1b-bbd1-a2ed14ed920d"],
+Cell[50066, 1385, 250, 6, 35, "Text",ExpressionUUID->"d178036a-605a-4696-b865-2f990196e943"],
+Cell[50319, 1393, 2140, 62, 102, "Input",ExpressionUUID->"aa769e65-48e3-46b0-a643-9c2ae85c4b03"],
+Cell[52462, 1457, 775, 12, 104, "Text",ExpressionUUID->"e4a3e059-adb8-4cf8-8677-54f25dc36897"],
+Cell[53240, 1471, 919, 23, 33, "Input",ExpressionUUID->"b0f580d6-a74f-45d6-b414-f46335238a00"],
+Cell[54162, 1496, 792, 20, 38, "Text",ExpressionUUID->"153cf5d6-27f7-4e59-817d-913dcb366620"],
+Cell[CellGroupData[{
+Cell[54979, 1520, 359, 8, 33, "Input",ExpressionUUID->"6cd34fb7-8566-4076-b962-9b3c87aabc88"],
+Cell[55341, 1530, 414, 11, 37, "Output",ExpressionUUID->"33281638-8dba-436a-98fa-5518a3f3206e"]
+}, Open  ]],
+Cell[55770, 1544, 215, 5, 35, "Text",ExpressionUUID->"491af219-4af4-4c03-b848-ecd9ead03793"],
+Cell[55988, 1551, 1456, 36, 79, "Input",ExpressionUUID->"c3886129-7797-4483-a56c-052e85210d1f"],
+Cell[57447, 1589, 505, 11, 104, "Text",ExpressionUUID->"070d3f65-c048-4100-b23f-10fbb2a0569e"],
+Cell[57955, 1602, 1333, 33, 33, "Input",ExpressionUUID->"20b160c2-8db1-4d59-9daf-f40d1d787222"],
+Cell[59291, 1637, 456, 9, 58, "Text",ExpressionUUID->"19d6ee1e-1c4e-4dc2-9e5f-bf80e3ba3518"],
+Cell[59750, 1648, 918, 26, 33, "Input",ExpressionUUID->"75f65af1-54f2-4043-b297-e079dc702e85"]
+}, Open  ]]
+}
+]
+*)
+
