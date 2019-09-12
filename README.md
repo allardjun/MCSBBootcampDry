@@ -26,7 +26,7 @@ Thursday (Zoo Part 1) | AM | Single-cell metadata visualization & R | Kerrigan |
 &nbsp; | AM | Rapid code evaluation & C | Jun Allard |
 &nbsp; | PM | Symbolic math and dynamic visualization with Mathematica | Arthur Lander | Yingxin
 &nbsp; | PM | Complex document preparation & Latex | Tessa
-Friday (Zoo Part 2) | AM | Files and strings with Python with Jupyter | Srikiran | Shiji
+Friday (Zoo Part 2) | AM | Files and strings with Python and Jupyter | Srikiran | Shiji
 &nbsp; | AM | High-performance computing & Bash tools | Kerrigan
 &nbsp; | PM | Scientific visualization & Blender | Abdon | Katie L
 
