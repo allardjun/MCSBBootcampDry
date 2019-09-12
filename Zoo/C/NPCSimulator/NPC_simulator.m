@@ -7,12 +7,12 @@
 dt = 0.001; % s
 ntmax = 1e6;
 
-NSample = 2000; % number of samples
+NSample = 1%2000; % number of samples
 
 % model parameters
 D = 10; %microns^2/second
 L = 10; % microns
-NPCSize = 0.01; % microns
+NPCSize = 0.1; % microns
 NPCLocation = [-L/2,0];
 
 alpha = sqrt(2*D*dt);
@@ -61,7 +61,7 @@ for iSample=1:NSample
             break;
         end
         
-        if 0 % visualize
+        if 1 % visualize
             figure(1);
             plot(x(1),x(2),'-ob');
             drawnow;
