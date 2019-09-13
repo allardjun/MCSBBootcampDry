@@ -35,9 +35,11 @@ Friday (Zoo Part 2) | AM | Files and strings with Python and Jupyter | Srikiran 
 # UCI computing resources
 
 Available free to students:
-* Matlab
-* Mathematica
-* Labview
-* Microsoft office
+* [Matlab](http://laptops.eng.uci.edu/software-installation/matlab)
+* [Mathematica](https://uci.service-now.com/kb_view.do?sysparm_article=KB0010917)
+* [Labview](http://laptops.eng.uci.edu/software-installation/labview-for-students)
+* [Microsoft office](https://www.oit.uci.edu/help/microsoft/software-for-students/office-365-pro-plus/)
 * Unlimited storage on Google drive through your UCI Google account
-* Time on the high performance cluster (HPC)
+* Time on the high performance cluster [(HPC)](https://hpc.oit.uci.edu/)
+
+
