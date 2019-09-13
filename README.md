@@ -31,3 +31,13 @@ Friday (Zoo Part 2) | AM | Files and strings with Python and Jupyter | Srikiran 
 &nbsp; | PM | Scientific visualization & Blender | Abdon | Katie L
 
 [Check here to match names to faces!](http://mcsb.uci.edu/students/current-students)
+
+# UCI computing resources
+
+Available free to students:
+* Matlab
+* Mathematica
+* Labview
+* Microsoft office
+* Unlimited storage on Google drive through your UCI Google account
+* Time on the high performance cluster (HPC)
