@@ -32,7 +32,11 @@ Friday (Zoo Part 2) | AM | Files and strings with Python and Jupyter | Srikiran 
 
 [Check here to match names to faces!](http://mcsb.uci.edu/students/current-students)
 
-# UCI computing resources
+# Resources
+
+Here are some things you might want in the future
+
+## UCI software and computing
 
 Available free to students:
 * [Matlab](http://laptops.eng.uci.edu/software-installation/matlab)
@@ -47,3 +51,7 @@ Available free to students:
 There's more too. Lists:
 * https://uci.service-now.com/sp?id=sc_category&sys_id=7987752cdb67a700712f389f9d961995
 * http://laptops.eng.uci.edu/software-installation
+
+## Coding and software tutorials
+
+* BU bioinformatics: https://foundations-in-computational-skills.readthedocs.io/en/latest/
