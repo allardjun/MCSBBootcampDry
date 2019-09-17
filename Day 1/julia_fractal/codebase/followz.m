@@ -4,7 +4,7 @@
 % remain finite? If it goes to infinity, we define z1 as in the Julia set. 
 % https://en.wikipedia.org/wiki/Julia_set
 
-function [namx,zTrajectory] = followz(zInitial,c)
+function [nmax,zTrajectory] = followz(zInitial,c)
 
     ntMax=22;
     
@@ -16,7 +16,7 @@ function [namx,zTrajectory] = followz(zInitial,c)
     end
 
     % time loop!
-    nt=0;
+    nt=1;
     while (nt<ntMax && abs(z)<2)
     
         z = z.^2 + c;
@@ -24,11 +24,11 @@ function [namx,zTrajectory] = followz(zInitial,c)
         nt=nt+1;
         
         if nargout>1
-            zTrajectory(nt+1)=z;
+            zTrajectory(nt)=z;
         end
     
     end % finished timestep loop
     
-    namx = nt;
+    nmax = nt;
 
 end

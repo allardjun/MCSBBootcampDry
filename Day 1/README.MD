@@ -41,7 +41,7 @@ Download and installation instructions here: https://atom.io/
 
 UCI provides Matlab to students for free. To download and install it, follow the instructions here: http://laptops.eng.uci.edu/software-installation/matlab
 
-Install Matlab 2019a. You won't need any toolboxes.
+Install Matlab 2019a. You'll need the Statistics and Machine Learning Toolbox (for exprnd).
 
 # Day 1 / Monday
 
@@ -49,7 +49,7 @@ Install Matlab 2019a. You won't need any toolboxes.
 
 We'll discuss how to manage a project as a graduate student. We'll learn how to use git to do so for a coding project.
 
-The lecture on git and project instructions are in [git-lecture.md](git_lecture/git-lecture.md). We'll write a caption for  [this figure](figure_caption_exercise/figure2.md).
+The lecture on git and project instructions are in [git-lecture.md](git_lecture/git-lecture.md). We'll write a caption for [this figure](figure_caption_exercise/figure2.md).
 
 ## Afternoon: A sample project and Matlab basics
 
@@ -57,4 +57,4 @@ Now that we know some git basics, we'll set up an example project. Lecture on ra
 
 We'll write the code for this project in Matlab, so we'll learn some Matlab along the way. See [CodingBasics.mlx](CodingBasics.mlx)
 
-Finally, the project itself is in [julia_fractal](julia_fractal).
+Directions for the project are in [project-set-up.md](project-set-up.md). Code provided for the project is in [julia_fractal](julia_fractal).

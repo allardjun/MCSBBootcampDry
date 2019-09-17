@@ -1,3 +1,6 @@
+%% Matt Bovyn, mbovyn@uci.edu
+% Made up for MCSB Bootcamp 2019
+
 %% Panel A
 
 ka=[300,400,425,450,375,300];
