@@ -28,15 +28,18 @@ int arrayCounter;
 int main( int argc, char *argv[] )
 {
 
+  // Write numbers in the first array
   for(arrayCounter=0;arrayCounter<10;arrayCounter++)
     myArray[arrayCounter] = arrayCounter;
 
+  // Write numbers in the second array
   for(arrayCounter=0;arrayCounter<10;arrayCounter++)
-    myOtherArray[arrayCounter] = 99.0 + arrayCounter;
+    myOtherArray[arrayCounter] = 99.0;
 
   printf("The fourth element of myArray is: myArray[3]=%lf\n",myArray[3]);
 
   printf("The 13th element of myArray is: myArray[12]=%lf\n",myArray[12]);
 
   return 0;
+
 } // finished main

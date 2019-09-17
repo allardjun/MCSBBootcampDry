@@ -7,3 +7,4 @@ Our goal will be (once we know a little about what actin is) to go from a mental
 ## Afternoon: Fitting models to actin polymerization data
 
 Now that we've seen how our model behaves, we'll compare it with data. We'll work in fitting_to_data.mlx. Data on experimental actin lengths in actin_lengths.mat is from http://www.rpgroup.caltech.edu/mbl_physiology/programming.
+To generate it, I ran the analysis provided in the "Cytoskeleton length distribution" live script (cytoskeleton_manual.mlx) and gave it access to the three images in "Measuring Cytoskeletal Filament Length Distributions" (H15_01.tif, H15_02.tif, H15_03.tif, in ActinFilaments.zip)

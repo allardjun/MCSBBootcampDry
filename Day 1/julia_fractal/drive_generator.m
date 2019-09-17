@@ -1,12 +1,20 @@
 % Matt Bovyn, mbovyn@uci.edu
-% Drive generate_fractal.m
+% Set value of c and
+% drive generate_fractal.m
 
 % Set model parameter
 c = -0.8 - 0.156*1i;
 
-%set the path to the repo
-absolutePathToRepo='/Users/matthewbovyn/project_code/BootCampDry_allardjun/MCSBBootCampDry/Day 1/julia_fractal';
+%set the path to the julia_fractal folder in your repo (must set for your computer!)
+absolutePathToRepo='/path/to/repo';
+%(or for Windows, 'path\to\repo')
+
+%path to this script (should not be in repo)
 localpath=pwd;
+
+if strcmp(localpath,absolutePathToRepo)
+    error('You were supposed to copy this to somewhere else!')
+end
 
 %run generate_fractal script
 run([absolutePathToRepo '/codebase/generate_fractal.m'])
@@ -18,4 +26,4 @@ movefile('CommitUsedHash.txt',[ localpath '/CommitUsedHash.txt'])
 cd(localpath);
 
 % Save to file
-save('juliaSet.mat', 'p', 'nmax');
+save('juliaSetTest.mat', 'p', 'nmax');

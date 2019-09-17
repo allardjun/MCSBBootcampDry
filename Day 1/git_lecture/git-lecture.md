@@ -388,6 +388,10 @@ Time saving tricks for future use:
 * `git commit -m "Commit message here"` lets you skip the text editor if you want a one line commit message
 * Can be combined into `git commit -a -m "Commit message"`
 
+<!---
+Turns out the default editor in Windows Ubuntu is Nano. We might want to have them change to vim so everyone is using the same thing:https://askubuntu.com/questions/615178/getting-the-default-text-editor-used-in-system
+--->
+
 ### Push up to GitHub
 
 To send your commit up to GitHub, `git push`. Try it now.
@@ -432,7 +436,7 @@ These steps can be repeated in the future to pull down other changes from allard
 using the address directly without saving it as a remote.
 
 <!---
-Draw map of repos here
+Draw map of repos on the board
 --->
 
 ---
@@ -516,6 +520,8 @@ Notes:
 Took full three hours, pretty much on the dot.
 Took breaks at ---'s
 Lots of issues with credentials, both in Windows Ubuntu and for GitHub. Don't know how to avoid
+
+There was a good deal of confusion about what a pull request did. Got quite a few of them with people trying to get changes from allardjun. Emphasizing who controls what might help (also with the branch vs. fork question)
 --->
 
 # Resources

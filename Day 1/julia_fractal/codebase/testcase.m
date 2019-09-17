@@ -15,13 +15,17 @@ ntMax = 22;
 a=(0+1i)*ones(1,ntMax);
 b=(-1-1i)*ones(1,ntMax);
 c=[a;b];
-known_answer=c(1:ntMax+1);
+known_answer=c(1:ntMax);
 
 % then we can compare the output of the program at these parameters
 
 [~,zTrajectory]=followz(0+1i,0-1i);
-disp('Output is')
-disp(zTrajectory')
+disp('Size of output is')
+disp(size(zTrajectory))
+disp('Should be')
+disp(size(known_answer))
+disp('       Output           Known answer')
+disp([zTrajectory' known_answer'])
 
 % to the known correct output as a test
 if isequal(zTrajectory,known_answer)

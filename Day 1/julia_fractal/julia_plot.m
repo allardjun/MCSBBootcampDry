@@ -8,7 +8,7 @@
 
 clear
 
-load('juliaSet.mat');
+load('juliaSetTest.mat');
 
 juliaSet = nmax<22; % Julia set is defined as p values that mapped to infinity (here defined as abs(z)>2).
 
